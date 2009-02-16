@@ -1,0 +1,8 @@
+#summary Referências de utilização de Processing em Eclipse
+
+= Links =
+
+http://processing.org/discourse/yabb_beta/YaBB.cgi?board=Integrate;action=display;num=1117133941
+
+http://go.yuri.at/?p=51
+
