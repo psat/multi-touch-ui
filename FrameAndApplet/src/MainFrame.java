@@ -18,7 +18,7 @@ public class MainFrame {
 	void BuildFrame(){
 		
 		JFrame frame = new JFrame("Frame and applet");
-		frame.setLayout(new GridLayout(1));
+		frame.setLayout(new GridLayout());
 		
 		// Menubar
 		JMenuBar menuBar = new JMenuBar();
