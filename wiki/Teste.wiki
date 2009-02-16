@@ -9,3 +9,5 @@ iniciar wiki
 
 página de teste do wiki
 ver komo funciona
+
+= Fuck =
