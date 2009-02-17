@@ -5,7 +5,7 @@ import processing.core.*;
 public class MyProcessingSketch extends PApplet{
 
 	private int mHeight;
-	private int mWidth;
+	private int mWidth; 
 	
 	public MyProcessingSketch(double aWidth, double aHeight){
 		this.mHeight = (int)aHeight;
