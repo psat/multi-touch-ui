@@ -12,10 +12,12 @@ public class MainFrame {
 	public static void main(String[] args) {
 		new MainFrame();
 	}
+	
 	public MainFrame(){
 		
 		this.BuildFrame();
 	}
+	
 	void BuildFrame(){
 		
 		JFrame frame = new JFrame("Frame and applet");
@@ -45,11 +47,8 @@ public class MainFrame {
 	    JPanel pane = new JPanel(new GridLayout(0,1));
 		pane.add(app);
 		
-		
 		//frame.getContentPane().add(toolBar);
 		frame.getContentPane().add(pane);
-		
-	
 		
 		frame.setVisible(true);
 	}
