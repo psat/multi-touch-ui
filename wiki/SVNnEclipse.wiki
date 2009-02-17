@@ -1,0 +1,24 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Após a instalação do svn deves seguir os seguintes passos:
+
+
+== Remover antigo svn das pastas =
+
+percorrer todas as pastas do teu workspace e remover svn
+
+dica: fazer pesquisa por svn
+
+== Introduzir SVN no Eclipse ==
+
+Em cima da pasta do projecto > botao direito > Team > Share Project 
+
+preencher os dados do SVN. ATENÇÃO: Depois do URL clicas browse e seleccionas ROOT\trunk.
+
+No final deseleccionas o commit e dizes k sim, para fazer o checkout.
+
+= FIM =
+
+O SVN no Eclips é tratado através do Team.. Verás que aparece lá as opções update, commit como todas as outras
