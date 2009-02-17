@@ -19,6 +19,13 @@ preencher os dados do SVN. ATENÇÃO: Depois do URL clicas browse e seleccionas 
 
 No final deseleccionas o commit e dizes k sim, para fazer o checkout.
 
+== Introdução dos projectos seguintes
+
+Não necessitas de configurar novamente o SVN.. 
+Verifica se foi bem configurado para o primeiro projecto. 
+
+A partir deste podes adicionar qualquer projecto. ( Next>Next>Next, nao esquecer de retirar o commit na ultima janela)
+
 = FIM =
 
 O SVN no Eclips é tratado através do Team.. Verás que aparece lá as opções update, commit como todas as outras
