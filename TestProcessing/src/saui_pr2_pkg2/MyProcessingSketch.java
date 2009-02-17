@@ -9,8 +9,9 @@ public class MyProcessingSketch extends PApplet implements TuioListener{
 	private Hashtable<Long,TuioCursor> cursorList;
 
 	public static void main(String args[]){
-
+		
 		PApplet.main(new String[] { "--present", "MyProcessingSketch"});
+		
 	}
 
 	public void setup(){
@@ -18,41 +19,37 @@ public class MyProcessingSketch extends PApplet implements TuioListener{
 		background(0);
 
 		cursorList = new Hashtable<Long,TuioCursor>();
-		TuioClient client = null;
-
-		switch (args.length) {
-		case 1:
-			try { client = new TuioClient( Integer.parseInt(args[1])); }
-			catch (Exception e) {}
-			break;
-		case 0:
-			client = new TuioClient();
-			break;
-		}
+		TuioClient client = new TuioClient(3333);
 
 		if (client!=null) {
 			client.addTuioListener(this);
 			client.connect();
 		} else {
-			System.out.println("usage: java TuioDemo [port]");
+			System.out.println("Wrong or not available port: Port Nº3333");
 			System.exit(0);
-		}	
+		}
 	}
 
 	public void draw(){
 		stroke(255);
-		if(mousePressed){
-			line(mouseX, mouseY, pmouseX, pmouseY);
-		}
+			//line(i++, 10, 2, 2);
+		point((int)(posx*200),(int)(posy*200));
+		
+		//(int)(oldposx*200),(int)(oldposy*200));
+		//oldposx=posx;
+		//oldposy=posy;
 	}
 
+	float oldposx;
+	float oldposy;
+	 float posx;
+	 float posy;
 	@Override
 	public void addTuioCursor(TuioCursor cursor) {
 		//verificar isto.....
 		if (!cursorList.containsKey(cursor.getSessionID())) {
 			cursorList.put(cursor.getSessionID(), cursor);
-			System.out.println(cursor.getX()+"   "+cursor.getY());
-			repaint();
+			
 		}
 	}
 
@@ -81,8 +78,12 @@ public class MyProcessingSketch extends PApplet implements TuioListener{
 	}
 
 	@Override
-	public void updateTuioCursor(TuioCursor arg0) {
+	public void updateTuioCursor(TuioCursor cursor) {
 		// TODO Auto-generated method stub
+		posx=cursor.getX();
+		posy = cursor.getY();
+	
+		System.out.println(cursor.getX()+"   "+cursor.getY());
 
 	}
 
