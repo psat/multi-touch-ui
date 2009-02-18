@@ -1,31 +1,23 @@
-#Instável e em fase de testes.
+#Simples e operacional
 
 = Introduction =
 
-Após a instalação do svn deves seguir os seguintes passos:
+Integração dos projectos do SVN no Eclipse
 
+= Instalação =
 
-== Remover antigo svn das pastas =
+http://subclipse.tigris.org/servlets/ProjectProcess;jsessionid=8DD01A5B29B4B8A684EE14F93FFDD1EA?pageID=p4wYuA
 
-percorrer todas as pastas do teu workspace e remover svn
+= Configuração =
 
-dica: fazer pesquisa por svn
+1. Removes os projectos do workspace.
+2. Importas os projectos atraves do svn.
 
-== Introduzir SVN no Eclipse ==
+http://muses.selfip.com/Googlewiki/Images/import.jpg
 
-Em cima da pasta do projecto > botao direito > Team > Share Project 
+http://muses.selfip.com/Googlewiki/Images/svn.jpg
 
-preencher os dados do SVN. ATENÇÃO: Depois do URL clicas browse e seleccionas ROOT\trunk.
-
-No final deseleccionas o commit e dizes k sim, para fazer o checkout.
-
-== Introdução dos projectos seguintes ==
-
-Não necessitas de configurar novamente o SVN.. 
-Verifica se foi bem configurado para o primeiro projecto. 
-
-A partir deste podes adicionar qualquer projecto. ( Next>Next>Next, nao esquecer de retirar o commit na ultima janela)
 
 = FIM =
 
-O SVN no Eclips é tratado através do Team.. Verás que aparece lá as opções update, commit como todas as outras
+Simples e directo sem mais confusões
