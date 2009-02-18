@@ -1,6 +1,8 @@
 package saui_pr2;
-import java.util.Hashtable;
 
+//fazer os comentários, muito importante......
+
+import java.util.Hashtable;
 import processing.core.*;
 import tuio.TuioClient;
 import tuio.TuioCursor;
