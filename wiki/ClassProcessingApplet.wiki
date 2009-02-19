@@ -1,4 +1,4 @@
-#Class ProcessingApplet
+#summary Class ProcessingApplet
 
 = Class ProcessingApplet =
 
