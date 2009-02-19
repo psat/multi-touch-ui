@@ -16,5 +16,5 @@ This class implements an Applet that uses Processing programming.
 
 === Methods ===
 
-|| void || setup() || Processing setup() || http://processing.org/reference/setup_.html ||
-|| void || draw() || Processing draw() || http://processing.org/reference/draw_.html ||
+|| void || *setup()* || Processing setup() || http://processing.org/reference/setup_.html ||
+|| void || *draw()* || Processing draw() || http://processing.org/reference/draw_.html ||
