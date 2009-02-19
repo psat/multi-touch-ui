@@ -1,6 +1,9 @@
 package MTUI_WT;
 
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import MTUI_WT.Controls.*;
 import MTUI_WT.Processing.ProcessingFrame;
 
