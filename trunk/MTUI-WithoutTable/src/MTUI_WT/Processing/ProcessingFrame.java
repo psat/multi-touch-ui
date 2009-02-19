@@ -1,6 +1,7 @@
 package MTUI_WT.Processing;
 
 import java.awt.*;
+
 import MTUI_CONST.*;
 import javax.swing.*;
 
@@ -57,6 +58,7 @@ public class ProcessingFrame extends JFrame {
 		app.setBounds((int)r.getX(), (int) (r.getY() - this.getJMenuBar().getBounds().getHeight()), (int)r.getWidth(), (int)r.getHeight());
 		super.setBounds(r);
 	}
+	
 	
 
 }

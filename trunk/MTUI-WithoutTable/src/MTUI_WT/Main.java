@@ -1,12 +1,7 @@
 package MTUI_WT;
 
 import java.awt.Color;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-import MTUI_WT.Controls.MTPointer;
-import MTUI_WT.Controls.MTToolBar;
-import MTUI_WT.Controls.MTToolBarButton;
+import MTUI_WT.Controls.*;
 import MTUI_WT.Processing.ProcessingFrame;
 
 public class Main {
@@ -15,7 +10,7 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
 		ProcessingFrame win = new ProcessingFrame("Multi-Touch");
 		
 		MTToolBar toolbar = new MTToolBar();
@@ -32,6 +27,7 @@ public class Main {
 		MTPointer pointer = new MTPointer();
 		pointer.setBackground(new Color(0,205,0));
 		pointer.setBounds(0, 0, 10, 10);
+		pointer.addMouseMotionListener(win.getProcessingApplet());
 		win.getProcessingApplet().getControls().add(pointer);
 		
 		

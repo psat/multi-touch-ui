@@ -1,10 +1,6 @@
 package MTUI_WT.Controls;
 
-
 import java.util.ArrayList;
-
-import org.w3c.dom.events.EventTarget;
-import org.w3c.dom.views.AbstractView;
 
 import processing.core.PApplet;
 
@@ -24,15 +20,18 @@ public class MTToolBar extends MTAbstractControl {
 		for(IMTControl item : Items){
 			((MTToolBarButton)item).setBounds(5, 5, this.getHeight(), this.getHeight()-10);
 			((MTToolBarButton)item).DrawControl(app);
-	
+			
 		
 		}
+		
 	}
 	
 	
 	public ArrayList<IMTControl> getItems(){
 		return this.Items;
 	}
+
+
 
 
 
