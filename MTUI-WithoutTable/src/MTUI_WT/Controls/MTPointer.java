@@ -1,11 +1,13 @@
 package MTUI_WT.Controls;
 
-import java.awt.Event;
+import java.awt.event.MouseEvent;
 
 import processing.core.PApplet;
 
 
 public class MTPointer extends MTAbstractControl{
+
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	public void DrawControl(PApplet app) {
@@ -13,13 +15,12 @@ public class MTPointer extends MTAbstractControl{
 		app.ellipse(this.getX(), this.getY(), this.getWidth(), this.getHeight());
 
 	}
-	
-	@SuppressWarnings("deprecation")
 	@Override
-	public boolean mouseMove(Event evt, int x, int y) {
-		
-		this.setLocation(x,y);
+	protected void processMouseMotionEvent(MouseEvent e) {
+		this.setLocation(e.getPoint());
+		System.out.println(e.getPoint());
 		// TODO Auto-generated method stub
-		return super.mouseMove(evt, x, y);
+		super.processMouseMotionEvent(e);
 	}
+	
 }
