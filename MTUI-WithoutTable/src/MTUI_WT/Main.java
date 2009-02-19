@@ -30,7 +30,7 @@ public class Main {
 		MTPointer pointer = new MTPointer();
 		pointer.setBackground(new Color(0,205,0));
 		pointer.setBounds(0, 0, 10, 10);
-		pointer.addMouseMotionListener(win.getProcessingApplet());
+		win.getProcessingApplet().addMouseMotionListener(pointer);
 		win.getProcessingApplet().getControls().add(pointer);
 		
 		

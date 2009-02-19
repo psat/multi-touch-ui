@@ -10,9 +10,6 @@ import processing.core.PApplet;
 public class MTPointer extends MTAbstractControl{
 
 	private static final long serialVersionUID = 1L;
-	public MTPointer(){
-		this.enableEvents(AWTEvent.MOUSE_MOTION_EVENT_MASK);
-	}
 
 	@Override
 	public void DrawControl(PApplet app) {
@@ -22,12 +19,7 @@ public class MTPointer extends MTAbstractControl{
 	}
 	
 	@Override
-	protected void processMouseMotionEvent(MouseEvent e) {
+	public void mouseMoved(MouseEvent e) {
 		this.setLocation(e.getPoint());
-		System.out.println(e.getPoint());
-		// TODO Auto-generated method stub
-		super.processMouseMotionEvent(e);
 	}
-	
-	
 }

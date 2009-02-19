@@ -1,5 +1,6 @@
 package MTUI_WT.Controls;
 
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
@@ -30,11 +31,6 @@ public class MTToolBar extends MTAbstractControl {
 	public ArrayList<IMTControl> getItems(){
 		return this.Items;
 	}
-
-
-
-
-
 	
 	
 }
