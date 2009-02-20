@@ -31,6 +31,13 @@ public class MTToolBar extends MTAbstractControl {
 	public ArrayList<IMTControl> getItems(){
 		return this.Items;
 	}
+
+
+	public void addControl(MTToolBarButton toolbarButton) {
+		this.addMouseMotionListener(toolbarButton);
+		this.Items.add(toolbarButton);
+		
+	}
 	
 	
 }

@@ -23,6 +23,11 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet {
 		
 		return this.Controls;
 	}
+	
+	public void addControl(IMTControl control){
+		this.addMouseMotionListener(control);
+		this.Controls.add(control);
+	}
 
 	@Override
 	public void setup(){
