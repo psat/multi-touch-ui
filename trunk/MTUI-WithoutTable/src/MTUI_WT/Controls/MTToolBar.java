@@ -1,5 +1,6 @@
 package MTUI_WT.Controls;
 
+import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
@@ -34,10 +35,43 @@ public class MTToolBar extends MTAbstractControl {
 
 
 	public void addControl(MTToolBarButton toolbarButton) {
-		this.addMouseMotionListener(toolbarButton);
+		if(toolbarButton.getBackground()==null)
+			toolbarButton.setBackground(this.getBackground());
 		this.Items.add(toolbarButton);
 		
 	}
+	
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		for(IMTControl item: this.Items){
+			if(item instanceof MTToolBarButton){
+				MTToolBarButton button = (MTToolBarButton) item;
+				if(button.getBounds().intersects(new Rectangle(e.getX(), e.getY(), 2,2)))
+					button.setMouseOver(true);
+				else
+					button.setMouseOver(false);
+			}
+		}
+		// TODO Auto-generated method stub
+		super.mouseMoved(e);
+	}
+	
+	@Override
+	public void mousePressed(MouseEvent e) {
+		for(IMTControl item: this.Items){
+			if(item instanceof MTToolBarButton){
+				MTToolBarButton button = (MTToolBarButton) item;
+				if(button.getBounds().intersects(new Rectangle(e.getX(), e.getY(), 2,2)))
+					if (button.getMousePressed()) button.setMousePressed(false);
+					else button.setMousePressed(true);
+			}
+		}
+		
+		super.mousePressed(e);
+	}
+	
+
+	
 	
 	
 }
