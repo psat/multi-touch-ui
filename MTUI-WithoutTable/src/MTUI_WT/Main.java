@@ -23,7 +23,7 @@ public class Main {
 		
 		
 		MTToolBarButton toolbarButton = new MTToolBarButton();
-		toolbarButton.setBackground(new Color(180,180,180));
+		toolbarButton.setImageBackground("action.gif.jpg");
 		toolbar.addControl(toolbarButton);
 		
 		

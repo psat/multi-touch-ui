@@ -26,6 +26,7 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet {
 	
 	public void addControl(IMTControl control){
 		this.addMouseMotionListener(control);
+		this.addMouseListener(control);
 		this.Controls.add(control);
 	}
 
