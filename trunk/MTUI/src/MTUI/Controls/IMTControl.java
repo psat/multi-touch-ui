@@ -6,6 +6,12 @@ import java.awt.Point;
 import processing.core.PApplet;
 import tuio.TuioListener;
 
+/**
+ * 
+ * @author Nuno Santos
+ * @author Paulo Teixeira
+ *
+ */
 public interface IMTControl extends TuioListener {
 	
 	void DrawControl(PApplet app);

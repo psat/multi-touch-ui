@@ -12,6 +12,14 @@ import javax.swing.JPanel;
 import MTUI.Constants.*;
 import MTUI.Processing.ProcessingApplet;
 
+/**
+ * An extended version of javax.swing.JFrame that contains a menu bar and a pane with the processing applet.
+ *<p>
+ * @see javax.swing.JFrame
+ * @author Nuno Santos
+ * @author Paulo Teixeira
+ *
+ */
 public class ProcessingFrame extends JFrame{
 
 private static final long serialVersionUID = 1L;

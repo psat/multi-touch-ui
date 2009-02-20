@@ -8,8 +8,21 @@ import processing.core.PApplet;
 import tuio.TuioCursor;
 import tuio.TuioObject;
 
+/**
+ * Defines any object that is inserted on the processing applet.
+ * <p>
+ * Implements IMTControl interface
+ * 
+ * @see MTUI.Controls.IMTControl
+ * 
+ * @author Nuno Santos
+ * @author Paulo Teixeira
+ *
+ */
 public abstract class MTAbstractControl extends Component implements IMTControl {
 
+	private float TuioX;
+	private float TuioY;
 	@Override
 	public void DrawControl(PApplet app) {
 		// TODO Auto-generated method stub
@@ -29,8 +42,7 @@ public abstract class MTAbstractControl extends Component implements IMTControl 
 	}
 
 	@Override
-	public void addTuioCursor(TuioCursor arg0) {
-		// TODO Auto-generated method stub
+	public void addTuioCursor(TuioCursor cursor) {
 		
 	}
 
@@ -68,6 +80,16 @@ public abstract class MTAbstractControl extends Component implements IMTControl 
 	public void updateTuioObject(TuioObject arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+	public void setTuioLocation(float x, float y){
+		this.TuioX = x;
+		this.TuioY = y;
+	}
+	public float getTuioX(){
+		return this.TuioX;
+	}
+	public float getTuioY(){
+		return this.TuioY;
 	}
 	
 }
