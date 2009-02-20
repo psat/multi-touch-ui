@@ -54,7 +54,7 @@ public class ProcessingFrame extends JFrame {
 		try{
 			app.setBounds(x, (int) (y - this.getJMenuBar().getBounds().getHeight()), width, height);
 		} catch(Exception ex){}
-		
+	
 		super.setBounds(x, y, width, height);
 	}
 	@Override
