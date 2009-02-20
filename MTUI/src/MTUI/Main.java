@@ -2,9 +2,7 @@ package MTUI;
 
 import java.awt.Color;
 
-import MTUI.Controls.MTPointer;
-import MTUI.Controls.MTToolBar;
-import MTUI.Controls.MTToolBarButton;
+import MTUI.Controls.*;
 import MTUI.Processing.ProcessingFrame;
 
 public class Main {
@@ -26,11 +24,6 @@ public class Main {
 		toolbarButton.setImageBackground("action.gif.jpg");
 		toolbar.addControl(toolbarButton);
 		
-		
-		MTPointer pointer = new MTPointer();
-		pointer.setBackground(new Color(0,205,0));
-		pointer.setBounds(0, 0, 10, 10);
-		win.getProcessingApplet().addControl(pointer);
 		
 	}
 

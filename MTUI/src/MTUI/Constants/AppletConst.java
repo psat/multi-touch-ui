@@ -1,5 +1,10 @@
 package MTUI.Constants;
 
+/**
+ * this class holds the constants for the processing applet
+ * @author ns
+ *
+ */
 public class AppletConst {
 
 	public static final int APPLET_WIDTH = 800;
@@ -8,4 +13,6 @@ public class AppletConst {
 	public static final int APPLET_Y=20;
 	
 	public static final int TOOLBAR_BUTTON_MARGIN = 4;
+	
+	public static final int POINTER_SIZE = 10;
 }

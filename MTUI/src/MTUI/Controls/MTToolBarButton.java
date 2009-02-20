@@ -1,14 +1,24 @@
 package MTUI.Controls;
 
+import java.awt.Rectangle;
+
 import processing.core.*;
+import tuio.TuioCursor;
 import MTUI.Constants.*;
 
+/**
+ * This class implements buttons to be added to a Processing applet toolbar
+ * @author Nuno Santos
+ * @author PAulo Teixeira
+ *
+ */
 public class MTToolBarButton extends MTAbstractControl{
 
 	private static final long serialVersionUID = 1L;
 	
 	private String imgBackground;
-	
+	private boolean cursorPressed;
+	private boolean _active;
 	
 	public void setImageBackground(String aImageLocation){
 		this.imgBackground=aImageLocation;
@@ -17,8 +27,30 @@ public class MTToolBarButton extends MTAbstractControl{
 	public void DrawControl(PApplet app) {
 
 		app.fill(this.getBackground().getRed(),this.getBackground().getGreen(), this.getBackground().getBlue());
-		//if(this.mousePressed) app.fill(100);
-		//if(this.mouseOver) app.stroke(30);
+		if(this._active){
+			app.fill(100);
+		}
+		Rectangle pointerBounds = new Rectangle((int)(this.getTuioX()*app.getWidth()), (int)(this.getTuioY()*app.getHeight()), AppletConst.POINTER_SIZE, AppletConst.POINTER_SIZE);
+		
+		// Although detect intersection
+		// when pointer is on the corner we want to avoid intersection
+		if(this.getBounds().intersects(pointerBounds) 
+				&& (pointerBounds.getX()!=0)
+				&&(pointerBounds.getY()!=0)){
+			
+			if(this.cursorPressed){
+				
+				if(this._active) this._active = false;
+				else this._active =true;
+			
+				this.cursorPressed=false;
+			}else {
+					app.stroke(30);
+			}
+		} else {
+			this.cursorPressed=false;
+		}
+		
 		app.rect((float)this.getBounds().getX(), (float)this.getBounds().getY(), (float)this.getBounds().getWidth(), (float)this.getBounds().getHeight());
 		app.noStroke();
 		if(!this.imgBackground.equals("")){
@@ -27,5 +59,24 @@ public class MTToolBarButton extends MTAbstractControl{
 		
 		}
 	}
+	
+	@Override
+	public void addTuioCursor(TuioCursor cursor) {
+		this.setTuioLocation(cursor.getX(), cursor.getY());
+		this.cursorPressed = true;
+		
+	}
+	
+	@Override
+	public void updateTuioCursor(TuioCursor cursor) {
+		this.setTuioLocation(cursor.getX(), cursor.getY());
+	}
+	
+	@Override
+	public void removeTuioCursor(TuioCursor cursor) {
+		this.setTuioLocation(0, 0);
+		
+	}
+	
 
 }
