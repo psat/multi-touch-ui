@@ -19,19 +19,18 @@ public class Main {
 		MTToolBar toolbar = new MTToolBar();
 		toolbar.setBackground(new Color(233,233,233));
 		toolbar.setBounds(0, 0, win.getProcessingApplet().getWidth(), 60);
-		win.getProcessingApplet().getControls().add(toolbar);
+		win.getProcessingApplet().addControl(toolbar);
 		
 		
 		MTToolBarButton toolbarButton = new MTToolBarButton();
 		toolbarButton.setBackground(new Color(180,180,180));
-		toolbar.getItems().add(toolbarButton);
+		toolbar.addControl(toolbarButton);
 		
 		
 		MTPointer pointer = new MTPointer();
 		pointer.setBackground(new Color(0,205,0));
 		pointer.setBounds(0, 0, 10, 10);
-		win.getProcessingApplet().addMouseMotionListener(pointer);
-		win.getProcessingApplet().getControls().add(pointer);
+		win.getProcessingApplet().addControl(pointer);
 		
 		
 	}
