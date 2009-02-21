@@ -18,16 +18,21 @@ public class MTToolBarButton extends MTAbstractControl{
 	
 	private String imgBackground;
 	private boolean cursorPressed;
-	private boolean _active;
+	private boolean mActive;
+	private MTToolBar mParent;
 	
 	public void setImageBackground(String aImageLocation){
 		this.imgBackground=aImageLocation;
 	}
+	public void setParent(MTToolBar aParent){
+		this.mParent = aParent;
+	}
+	
 	@Override
 	public void DrawControl(PApplet app) {
 
 		app.fill(this.getBackground().getRed(),this.getBackground().getGreen(), this.getBackground().getBlue());
-		if(this._active){
+		if(this.mActive){
 			app.fill(100);
 		}
 		Rectangle pointerBounds = new Rectangle((int)(this.getTuioX()*app.getWidth()), (int)(this.getTuioY()*app.getHeight()), AppletConst.POINTER_SIZE, AppletConst.POINTER_SIZE);
@@ -40,8 +45,13 @@ public class MTToolBarButton extends MTAbstractControl{
 			
 			if(this.cursorPressed){
 				
-				if(this._active) this._active = false;
-				else this._active =true;
+				if(this.mActive) this.mActive = false;
+				else{
+					//disable other buttons
+					//inactive all parent buttons
+					this.mParent.setInactiveAllChildButtons();
+					this.mActive =true;
+				}
 			
 				this.cursorPressed=false;
 			}else {
@@ -59,7 +69,10 @@ public class MTToolBarButton extends MTAbstractControl{
 		
 		}
 	}
-	
+	public void setActive(boolean value){
+		
+		this.mActive=value;
+	}
 	@Override
 	public void addTuioCursor(TuioCursor cursor) {
 		this.setTuioLocation(cursor.getX(), cursor.getY());
