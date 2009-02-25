@@ -2,6 +2,8 @@ package MTUI;
 
 import java.awt.Color;
 
+import shapes.Square;
+
 import MTUI.Controls.*;
 import MTUI.Processing.ProcessingFrame;
 
@@ -23,6 +25,9 @@ public class Main {
 		MTToolBarButton toolbarButton = new MTToolBarButton();
 		toolbarButton.setImageBackground("action.gif.jpg");
 		toolbar.addControl(toolbarButton);
+		
+		Square square = new Square();
+		win.getProcessingApplet().addControl(square);
 		
 		/*
 		MTToolBarButton ellipse = new MTToolBarButton();

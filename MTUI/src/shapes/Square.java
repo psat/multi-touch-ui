@@ -1,15 +1,26 @@
 package shapes;
 
+import MTUI.Controls.IMTControl;
+import MTUI.Controls.MTAbstractControl;
 import MTUI.Processing.ProcessingApplet;
 import processing.core.*;
+import tuio.TuioCursor;
 
 @SuppressWarnings("serial")
-public class Square extends PApplet{
+public class Square extends MTAbstractControl{
 	
 	public Square(){
 	}
 	
-	public void display(){
-		rect(30, 30, 10, 10);
+	@Override
+	public void DrawControl(PApplet app) {
+		//app.fill(this.getBackground().getRed(),this.getBackground().getGreen(), this.getBackground().getBlue());
+		app.ellipse(300, 300, 40, 40);
+	}
+	
+	@Override
+	public void addTuioCursor(TuioCursor cursor) {
+		//this.cursorPressed = true;
+		super.addTuioCursor(cursor);
 	}
 }
