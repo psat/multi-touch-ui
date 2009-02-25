@@ -6,7 +6,6 @@ import java.awt.Point;
 import processing.core.PApplet;
 import tuio.TuioCursor;
 import tuio.TuioListener;
-import MTUI.Events.*;
 
 /**
  * 
