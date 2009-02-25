@@ -27,15 +27,15 @@ public class Main {
 		toolbarButton.setImageBackground("action.gif.jpg");
 		toolbar.addControl(toolbarButton);
 		
+		MTPiano piano = new MTPiano(); 
+		piano.setBounds(80,100,700,250);
+		win.getProcessingApplet().addControl(piano);
 		
 		MTPointer pointer = new MTPointer();
 		pointer.setBackground(new Color(0,205,0));
 		pointer.setBounds(0, 0, 10, 10);
 		win.getProcessingApplet().addControl(pointer);
 		
-		MTPiano piano = new MTPiano(); 
-		piano.setBounds(80,100,400,100);
-		win.getProcessingApplet().addControl(piano);
 		
 	}
 }

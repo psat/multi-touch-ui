@@ -61,7 +61,7 @@ public abstract class AbstractCompoundComponent extends MTAbstractControl{
 		int newY = (int) (this.mParent.getY() + (this.getReferenceLocation().getY()*this.mParent.getHeight())/100);
 		super.setLocation(newX, newY);
 	}
-	
+
 	@Override
 	public void setSize(Dimension d) {
 		this.setReferenceSize(d);
@@ -72,5 +72,6 @@ public abstract class AbstractCompoundComponent extends MTAbstractControl{
 		super.setSize(new Dimension(newWidth, newHeight));
 		
 	}
+	
 
 }
