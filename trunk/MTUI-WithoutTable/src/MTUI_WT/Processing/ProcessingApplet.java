@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.sun.corba.se.impl.activation.ProcessMonitorThread;
 
 import processing.core.PApplet;
+import tuio.TuioClient;
 import MTUI_WT.Controls.*;
 
 public class ProcessingApplet extends PApplet implements IProcessingApplet {
@@ -18,6 +19,7 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet {
 		
 		PApplet.main(new String[] { "--present", "MyProcessingSketch"});
 	}
+	
 	
 	public ArrayList<IMTControl> getControls(){
 		
