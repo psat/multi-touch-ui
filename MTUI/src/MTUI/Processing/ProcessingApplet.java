@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
+import shapes.Rectangle;
+import shapes.Square;
 import tuio.TuioClient;
 import tuio.TuioCursor;
 import tuio.TuioObject;
@@ -24,6 +26,8 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 	private static final long serialVersionUID = 1L;
 	private ArrayList<IMTControl> Controls = new ArrayList<IMTControl>();
 	private TuioClient tuio;
+	private Rectangle rectangle;
+	private Square square;
 
 	public ProcessingApplet(){
 		this.tuio = new TuioClient(3333);
@@ -65,6 +69,9 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 	public void setup(){
 		
 		background(0);
+		//rectangle = new Rectangle(100, 100, 50,50);
+		square = new Square();
+		
 	}
 
 	@Override
@@ -73,9 +80,9 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 		try{
 			background(0);
 			noStroke();
+			//rectangle.display();
+			square.display();
 			
-	
-	
 			for(IMTControl control : this.Controls){
 				if(control instanceof MTPointer) 
 					control.DrawControl(this);
@@ -86,7 +93,7 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 				else control.DrawControl(this);
 			}
 		}catch(Exception ex){
-			System.out.println(ex);
+			System.out.println("Ocorreu uma excepção do tipo:" + ex);
 		}
 		
 	}
