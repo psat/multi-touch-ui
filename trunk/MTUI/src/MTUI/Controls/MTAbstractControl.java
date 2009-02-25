@@ -3,10 +3,12 @@ package MTUI.Controls;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.ArrayList;
 
 import processing.core.PApplet;
 import tuio.TuioCursor;
 import tuio.TuioObject;
+import tuio.TuioPoint;
 
 /**
  * Defines any object that is inserted on the processing applet.
@@ -21,8 +23,11 @@ import tuio.TuioObject;
  */
 public abstract class MTAbstractControl extends Component implements IMTControl {
 
-	private float TuioX;
-	private float TuioY;
+
+	private TuioPoint CursorLocation;
+	
+	private ArrayList<TuioCursor> Cursors = new ArrayList<TuioCursor>();
+	
 	@Override
 	public void DrawControl(PApplet app) {
 		// TODO Auto-generated method stub
@@ -43,7 +48,8 @@ public abstract class MTAbstractControl extends Component implements IMTControl 
 
 	@Override
 	public void addTuioCursor(TuioCursor cursor) {
-		
+		this.setCursorLocation(cursor.getX(), cursor.getY());
+		this.Cursors.add(cursor);
 	}
 
 	@Override
@@ -59,9 +65,8 @@ public abstract class MTAbstractControl extends Component implements IMTControl 
 	}
 
 	@Override
-	public void removeTuioCursor(TuioCursor arg0) {
-		// TODO Auto-generated method stub
-		
+	public void removeTuioCursor(TuioCursor cursor) {
+		this.Cursors.remove(cursor);		
 	}
 
 	@Override
@@ -71,8 +76,13 @@ public abstract class MTAbstractControl extends Component implements IMTControl 
 	}
 
 	@Override
-	public void updateTuioCursor(TuioCursor arg0) {
-		// TODO Auto-generated method stub
+	public void updateTuioCursor(TuioCursor cursor) {
+		
+		if (this.Cursors.size()==1){
+			System.out.println(cursor.getAngleDegrees(new TuioPoint(0, 0)) + " | " + cursor.getSpeedX() + " | " + cursor.getSpeedY());
+		}
+		this.setCursorLocation(cursor.getX(), cursor.getY());
+		
 		
 	}
 
@@ -81,15 +91,13 @@ public abstract class MTAbstractControl extends Component implements IMTControl 
 		// TODO Auto-generated method stub
 		
 	}
-	public void setTuioLocation(float x, float y){
-		this.TuioX = x;
-		this.TuioY = y;
+	public void setCursorLocation(float x, float y){
+		this.CursorLocation = new TuioPoint(x,y);
 	}
-	public float getTuioX(){
-		return this.TuioX;
+	public TuioPoint getCursorLocation(){
+		if(this.CursorLocation==null) this.CursorLocation = new TuioPoint(0,0);
+		return this.CursorLocation;
 	}
-	public float getTuioY(){
-		return this.TuioY;
-	}
+
 	
 }

@@ -27,13 +27,10 @@ public class MTPointer extends MTAbstractControl {
 	@Override
 	public void DrawControl(PApplet app) {
 		app.fill(this.getBackground().getRed(),this.getBackground().getGreen(), this.getBackground().getBlue());
-		app.ellipse(this.getTuioX()*app.getWidth(), this.getTuioY()*app.getHeight(), this.getWidth(), this.getHeight());
+		app.ellipse(this.getCursorLocation().getX()*app.getWidth(), this.getCursorLocation().getY()*app.getHeight(), this.getWidth(), this.getHeight());
 
 	}
 	
-	@Override
-	public void updateTuioCursor(TuioCursor cursor) {
-		this.setTuioLocation(cursor.getX(), cursor.getY());
-	}
+	
 	
 }
