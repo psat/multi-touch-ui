@@ -2,6 +2,8 @@ package MTUI;
 
 import java.awt.Color;
 
+import shapes.AbstractShape;
+import shapes.Rectangle;
 import shapes.Square;
 
 import MTUI.Controls.*;
@@ -26,8 +28,8 @@ public class Main {
 		toolbarButton.setImageBackground("action.gif.jpg");
 		toolbar.addControl(toolbarButton);
 		
-		Square square = new Square();
-		win.getProcessingApplet().addControl(square);
+		AbstractShape rectangle = new Rectangle(140, 140, 50, 70);
+		win.getProcessingApplet().addControl(rectangle);
 		
 		/*
 		MTToolBarButton ellipse = new MTToolBarButton();

@@ -1,8 +1,7 @@
+//é para apagar.
 package shapes;
 
-import MTUI.Controls.IMTControl;
 import MTUI.Controls.MTAbstractControl;
-import MTUI.Processing.ProcessingApplet;
 import processing.core.*;
 import tuio.TuioCursor;
 
@@ -15,7 +14,7 @@ public class Square extends MTAbstractControl{
 	@Override
 	public void DrawControl(PApplet app) {
 		//app.fill(this.getBackground().getRed(),this.getBackground().getGreen(), this.getBackground().getBlue());
-		app.ellipse(300, 300, 40, 40);
+		app.rect(300, 300, 40, 40);
 	}
 	
 	@Override
