@@ -1,15 +1,18 @@
 package shapes;
 
 import java.awt.Color;
-import processing.core.*;
 
-public abstract class AbstractShape extends PApplet{
+import processing.core.PApplet;
+import MTUI.Controls.MTAbstractControl;
+
+public abstract class AbstractShape extends MTAbstractControl {
 	
 	private Color basecolor, highlightcolor;
 	private Color currentcolor;
-	private boolean over;
-	private boolean pressed;	
+	protected boolean over;
+	protected boolean pressed;	
 	protected int posX, posY;
+	protected PApplet pApplet;
 
 	public AbstractShape(){
 		basecolor = highlightcolor = currentcolor = Color.WHITE;
@@ -17,14 +20,8 @@ public abstract class AbstractShape extends PApplet{
 		pressed = false;
 	}
 	
-	public void pressed() {
-		if(over && mousePressed) {
-			pressed = true;
-		} else {
-			pressed = false;
-		}    
-	}
-	
+	public abstract void pressed();
+		
 	public Color getBasecolor() {
 		return basecolor;
 	}
