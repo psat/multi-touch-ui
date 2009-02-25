@@ -1,12 +1,9 @@
 package MTUI_WT.Processing;
 
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import com.sun.corba.se.impl.activation.ProcessMonitorThread;
-
 import processing.core.PApplet;
-import tuio.TuioClient;
+
 import MTUI_WT.Controls.*;
 
 public class ProcessingApplet extends PApplet implements IProcessingApplet {
@@ -58,6 +55,8 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet {
 				control.DrawControl(this);
 			
 			else control.DrawControl(this);
+			
+			System.out.println(control);
 		}
 		
 	}

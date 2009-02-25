@@ -27,6 +27,7 @@ public class PianoKey extends AbstractCompoundComponent{
 		app.stroke(0);
 		app.fill(this.getBackground().getRed(),this.getBackground().getGreen(),this.getBackground().getBlue());
 		app.rect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
+		
 	}
 	
 }

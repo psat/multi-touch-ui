@@ -82,8 +82,17 @@ public abstract class MTAbstractCompoundControl extends MTAbstractControl implem
 	}
 	@Override
 	public void DrawControl(PApplet app) {
-		for(AbstractCompoundComponent component : this.Controls)
+		for(AbstractCompoundComponent component : this.Controls){
 			component.DrawControl(app);
+			System.out.println(component);
+		}
+	}
+	
+	@Override
+	public void setBounds(int x, int y, int width, int height) {
+		super.setBounds(x, y, width, height);
+		for(AbstractCompoundComponent component: this.Controls)
+			component.UpdateSizeAndLocation();
 	}
 	
 }
