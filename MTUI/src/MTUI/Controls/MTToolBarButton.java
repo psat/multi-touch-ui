@@ -35,7 +35,7 @@ public class MTToolBarButton extends MTAbstractControl{
 		if(this.mActive){
 			app.fill(100);
 		}
-		Rectangle pointerBounds = new Rectangle((int)(this.getTuioX()*app.getWidth()), (int)(this.getTuioY()*app.getHeight()), AppletConst.POINTER_SIZE, AppletConst.POINTER_SIZE);
+		Rectangle pointerBounds = new Rectangle((int)(this.getCursorLocation().getX()*app.getWidth()), (int)(this.getCursorLocation().getY()*app.getHeight()), AppletConst.POINTER_SIZE, AppletConst.POINTER_SIZE);
 		
 		// Although detect intersection
 		// when pointer is on the corner we want to avoid intersection
@@ -75,21 +75,8 @@ public class MTToolBarButton extends MTAbstractControl{
 	}
 	@Override
 	public void addTuioCursor(TuioCursor cursor) {
-		this.setTuioLocation(cursor.getX(), cursor.getY());
 		this.cursorPressed = true;
-		
+		super.addTuioCursor(cursor);
 	}
 	
-	@Override
-	public void updateTuioCursor(TuioCursor cursor) {
-		this.setTuioLocation(cursor.getX(), cursor.getY());
-	}
-	
-	@Override
-	public void removeTuioCursor(TuioCursor cursor) {
-		this.setTuioLocation(0, 0);
-		
-	}
-	
-
 }

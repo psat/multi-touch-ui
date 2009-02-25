@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/ns/Desktop/SAUI/multi-touch-ui/MTUI/core.jar"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/ns/Desktop/SAUI/multi-touch-ui/MTUI/Tuio.jar"/>
+	<classpathentry kind="lib" path="/Users/ns/Documents/workspace/SAUI/MTUI-WithoutTable/core.jar"/>
+	<classpathentry kind="lib" path="/Users/ns/Documents/workspace/SAUI/MTUI-WithoutTable/Tuio.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

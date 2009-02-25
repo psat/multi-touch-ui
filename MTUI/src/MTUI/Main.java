@@ -24,10 +24,11 @@ public class Main {
 		toolbarButton.setImageBackground("action.gif.jpg");
 		toolbar.addControl(toolbarButton);
 		
+		/*
 		MTToolBarButton ellipse = new MTToolBarButton();
 		ellipse.setImageBackground("images/ellipse.gif");
 		toolbar.addControl(ellipse);
-		
+		*/
 		
 	}
 

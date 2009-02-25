@@ -96,7 +96,7 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 	public void addTuioCursor(TuioCursor cursor) {
 		MTPointer pointer = new MTPointer(cursor.getFingerID());
 		pointer.setBackground(new Color(0,205,0));
-		pointer.setTuioLocation(cursor.getX(), cursor.getY());
+		//pointer.setTuioLocation(cursor.getX(), cursor.getY());
 		pointer.setSize(AppletConst.POINTER_SIZE,AppletConst.POINTER_SIZE);
 		this.addControl(pointer);
 		
