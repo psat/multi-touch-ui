@@ -3,8 +3,10 @@ package MTUI_WT.Compounds;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.event.MouseEvent;
 
 import MTUI_WT.Compounds.Component.PianoKey;
+import MTUI_WT.Compounds.Component.PianoSharpKey;
 import processing.core.PApplet;
 
 
@@ -14,9 +16,6 @@ public class MTPiano extends MTAbstractCompoundControl {
 	private static final long serialVersionUID = 1L;
 	
 	public MTPiano(){
-		
-		Dimension dimWhiteKey = new Dimension(10,100);
-		Dimension dimBlackKey = new Dimension(5,60);
 			
 		
 		PianoKey keyDo = new PianoKey(this);
@@ -59,14 +58,45 @@ public class MTPiano extends MTAbstractCompoundControl {
 		keyMi2.setLocation(new Point(90,0));
 		this.addControl(keyMi2);
 		
+		PianoSharpKey sharpDo = new PianoSharpKey(this);
+		sharpDo.setLocation(new Point(7,0));
+		this.addControl(sharpDo);
+		
+		PianoSharpKey sharpRe = new PianoSharpKey(this);
+		sharpRe.setLocation(new Point(17,0));
+		this.addControl(sharpRe);
+		
+		PianoSharpKey sharpFa = new PianoSharpKey(this);
+		sharpFa.setLocation(new Point(37,0));
+		this.addControl(sharpFa);
+		
+		PianoSharpKey sharpSol = new PianoSharpKey(this);
+		sharpSol.setLocation(new Point(47,0));
+		this.addControl(sharpSol);
+		
+		PianoSharpKey sharpLa = new PianoSharpKey(this);
+		sharpLa.setLocation(new Point(57,0));
+		this.addControl(sharpLa);
+		
+		PianoSharpKey sharpDo2 = new PianoSharpKey(this);
+		sharpDo2.setLocation(new Point(77,0));
+		this.addControl(sharpDo2);
+		
+		PianoSharpKey sharpRe2 = new PianoSharpKey(this);
+		sharpRe2.setLocation(new Point(87,0));
+		this.addControl(sharpRe2);
+		
 	}
 
 	@Override
 	public void DrawControl(PApplet app) {
-		//app.stroke(255);
-		//app.fill(255);
-		//app.rect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
 		super.DrawControl(app);
+	}
+	
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+		super.mouseMoved(e);
 	}
 
 }

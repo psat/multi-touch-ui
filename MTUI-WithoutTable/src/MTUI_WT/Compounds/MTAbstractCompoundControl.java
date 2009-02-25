@@ -84,7 +84,7 @@ public abstract class MTAbstractCompoundControl extends MTAbstractControl implem
 	public void DrawControl(PApplet app) {
 		for(AbstractCompoundComponent component : this.Controls){
 			component.DrawControl(app);
-			System.out.println(component);
+			
 		}
 	}
 	

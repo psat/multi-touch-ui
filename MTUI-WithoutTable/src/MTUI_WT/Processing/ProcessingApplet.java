@@ -56,7 +56,6 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet {
 			
 			else control.DrawControl(this);
 			
-			System.out.println(control);
 		}
 		
 	}
