@@ -1,5 +1,8 @@
 package MTUI.Controls;
 
+import java.awt.Dimension;
+import java.awt.Point;
+
 import processing.core.PApplet;
 import tuio.TuioCursor;
 
@@ -20,6 +23,7 @@ public class MTPointer extends MTAbstractControl {
 	public MTPointer(int aFingerID){
 		this.mFingerID=aFingerID;
 	}
+	
 	public int getFingerID(){
 		return this.mFingerID;
 	}
@@ -31,6 +35,21 @@ public class MTPointer extends MTAbstractControl {
 
 	}
 	
+	@Override
+	public void Move(Point location) {
+		// TODO Auto-generated method stub
+		
+	}
 	
+	@Override
+	public void Resize(Dimension size) {
+		// TODO Auto-generated method stub
+		
+	}
 	
+	@Override
+	public void refresh(long arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 }

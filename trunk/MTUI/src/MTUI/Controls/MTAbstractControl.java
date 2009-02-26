@@ -4,7 +4,6 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.util.ArrayList;
-
 import processing.core.PApplet;
 import tuio.TuioCursor;
 import tuio.TuioObject;
@@ -29,22 +28,13 @@ public abstract class MTAbstractControl extends Component implements IMTControl 
 	private ArrayList<TuioCursor> Cursors = new ArrayList<TuioCursor>();
 	
 	@Override
-	public void DrawControl(PApplet app) {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void DrawControl(PApplet app);
 
 	@Override
-	public void Move(Point location) {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void Move(Point location);
 
 	@Override
-	public void Resize(Dimension size) {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void Resize(Dimension size);
 
 	@Override
 	public void addTuioCursor(TuioCursor cursor) {
@@ -54,15 +44,11 @@ public abstract class MTAbstractControl extends Component implements IMTControl 
 
 	@Override
 	public void addTuioObject(TuioObject arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void refresh(long arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void refresh(long arg0);
 
 	@Override
 	public void removeTuioCursor(TuioCursor cursor) {
@@ -82,8 +68,6 @@ public abstract class MTAbstractControl extends Component implements IMTControl 
 			System.out.println(cursor.getAngleDegrees(new TuioPoint(0, 0)) + " | " + cursor.getSpeedX() + " | " + cursor.getSpeedY());
 		}
 		this.setCursorLocation(cursor.getX(), cursor.getY());
-		
-		
 	}
 
 	@Override
@@ -94,10 +78,9 @@ public abstract class MTAbstractControl extends Component implements IMTControl 
 	public void setCursorLocation(float x, float y){
 		this.CursorLocation = new TuioPoint(x,y);
 	}
+	
 	public TuioPoint getCursorLocation(){
 		if(this.CursorLocation==null) this.CursorLocation = new TuioPoint(0,0);
 		return this.CursorLocation;
 	}
-
-	
 }
