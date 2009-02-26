@@ -7,6 +7,7 @@ import processing.core.PApplet;
 
 public class Circle extends AbstractShape{
 
+	private static final long serialVersionUID = 1L;
 	private int diameter;
 
 	public Circle(int posX, int posY, int diameter){
