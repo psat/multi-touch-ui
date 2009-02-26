@@ -6,7 +6,8 @@ import processing.core.PApplet;
 import MTUI.Controls.MTAbstractControl;
 
 public abstract class AbstractShape extends MTAbstractControl {
-	
+
+	private static final long serialVersionUID = 1L;
 	private Color basecolor, highlightcolor;
 	private Color currentcolor;
 	protected boolean over;
@@ -20,7 +21,7 @@ public abstract class AbstractShape extends MTAbstractControl {
 		pressed = false;
 	}
 	
-	public abstract void pressed();
+	//public abstract void pressed();
 		
 	public Color getBasecolor() {
 		return basecolor;

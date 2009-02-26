@@ -1,12 +1,11 @@
 package MTUI.Controls;
 
-import java.awt.MenuComponent;
+import java.awt.Dimension;
+import java.awt.Point;
 import java.util.ArrayList;
-
 import processing.core.PApplet;
 import tuio.TuioCursor;
 import MTUI.Constants.AppletConst;
-import MTUI.Controls.*;
 
 /**
  * An implementation of a Tool bar for Processing applet. 
@@ -53,8 +52,8 @@ public class MTToolBar extends MTAbstractControl{
 			toolbarButton.setBackground(this.getBackground());
 		toolbarButton.setParent(this);
 		this.Items.add(toolbarButton);
-		
 	}
+	
 	public void setInactiveAllChildButtons(){
 		
 		for(MTToolBarButton button : this.Items)
@@ -67,16 +66,36 @@ public class MTToolBar extends MTAbstractControl{
 			control.addTuioCursor(cursor);
 		}
 	}
+	
 	@Override
 	public void updateTuioCursor(TuioCursor cursor) {
 		for(IMTControl control : this.Items){
 			control.updateTuioCursor(cursor);
 		}
 	}
+	
 	@Override
 	public void removeTuioCursor(TuioCursor cursor) {
 		for(IMTControl control : this.Items){
 			control.removeTuioCursor(cursor);
 		}
+	}
+
+	@Override
+	public void Move(Point location) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void Resize(Dimension size) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void refresh(long arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -3,9 +3,7 @@ package MTUI;
 import java.awt.Color;
 
 import shapes.AbstractShape;
-import shapes.Rectangle;
-import shapes.Square;
-
+import shapes.Rect;
 import MTUI.Controls.*;
 import MTUI.Processing.ProcessingFrame;
 
@@ -18,18 +16,18 @@ public class Main {
 
 		ProcessingFrame win = new ProcessingFrame("Multi-Touch");
 		
+		AbstractShape rectangle = new Rect(140, 140, 50, 70);
+		rectangle.setBasecolor(Color.RED);
+		win.getProcessingApplet().addControl(rectangle);
+		
 		MTToolBar toolbar = new MTToolBar();
 		toolbar.setBackground(new Color(233,233,233));
 		toolbar.setBounds(0, 0, win.getProcessingApplet().getWidth(), 60);
 		win.getProcessingApplet().addControl(toolbar);
 		
-		
 		MTToolBarButton toolbarButton = new MTToolBarButton();
 		toolbarButton.setImageBackground("action.gif.jpg");
 		toolbar.addControl(toolbarButton);
-		
-		AbstractShape rectangle = new Rectangle(140, 140, 50, 70);
-		win.getProcessingApplet().addControl(rectangle);
 		
 		/*
 		MTToolBarButton ellipse = new MTToolBarButton();

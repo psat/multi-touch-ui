@@ -1,5 +1,8 @@
 package shapes;
 
+import java.awt.Dimension;
+import java.awt.Point;
+
 import processing.core.PApplet;
 
 public class Circle extends AbstractShape{
@@ -30,6 +33,7 @@ public class Circle extends AbstractShape{
 		}
 	}
 
+	/*
 	@Override
 	public void pressed() {
 		if(over && pApplet.mousePressed) {
@@ -37,7 +41,7 @@ public class Circle extends AbstractShape{
 		} else {
 			pressed = false;
 		}  
-	}
+	}*/
 	
 	public int getDiameter() {
 		return diameter;
@@ -45,6 +49,24 @@ public class Circle extends AbstractShape{
 
 	public void setDiameter(int diameter) {
 		this.diameter = diameter;
+	}
+
+	@Override
+	public void Move(Point location) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void Resize(Dimension size) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void refresh(long arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
