@@ -21,6 +21,9 @@ public class MTToolBar extends MTAbstractControl{
 
 	private ArrayList<MTToolBarButton> Items = new ArrayList<MTToolBarButton>();
 	
+	public MTToolBar(){
+		this.setZIndex(5000);
+	}
 	
 	@Override
 	public void DrawControl(PApplet app){
@@ -38,7 +41,6 @@ public class MTToolBar extends MTAbstractControl{
 			i++;
 		
 		}
-		
 	}
 	
 	
@@ -50,7 +52,6 @@ public class MTToolBar extends MTAbstractControl{
 	public void addControl(MTToolBarButton toolbarButton) {
 		if(toolbarButton.getBackground()==null)
 			toolbarButton.setBackground(this.getBackground());
-		toolbarButton.setParent(this);
 		this.Items.add(toolbarButton);
 	}
 	

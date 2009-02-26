@@ -22,6 +22,7 @@ public class MTPointer extends MTAbstractControl {
 	
 	public MTPointer(int aFingerID){
 		this.mFingerID=aFingerID;
+		this.setZIndex(10000);
 	}
 	
 	public int getFingerID(){

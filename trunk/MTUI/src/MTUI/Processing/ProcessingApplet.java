@@ -2,6 +2,7 @@ package MTUI.Processing;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import processing.core.PApplet;
 import tuio.TuioClient;
@@ -9,6 +10,7 @@ import tuio.TuioCursor;
 import tuio.TuioObject;
 import MTUI.Constants.AppletConst;
 import MTUI.Controls.*;
+import MTUI.Utils.byZIndex;
 
 /**
  * An extended version of processing.core.PApplet.
@@ -74,14 +76,11 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 			background(0);
 			noStroke();
 			
+			//set deep order
+			Collections.sort(this.Controls, new byZIndex());
+			
 			for(IMTControl control : this.Controls){
-				if(control instanceof MTPointer) 
-					control.DrawControl(this);
-				
-				else if(control instanceof MTToolBar)
-					control.DrawControl(this);
-				
-				else control.DrawControl(this);
+				control.DrawControl(this);
 			}
 		}catch(Exception ex){
 			System.out.println("Ocorreu uma excepção do tipo:" + ex);
