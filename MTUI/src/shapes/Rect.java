@@ -1,6 +1,5 @@
 package shapes;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -10,10 +9,7 @@ import tuio.TuioCursor;
 
 
 public class Rect extends AbstractShape{
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private int width, height;
 
