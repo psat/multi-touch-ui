@@ -26,8 +26,9 @@ public class MTToolBarButton extends MTAbstractControl{
 	public void setImageBackground(String aImageLocation){
 		this.imgBackground=aImageLocation;
 	}
-	public void setParent(MTToolBar aParent){
+	public MTToolBarButton(MTToolBar aParent){
 		this.mParent = aParent;
+		this.setZIndex(6000);
 	}
 	
 	@Override

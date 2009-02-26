@@ -24,6 +24,7 @@ public abstract class MTAbstractControl extends Component implements IMTControl 
 
 
 	private TuioPoint CursorLocation;
+	private int mZIndez;
 	
 	private ArrayList<TuioCursor> Cursors = new ArrayList<TuioCursor>();
 	
@@ -75,12 +76,22 @@ public abstract class MTAbstractControl extends Component implements IMTControl 
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
 	public void setCursorLocation(float x, float y){
 		this.CursorLocation = new TuioPoint(x,y);
 	}
-	
+	@Override
 	public TuioPoint getCursorLocation(){
 		if(this.CursorLocation==null) this.CursorLocation = new TuioPoint(0,0);
 		return this.CursorLocation;
 	}
+	@Override
+	public void setZIndex(int aZIndex) {
+		this.mZIndez = aZIndex;	
+	}
+	@Override
+	public int getZIndex() {
+		return this.mZIndez;
+	}
+	
 }

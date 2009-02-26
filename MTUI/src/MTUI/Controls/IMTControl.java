@@ -6,6 +6,7 @@ import java.awt.Point;
 import processing.core.PApplet;
 import tuio.TuioCursor;
 import tuio.TuioListener;
+import tuio.TuioPoint;
 
 /**
  * 
@@ -20,5 +21,10 @@ public interface IMTControl extends TuioListener {
 	void Resize(Dimension aSize);
 	void Move(Point aLocation);
 	
+	void setZIndex(int aZIndex);
+	int getZIndex();
+	
+	void setCursorLocation(float x, float y);
+	TuioPoint getCursorLocation();
 
 }
