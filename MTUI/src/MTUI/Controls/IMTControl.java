@@ -2,11 +2,11 @@ package MTUI.Controls;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.Rectangle;
+import java.util.ArrayList;
 
 import processing.core.PApplet;
-import tuio.TuioCursor;
-import tuio.TuioListener;
-import tuio.TuioPoint;
+
 
 /**
  * 
@@ -24,7 +24,9 @@ public interface IMTControl {
 	void setZIndex(int aZIndex);
 	int getZIndex();
 	
-	void setCursorLocation(float x, float y);
-	TuioPoint getCursorLocation();
+	void addPointer(MTPointer pointer);
+	void removePointer(MTPointer pointer);
+	ArrayList<MTPointer> getPointers();
 
+	Rectangle getRectangleArea();
 }

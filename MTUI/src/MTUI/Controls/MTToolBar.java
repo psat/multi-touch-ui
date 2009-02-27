@@ -73,5 +73,25 @@ public class MTToolBar extends MTAbstractControl{
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public void addPointer(MTPointer pointer) {
+		for(MTToolBarButton button : this.Items){
+			if(pointer.getBounds().intersects(button.getBounds())){
+				button.addPointer(pointer);
+				break;
+			}
+		}
+		super.addPointer(pointer);
+	}
+	@Override
+	public void removePointer(MTPointer pointer) {
+		for(MTToolBarButton button : this.Items){
+			if(button.getPointers().contains(pointer)){
+				button.removePointer(pointer);
+				break;
+			}
+		}
+		super.removePointer(pointer);
+	}
 
 }
