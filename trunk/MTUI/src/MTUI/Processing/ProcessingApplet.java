@@ -59,7 +59,7 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 	 * @param control
 	 */
 	public void addControl(IMTControl control){
-		this.tuio.addTuioListener(control);
+		//this.tuio.addTuioListener(control);
 		this.Controls.add(control);
 	}
 
@@ -76,9 +76,10 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 			background(0);
 			noStroke();
 			
+			int i= 0;
 			//set deep order
 			Collections.sort(this.Controls, new byZIndex());
-			
+	
 			for(IMTControl control : this.Controls){
 				control.DrawControl(this);
 			}
@@ -102,9 +103,12 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 
 
 	@Override
-	public void addTuioObject(TuioObject arg0) {
-		// TODO Auto-generated method stub
-		
+	public void addTuioObject(TuioObject cursor) {
+		// we want to use this objects for simulating multiple cursors
+		MTPointer pointer = new MTPointer(cursor.getFiducialID());
+		pointer.setBackground(new Color(0,205,0));
+		pointer.setSize(AppletConst.POINTER_SIZE,AppletConst.POINTER_SIZE);
+		this.addControl(pointer);
 	}
 
 
@@ -129,20 +133,38 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 
 
 	@Override
-	public void removeTuioObject(TuioObject arg0) {
-		// TODO Auto-generated method stub
-		
+	public void removeTuioObject(TuioObject cursor) {
+		for(IMTControl control : this.Controls){
+			if(control instanceof MTPointer)
+				if(((MTPointer)control).getFingerID() == cursor.getFiducialID()){
+					this.Controls.remove(control);
+					break;
+				}
+		}
 	}
 
 
 	@Override
-	public void updateTuioCursor(TuioCursor cursor) {}
+	public void updateTuioCursor(TuioCursor cursor) {
+		for(IMTControl control : this.Controls){
+			if(control instanceof MTPointer)
+				if(((MTPointer)control).getFingerID() == cursor.getFingerID()){
+					control.setCursorLocation(cursor.getX(), cursor.getY());
+					break;
+				}
+		}
+	}
 
 
 	@Override
-	public void updateTuioObject(TuioObject arg0) {
-		// TODO Auto-generated method stub
-		
+	public void updateTuioObject(TuioObject cursor) {
+		for(IMTControl control : this.Controls){
+			if(control instanceof MTPointer)
+				if(((MTPointer)control).getFingerID() == cursor.getFiducialID()){
+					control.setCursorLocation(cursor.getX(), cursor.getY());
+					break;
+				}
+		}
 	}
 
 }

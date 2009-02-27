@@ -14,7 +14,7 @@ import tuio.TuioPoint;
  * @author Paulo Teixeira
  *
  */
-public interface IMTControl extends TuioListener {
+public interface IMTControl {
 	
 	void DrawControl(PApplet app);
 	

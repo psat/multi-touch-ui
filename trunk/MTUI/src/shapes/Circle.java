@@ -64,10 +64,6 @@ public class Circle extends AbstractShape{
 		
 	}
 
-	@Override
-	public void refresh(long arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 }

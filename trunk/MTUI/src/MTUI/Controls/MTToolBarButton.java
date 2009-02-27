@@ -79,12 +79,6 @@ public class MTToolBarButton extends MTAbstractControl{
 	}
 	
 	@Override
-	public void addTuioCursor(TuioCursor cursor) {
-		this.cursorPressed = true;
-		super.addTuioCursor(cursor);
-	}
-	
-	@Override
 	public void Move(Point location) {
 		// TODO Auto-generated method stub
 		
@@ -96,9 +90,4 @@ public class MTToolBarButton extends MTAbstractControl{
 		
 	}
 	
-	@Override
-	public void refresh(long arg0) {
-		// TODO Auto-generated method stub
-		
-	}
 }

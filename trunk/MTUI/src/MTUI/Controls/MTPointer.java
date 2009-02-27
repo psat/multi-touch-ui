@@ -48,9 +48,4 @@ public class MTPointer extends MTAbstractControl {
 		
 	}
 	
-	@Override
-	public void refresh(long arg0) {
-		// TODO Auto-generated method stub
-		
-	}
 }
