@@ -35,13 +35,15 @@ public class Rect extends AbstractShape{
 			Move(pointerBounds.getLocation());
 		}
 	}
-	
+	/* change - reorganizando os listeners.. tava uma grande confusao.
+	 * vamos ter um unico listener a delegar para os filhos.. Em principio o listener sera o ProessingApplet ou um Manager a serr criado
+	 
 	@Override
 	public void addTuioCursor(TuioCursor cursor) {
 		this.pressed = true;
 		super.addTuioCursor(cursor);
 	}
-	
+	*/
 	public int getWidth() {
 		return width;
 	}
@@ -90,9 +92,5 @@ public class Rect extends AbstractShape{
 		
 	}
 
-	@Override
-	public void refresh(long arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+
 }

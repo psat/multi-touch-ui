@@ -60,28 +60,8 @@ public class MTToolBar extends MTAbstractControl{
 		for(MTToolBarButton button : this.Items)
 			button.setActive(false);
 	}
-	
-	@Override
-	public void addTuioCursor(TuioCursor cursor) {
-		for(IMTControl control : this.Items){
-			control.addTuioCursor(cursor);
-		}
-	}
-	
-	@Override
-	public void updateTuioCursor(TuioCursor cursor) {
-		for(IMTControl control : this.Items){
-			control.updateTuioCursor(cursor);
-		}
-	}
-	
-	@Override
-	public void removeTuioCursor(TuioCursor cursor) {
-		for(IMTControl control : this.Items){
-			control.removeTuioCursor(cursor);
-		}
-	}
 
+	
 	@Override
 	public void Move(Point location) {
 		// TODO Auto-generated method stub
@@ -94,9 +74,4 @@ public class MTToolBar extends MTAbstractControl{
 		
 	}
 
-	@Override
-	public void refresh(long arg0) {
-		// TODO Auto-generated method stub
-		
-	}
 }

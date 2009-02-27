@@ -37,45 +37,8 @@ public abstract class MTAbstractControl extends Component implements IMTControl 
 	@Override
 	public abstract void Resize(Dimension size);
 
-	@Override
-	public void addTuioCursor(TuioCursor cursor) {
-		this.setCursorLocation(cursor.getX(), cursor.getY());
-		this.Cursors.add(cursor);
-	}
 
-	@Override
-	public void addTuioObject(TuioObject arg0) {
-		
-	}
 
-	@Override
-	public abstract void refresh(long arg0);
-
-	@Override
-	public void removeTuioCursor(TuioCursor cursor) {
-		this.Cursors.remove(cursor);		
-	}
-
-	@Override
-	public void removeTuioObject(TuioObject arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void updateTuioCursor(TuioCursor cursor) {
-		
-		if (this.Cursors.size()==1){
-			System.out.println(cursor.getAngleDegrees(new TuioPoint(0, 0)) + " | " + cursor.getSpeedX() + " | " + cursor.getSpeedY());
-		}
-		this.setCursorLocation(cursor.getX(), cursor.getY());
-	}
-
-	@Override
-	public void updateTuioObject(TuioObject arg0) {
-		// TODO Auto-generated method stub
-		
-	}
 	@Override
 	public void setCursorLocation(float x, float y){
 		this.CursorLocation = new TuioPoint(x,y);
