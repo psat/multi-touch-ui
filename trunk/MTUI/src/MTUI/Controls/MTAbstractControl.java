@@ -3,6 +3,7 @@ package MTUI.Controls;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import processing.core.PApplet;
 import tuio.TuioCursor;
@@ -23,10 +24,12 @@ import tuio.TuioPoint;
 public abstract class MTAbstractControl extends Component implements IMTControl {
 
 
-	private TuioPoint CursorLocation;
+
+	private static final long serialVersionUID = 1L;
+	
 	private int mZIndez;
 	
-	private ArrayList<TuioCursor> Cursors = new ArrayList<TuioCursor>();
+	private ArrayList<MTPointer> Pointers = new ArrayList<MTPointer>();
 	
 	@Override
 	public abstract void DrawControl(PApplet app);
@@ -37,17 +40,7 @@ public abstract class MTAbstractControl extends Component implements IMTControl 
 	@Override
 	public abstract void Resize(Dimension size);
 
-
-
-	@Override
-	public void setCursorLocation(float x, float y){
-		this.CursorLocation = new TuioPoint(x,y);
-	}
-	@Override
-	public TuioPoint getCursorLocation(){
-		if(this.CursorLocation==null) this.CursorLocation = new TuioPoint(0,0);
-		return this.CursorLocation;
-	}
+	
 	@Override
 	public void setZIndex(int aZIndex) {
 		this.mZIndez = aZIndex;	
@@ -55,6 +48,24 @@ public abstract class MTAbstractControl extends Component implements IMTControl 
 	@Override
 	public int getZIndex() {
 		return this.mZIndez;
+	}
+	
+	@Override
+	public void addPointer(MTPointer pointer) {
+		this.Pointers.add(pointer);
+	}
+
+	@Override
+	public void removePointer(MTPointer pointer) {
+		this.Pointers.remove(pointer);
+	}
+	@Override
+	public ArrayList<MTPointer> getPointers() {
+		return this.Pointers;
+	}
+	@Override
+	public Rectangle getRectangleArea() {
+		return this.getBounds();
 	}
 	
 }

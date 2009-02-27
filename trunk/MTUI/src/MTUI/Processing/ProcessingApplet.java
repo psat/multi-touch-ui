@@ -10,6 +10,7 @@ import tuio.TuioCursor;
 import tuio.TuioObject;
 import MTUI.Constants.AppletConst;
 import MTUI.Controls.*;
+import MTUI.Utils.byInverseZIndex;
 import MTUI.Utils.byZIndex;
 
 /**
@@ -94,11 +95,19 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 	public void addTuioCursor(TuioCursor cursor) {
 		MTPointer pointer = new MTPointer(cursor.getFingerID());
 		pointer.setBackground(new Color(0,205,0));
-		//pointer.setTuioLocation(cursor.getX(), cursor.getY());
 		pointer.setSize(AppletConst.POINTER_SIZE,AppletConst.POINTER_SIZE);
+		pointer.setCursorLocation(cursor.getX(), cursor.getY());
 		this.addControl(pointer);
 		
+		Collections.sort(this.Controls, new byZIndex());
 		
+		for(IMTControl control : this.Controls){
+			if(!(control instanceof MTPointer)){
+				if(pointer.getBounds().intersects(control.getRectangleArea())){
+					control.addPointer(pointer);
+				}
+			}
+		}
 	}
 
 
@@ -108,7 +117,18 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 		MTPointer pointer = new MTPointer(cursor.getFiducialID());
 		pointer.setBackground(new Color(0,205,0));
 		pointer.setSize(AppletConst.POINTER_SIZE,AppletConst.POINTER_SIZE);
+		pointer.setCursorLocation(cursor.getX(), cursor.getY());
 		this.addControl(pointer);
+		
+		Collections.sort(this.Controls, new byZIndex());
+		
+		for(IMTControl control : this.Controls){
+			if(!(control instanceof MTPointer)){
+				if(pointer.getBounds().intersects(control.getRectangleArea())){
+					control.addPointer(pointer);
+				}
+			}
+		}
 	}
 
 
@@ -121,25 +141,56 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 
 	@Override
 	public void removeTuioCursor(TuioCursor cursor) {
-	
+		
+		// get pointer trought cursor
+		MTPointer pointer = new MTPointer(0);
 		for(IMTControl control : this.Controls){
-			if(control instanceof MTPointer)
+			if(control instanceof MTPointer){
 				if(((MTPointer)control).getFingerID() == cursor.getFingerID()){
-					this.Controls.remove(control);
+					pointer= (MTPointer)control;
 					break;
 				}
+			}
 		}
+		
+		//remove pointer from the canvas
+		this.Controls.remove(pointer);
+		
+		//remove pointer from any object in canvas
+		//Pointer only can be part of one object, so when it founds breaks the condition
+		for(IMTControl control : this.Controls){
+			if (control.getPointers().contains(pointer)){
+				control.removePointer(pointer);
+				break;
+			}
+		}
+		
 	}
 
 
 	@Override
 	public void removeTuioObject(TuioObject cursor) {
+		// get pointer trought cursor
+		MTPointer pointer = new MTPointer(0);
 		for(IMTControl control : this.Controls){
-			if(control instanceof MTPointer)
+			if(control instanceof MTPointer){
 				if(((MTPointer)control).getFingerID() == cursor.getFiducialID()){
-					this.Controls.remove(control);
+					pointer= (MTPointer)control;
 					break;
 				}
+			}
+		}
+		
+		//remove pointer from the canvas
+		this.Controls.remove(pointer);
+		
+		//remove pointer from any object in canvas
+		//Pointer only can be part of one object, so when it founds breaks the condition
+		for(IMTControl control : this.Controls){
+			if (control.getPointers().contains(pointer)){
+				control.removePointer(pointer);
+				break;
+			}
 		}
 	}
 
@@ -149,7 +200,7 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 		for(IMTControl control : this.Controls){
 			if(control instanceof MTPointer)
 				if(((MTPointer)control).getFingerID() == cursor.getFingerID()){
-					control.setCursorLocation(cursor.getX(), cursor.getY());
+					((MTPointer)control).setCursorLocation(cursor.getX(), cursor.getY());
 					break;
 				}
 		}
@@ -161,7 +212,7 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 		for(IMTControl control : this.Controls){
 			if(control instanceof MTPointer)
 				if(((MTPointer)control).getFingerID() == cursor.getFiducialID()){
-					control.setCursorLocation(cursor.getX(), cursor.getY());
+					((MTPointer)control).setCursorLocation(cursor.getX(), cursor.getY());
 					break;
 				}
 		}

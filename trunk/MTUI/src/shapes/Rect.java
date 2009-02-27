@@ -25,7 +25,7 @@ public class Rect extends AbstractShape{
 	public void DrawControl(PApplet app) {
 		app.rect(posX, posY, height, width);
 		pApplet = app;
-		
+		/* por enkuanto em comentario.. os rectangulos nao precisam do cursor location
 		Rectangle pointerBounds = new Rectangle((int)(this.getCursorLocation().getX()*app.getWidth()), 
 												(int)(this.getCursorLocation().getY()*app.getHeight()), 
 												AppletConst.POINTER_SIZE, AppletConst.POINTER_SIZE);
@@ -34,6 +34,7 @@ public class Rect extends AbstractShape{
 				&&(pointerBounds.getY()!=0)){
 			Move(pointerBounds.getLocation());
 		}
+		*/
 	}
 	/* change - reorganizando os listeners.. tava uma grande confusao.
 	 * vamos ter um unico listener a delegar para os filhos.. Em principio o listener sera o ProessingApplet ou um Manager a serr criado

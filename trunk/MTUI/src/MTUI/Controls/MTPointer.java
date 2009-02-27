@@ -5,6 +5,7 @@ import java.awt.Point;
 
 import processing.core.PApplet;
 import tuio.TuioCursor;
+import tuio.TuioPoint;
 
 /**
  * Interface that extends MTUI.Controls.MTAbstractControl and represents the finger position on the table.
@@ -16,6 +17,7 @@ import tuio.TuioCursor;
  */
 public class MTPointer extends MTAbstractControl {
 
+	private TuioPoint CursorLocation;
 	private static final long serialVersionUID = 1L;
 	
 	private int mFingerID;
@@ -27,6 +29,14 @@ public class MTPointer extends MTAbstractControl {
 	
 	public int getFingerID(){
 		return this.mFingerID;
+	}
+	
+	public void setCursorLocation(float x, float y){
+		this.CursorLocation = new TuioPoint(x,y);
+	}
+	public TuioPoint getCursorLocation(){
+		if(this.CursorLocation==null) this.CursorLocation = new TuioPoint(0,0);
+		return this.CursorLocation;
 	}
 	
 	@Override
@@ -47,5 +57,11 @@ public class MTPointer extends MTAbstractControl {
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof MTPointer) return this.mFingerID == ((MTPointer)obj).getFingerID();
+		else return super.equals(obj);
+	}
+
 	
 }

@@ -4,11 +4,11 @@ import java.util.Comparator;
 
 import MTUI.Controls.IMTControl;
 
-public class byZIndex implements Comparator{
+public class byZIndex implements Comparator<IMTControl>{
 
 	@Override
-	public int compare(Object obj1, Object obj2) {
-		return  ((IMTControl)obj1).getZIndex()-((IMTControl)obj2).getZIndex();
+	public int compare(IMTControl c1, IMTControl c2) {
+		return  c1.getZIndex()-c2.getZIndex();
 	}
 
 }

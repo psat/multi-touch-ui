@@ -38,31 +38,24 @@ public class MTToolBarButton extends MTAbstractControl{
 		if(this.mActive){
 			app.fill(100);
 		}
-		Rectangle pointerBounds = new Rectangle((int)(this.getCursorLocation().getX()*app.getWidth()), (int)(this.getCursorLocation().getY()*app.getHeight()), AppletConst.POINTER_SIZE, AppletConst.POINTER_SIZE);
 		
 		// Although detect intersection
 		// when pointer is on the corner we want to avoid intersection
-		if(this.getBounds().intersects(pointerBounds) 
-				&& (pointerBounds.getX()!=0)
-				&&(pointerBounds.getY()!=0)){
+		if(this.cursorPressed){
 			
-			if(this.cursorPressed){
-				
-				if(this.mActive) this.mActive = false;
-				else{
-					//disable other buttons
-					//inactive all parent buttons
-					this.mParent.setInactiveAllChildButtons();
-					this.mActive =true;
-				}
-			
-				this.cursorPressed=false;
-			}else {
-					app.stroke(30);
+			if(this.mActive) this.mActive = false;
+			else{
+				//disable other buttons
+				//inactive all parent buttons
+				this.mParent.setInactiveAllChildButtons();
+				this.mActive =true;
 			}
-		} else {
+		
 			this.cursorPressed=false;
+		}else {
+				app.stroke(30);
 		}
+	
 		
 		app.rect((float)this.getBounds().getX(), (float)this.getBounds().getY(), (float)this.getBounds().getWidth(), (float)this.getBounds().getHeight());
 		app.noStroke();
