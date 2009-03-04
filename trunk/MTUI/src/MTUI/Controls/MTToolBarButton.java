@@ -20,6 +20,7 @@ public class MTToolBarButton extends MTAbstractControl{
 	
 	private String imgBackground;
 	private boolean cursorPressed;
+	private boolean cursorOver;
 	private boolean mActive;
 	private MTToolBar mParent;
 	
@@ -53,7 +54,8 @@ public class MTToolBarButton extends MTAbstractControl{
 		
 			this.cursorPressed=false;
 		}else {
-				app.stroke(30);
+			if(this.cursorOver)
+				app.stroke(30);			
 		}
 	
 		
@@ -81,6 +83,17 @@ public class MTToolBarButton extends MTAbstractControl{
 	public void Resize(Dimension size) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public void addPointer(MTPointer pointer) {
+		this.mActive=true;
+		super.addPointer(pointer);
+	}
+	@Override
+	public void removePointer(MTPointer pointer) {
+		this.cursorOver=false;
+		super.removePointer(pointer);
 	}
 	
 }

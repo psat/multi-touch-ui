@@ -46,7 +46,7 @@ private static final long serialVersionUID = 1L;
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//applet
-		app = new ProcessingApplet();
+		app = new ProcessingApplet(this);
 		app.init();
 		app.start();
 		
