@@ -61,18 +61,6 @@ public class MTToolBar extends MTAbstractControl{
 			button.setActive(false);
 	}
 
-	
-	@Override
-	public void Move(Point location) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void Resize(Dimension size) {
-		// TODO Auto-generated method stub
-		
-	}
 	@Override
 	public void addPointer(MTPointer pointer) {
 		for(MTToolBarButton button : this.Items){
@@ -92,6 +80,18 @@ public class MTToolBar extends MTAbstractControl{
 			}
 		}
 		super.removePointer(pointer);
+	}
+
+	@Override
+	public void Move(Point location) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void Resize(Dimension size) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

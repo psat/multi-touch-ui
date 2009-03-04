@@ -27,8 +27,10 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 	private static final long serialVersionUID = 1L;
 	private ArrayList<IMTControl> Controls = new ArrayList<IMTControl>();
 	private TuioClient tuio;
+	private ProcessingFrame mParent;
 
-	public ProcessingApplet(){
+	public ProcessingApplet(ProcessingFrame aParent){
+		this.mParent= aParent;
 		this.tuio = new TuioClient(3333);
 
 		if (this.tuio!=null) {
@@ -95,8 +97,7 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 	public void addTuioCursor(TuioCursor cursor) {
 		MTPointer pointer = new MTPointer(cursor.getFingerID());
 		pointer.setBackground(new Color(0,205,0));
-		pointer.setSize(AppletConst.POINTER_SIZE,AppletConst.POINTER_SIZE);
-		pointer.setCursorLocation(cursor.getX(), cursor.getY());
+		pointer.setBounds((int) (cursor.getX()*this.mParent.getBounds().getWidth()), (int) (cursor.getY()*this.mParent.getBounds().getHeight()), AppletConst.POINTER_SIZE,AppletConst.POINTER_SIZE);
 		this.addControl(pointer);
 		
 		Collections.sort(this.Controls, new byZIndex());
@@ -197,24 +198,32 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 
 	@Override
 	public void updateTuioCursor(TuioCursor cursor) {
+		MTPointer pointer;
+		
+		// put pointers at start of collection
+		Collections.sort(this.Controls, new byInverseZIndex());
+		
 		for(IMTControl control : this.Controls){
 			if(control instanceof MTPointer)
 				if(((MTPointer)control).getFingerID() == cursor.getFingerID()){
 					((MTPointer)control).setCursorLocation(cursor.getX(), cursor.getY());
+					pointer = (MTPointer)control;
 					break;
-				}
+				} 
 		}
+		
 	}
 
 
 	@Override
 	public void updateTuioObject(TuioObject cursor) {
 		for(IMTControl control : this.Controls){
-			if(control instanceof MTPointer)
+			if(control instanceof MTPointer){
 				if(((MTPointer)control).getFingerID() == cursor.getFiducialID()){
 					((MTPointer)control).setCursorLocation(cursor.getX(), cursor.getY());
 					break;
 				}
+			}
 		}
 	}
 
