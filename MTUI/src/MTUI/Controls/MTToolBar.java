@@ -62,27 +62,6 @@ public class MTToolBar extends MTAbstractControl{
 	}
 
 	@Override
-	public void addPointer(MTPointer pointer) {
-		for(MTToolBarButton button : this.Items){
-			if(pointer.getBounds().intersects(button.getBounds())){
-				button.addPointer(pointer);
-				break;
-			}
-		}
-		super.addPointer(pointer);
-	}
-	@Override
-	public void removePointer(MTPointer pointer) {
-		for(MTToolBarButton button : this.Items){
-			if(button.getPointers().contains(pointer)){
-				button.removePointer(pointer);
-				break;
-			}
-		}
-		super.removePointer(pointer);
-	}
-
-	@Override
 	public void Move(Point location) {
 		// TODO Auto-generated method stub
 		
@@ -92,6 +71,45 @@ public class MTToolBar extends MTAbstractControl{
 	public void Resize(Dimension size) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void CursorAdd(MTAbstractPointer pointer) {
+		this.getPointers().add(pointer.getFingerID());
+		for(MTToolBarButton button :this.Items){
+			if(button.getBounds().intersects(pointer.getBounds())){
+				button.CursorAdd(pointer);
+				pointer.setCurrentControl(button);
+				break;
+			}
+		}
+		
+	}
+
+	@Override
+	public void CursorOut(MTAbstractPointer pointer) {
+		this.getPointers().remove(pointer.getFingerID());
+		for(MTToolBarButton button :this.Items){
+			if(button.getPointers().contains(pointer.getFingerID())){
+				button.CursorOut(pointer);
+				break;
+			}
+		}
+		
+	}
+
+	@Override
+	public void CursorOver(MTAbstractPointer pointer) {
+		if(!this.getPointers().contains(pointer.getFingerID())){
+			this.getPointers().add(pointer.getFingerID());
+		}
+		for(MTToolBarButton button :this.Items){
+			if(button.getBounds().intersects(pointer.getBounds())){
+				button.CursorOver(pointer);
+				pointer.setCurrentControl(button);
+				break;
+			}
+		}
 	}
 
 }

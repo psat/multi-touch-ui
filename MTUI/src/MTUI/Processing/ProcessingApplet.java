@@ -1,6 +1,8 @@
 package MTUI.Processing;
 
 import java.awt.Color;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -10,7 +12,7 @@ import tuio.TuioCursor;
 import tuio.TuioObject;
 import MTUI.Constants.AppletConst;
 import MTUI.Controls.*;
-import MTUI.Utils.byInverseZIndex;
+
 import MTUI.Utils.byZIndex;
 
 /**
@@ -25,7 +27,8 @@ import MTUI.Utils.byZIndex;
 public class ProcessingApplet extends PApplet implements IProcessingApplet{
 
 	private static final long serialVersionUID = 1L;
-	private ArrayList<IMTControl> Controls = new ArrayList<IMTControl>();
+	private ArrayList<MTAbstractControl> Controls = new ArrayList<MTAbstractControl>();
+	private ArrayList<MTAbstractPointer> Pointers = new ArrayList<MTAbstractPointer>();
 	private TuioClient tuio;
 	private ProcessingFrame mParent;
 
@@ -51,7 +54,7 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 	 * 
 	 * @return A list of controls that are designed on the processing applet
 	 */
-	public ArrayList<IMTControl> getControls(){
+	public ArrayList<MTAbstractControl> getControls(){
 		
 		return this.Controls;
 	}
@@ -63,7 +66,7 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 	 */
 	public void addControl(IMTControl control){
 		//this.tuio.addTuioListener(control);
-		this.Controls.add(control);
+		this.Controls.add((MTAbstractControl) control);
 	}
 
 	@Override
@@ -75,7 +78,7 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 	@Override
 	public void draw(){
 		
-		try{
+		//try{
 			background(0);
 			noStroke();
 			
@@ -86,39 +89,32 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 			for(IMTControl control : this.Controls){
 				control.DrawControl(this);
 			}
-		}catch(Exception ex){
-			System.out.println("Ocorreu uma excepção do tipo:" + ex);
-		}
+			
+			for(MTAbstractPointer pointer : this.Pointers)
+				pointer.DrawControl(this);
+		/*}catch(Exception ex){
+			System.out.println("Ocorreu uma excepção do tipo:" + ex.getMessage());
+		}*/
 		
 	}
 
 
 	@Override
 	public void addTuioCursor(TuioCursor cursor) {
-		MTPointer pointer = new MTPointer(cursor.getFingerID());
-		pointer.setBackground(new Color(0,205,0));
-		pointer.setBounds((int) (cursor.getX()*this.mParent.getBounds().getWidth()), (int) (cursor.getY()*this.mParent.getBounds().getHeight()), AppletConst.POINTER_SIZE,AppletConst.POINTER_SIZE);
-		this.addControl(pointer);
+		Rectangle rPointerBounds = new Rectangle((int) (cursor.getX()*this.mParent.getBounds().getWidth()), (int) (cursor.getY()*this.mParent.getBounds().getHeight()), AppletConst.POINTER_SIZE,AppletConst.POINTER_SIZE);
+		MTPointer pointer = new MTPointer(cursor.getFingerID(), this.Controls, rPointerBounds);
+		this.Pointers.add(pointer);
 		
-		Collections.sort(this.Controls, new byZIndex());
-		
-		for(IMTControl control : this.Controls){
-			if(!(control instanceof MTPointer)){
-				if(pointer.getBounds().intersects(control.getRectangleArea())){
-					control.addPointer(pointer);
-				}
-			}
-		}
 	}
 
 
 	@Override
 	public void addTuioObject(TuioObject cursor) {
-		// we want to use this objects for simulating multiple cursors
+	/*	// we want to use this objects for simulating multiple cursors
 		MTPointer pointer = new MTPointer(cursor.getFiducialID());
 		pointer.setBackground(new Color(0,205,0));
-		pointer.setSize(AppletConst.POINTER_SIZE,AppletConst.POINTER_SIZE);
-		pointer.setCursorLocation(cursor.getX(), cursor.getY());
+		//pointer.setSize(AppletConst.POINTER_SIZE,AppletConst.POINTER_SIZE);
+		//pointer.setCursorLocation(cursor.getX(), cursor.getY());
 		this.addControl(pointer);
 		
 		Collections.sort(this.Controls, new byZIndex());
@@ -129,7 +125,7 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 					control.addPointer(pointer);
 				}
 			}
-		}
+		}*/
 	}
 
 
@@ -143,34 +139,18 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 	@Override
 	public void removeTuioCursor(TuioCursor cursor) {
 		
-		// get pointer trought cursor
-		MTPointer pointer = new MTPointer(0);
-		for(IMTControl control : this.Controls){
-			if(control instanceof MTPointer){
-				if(((MTPointer)control).getFingerID() == cursor.getFingerID()){
-					pointer= (MTPointer)control;
-					break;
-				}
-			}
-		}
-		
-		//remove pointer from the canvas
-		this.Controls.remove(pointer);
-		
-		//remove pointer from any object in canvas
-		//Pointer only can be part of one object, so when it founds breaks the condition
-		for(IMTControl control : this.Controls){
-			if (control.getPointers().contains(pointer)){
-				control.removePointer(pointer);
+		for(MTAbstractPointer pointer : this.Pointers){
+			if(pointer.getFingerID()==cursor.getFingerID()){
+				pointer.clear();
+				this.Pointers.remove(pointer);
 				break;
 			}
 		}
-		
 	}
 
 
 	@Override
-	public void removeTuioObject(TuioObject cursor) {
+	public void removeTuioObject(TuioObject cursor) {/*
 		// get pointer trought cursor
 		MTPointer pointer = new MTPointer(0);
 		for(IMTControl control : this.Controls){
@@ -192,24 +172,19 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 				control.removePointer(pointer);
 				break;
 			}
-		}
+		}*/
 	}
 
 
 	@Override
 	public void updateTuioCursor(TuioCursor cursor) {
-		MTPointer pointer;
 		
-		// put pointers at start of collection
-		Collections.sort(this.Controls, new byInverseZIndex());
-		
-		for(IMTControl control : this.Controls){
-			if(control instanceof MTPointer)
-				if(((MTPointer)control).getFingerID() == cursor.getFingerID()){
-					((MTPointer)control).setCursorLocation(cursor.getX(), cursor.getY());
-					pointer = (MTPointer)control;
-					break;
-				} 
+		for(MTAbstractPointer pointer : this.Pointers){
+			if(pointer.getFingerID() == cursor.getFingerID()){
+				pointer.setLocation(new Point((int) (cursor.getX()*this.mParent.getWidth()), (int) (cursor.getY()*this.mParent.getHeight())));
+				pointer.run();
+				break;
+			} 
 		}
 		
 	}
@@ -220,7 +195,7 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 		for(IMTControl control : this.Controls){
 			if(control instanceof MTPointer){
 				if(((MTPointer)control).getFingerID() == cursor.getFiducialID()){
-					((MTPointer)control).setCursorLocation(cursor.getX(), cursor.getY());
+					//((MTPointer)control).setCursorLocation(cursor.getX(), cursor.getY());
 					break;
 				}
 			}
