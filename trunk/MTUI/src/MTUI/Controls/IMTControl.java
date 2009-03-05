@@ -5,6 +5,9 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
+import MTUI.Processing.IProcessingApplet;
+import MTUI.Processing.IProcessingControl;
+
 import processing.core.PApplet;
 
 
@@ -14,19 +17,11 @@ import processing.core.PApplet;
  * @author Paulo Teixeira
  *
  */
-public interface IMTControl {
+public interface IMTControl extends IProcessingControl, ICursorEvents {
 	
-	void DrawControl(PApplet app);
-	
+
 	void Resize(Dimension aSize);
 	void Move(Point aLocation);
 	
-	void setZIndex(int aZIndex);
-	int getZIndex();
-	
-	void addPointer(MTPointer pointer);
-	void removePointer(MTPointer pointer);
-	ArrayList<MTPointer> getPointers();
 
-	Rectangle getRectangleArea();
 }

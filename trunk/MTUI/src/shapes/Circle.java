@@ -3,6 +3,8 @@ package shapes;
 import java.awt.Dimension;
 import java.awt.Point;
 
+import MTUI.Controls.MTAbstractPointer;
+
 import processing.core.PApplet;
 
 public class Circle extends AbstractShape{
@@ -60,6 +62,24 @@ public class Circle extends AbstractShape{
 
 	@Override
 	public void Resize(Dimension size) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void CursorAdd(MTAbstractPointer pointer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void CursorOut(MTAbstractPointer pointer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void CursorOver(MTAbstractPointer pointer) {
 		// TODO Auto-generated method stub
 		
 	}

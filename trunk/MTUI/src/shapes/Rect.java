@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 import MTUI.Constants.AppletConst;
+import MTUI.Controls.MTAbstractPointer;
 import processing.core.PApplet;
 import tuio.TuioCursor;
 
@@ -89,6 +90,24 @@ public class Rect extends AbstractShape{
 
 	@Override
 	public void Resize(Dimension size) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void CursorAdd(MTAbstractPointer pointer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void CursorOut(MTAbstractPointer pointer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void CursorOver(MTAbstractPointer pointer) {
 		// TODO Auto-generated method stub
 		
 	}

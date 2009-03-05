@@ -3,6 +3,7 @@ package MTUI.Controls;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 
 import processing.core.*;
 import tuio.TuioCursor;
@@ -24,6 +25,7 @@ public class MTToolBarButton extends MTAbstractControl{
 	private boolean mActive;
 	private MTToolBar mParent;
 	
+	
 	public void setImageBackground(String aImageLocation){
 		this.imgBackground=aImageLocation;
 	}
@@ -42,6 +44,8 @@ public class MTToolBarButton extends MTAbstractControl{
 		
 		// Although detect intersection
 		// when pointer is on the corner we want to avoid intersection
+		
+		System.out.println(this.cursorOver);
 		if(this.cursorPressed){
 			
 			if(this.mActive) this.mActive = false;
@@ -73,6 +77,13 @@ public class MTToolBarButton extends MTAbstractControl{
 		this.mActive=value;
 	}
 	
+	public void changeActiveState(){
+		if(this.mActive) this.mActive = false;
+		else this.mActive = true;
+	}
+	
+
+	
 	@Override
 	public void Move(Point location) {
 		// TODO Auto-generated method stub
@@ -84,16 +95,28 @@ public class MTToolBarButton extends MTAbstractControl{
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public void CursorAdd(MTAbstractPointer pointer) {
+		this.getPointers().add(pointer.getFingerID());
+		this.changeActiveState();
+		this.cursorOver = true;
+		
+	}
+	@Override
+	public void CursorOut(MTAbstractPointer pointer) {
+		this.getPointers().remove(pointer.getFingerID());
+		this.cursorOver = false;
+		
+	}
+	@Override
+	public void CursorOver(MTAbstractPointer pointer) {
+		if(!this.getPointers().contains(pointer.getFingerID())){
+			this.getPointers().add(pointer.getFingerID());
+			this.cursorOver=true;
+		}
+		
+	}
+
 	
-	@Override
-	public void addPointer(MTPointer pointer) {
-		this.mActive=true;
-		super.addPointer(pointer);
-	}
-	@Override
-	public void removePointer(MTPointer pointer) {
-		this.cursorOver=false;
-		super.removePointer(pointer);
-	}
 	
 }
