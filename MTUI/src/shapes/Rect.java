@@ -4,88 +4,34 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 import MTUI.Constants.AppletConst;
+import MTUI.Controls.MTAbstractControl;
 import MTUI.Controls.MTAbstractPointer;
 import processing.core.PApplet;
 import tuio.TuioCursor;
 
 
-public class Rect extends AbstractShape{
+public class Rect extends MTAbstractControl{
 
 	private static final long serialVersionUID = 1L;
-	private int width, height;
-
-	public Rect(int posX, int posY, int height, int width){
+	
+	public Rect(Rectangle aBounds){
 		super();
-		this.posX = posX;
-		this.posY = posY;
-		this.height = height;
-		this.width = width;		
+		this.setBounds(aBounds);
 	}
 	
 	@Override
 	public void DrawControl(PApplet app) {
-		app.rect(posX, posY, height, width);
-		pApplet = app;
-		/* por enkuanto em comentario.. os rectangulos nao precisam do cursor location
-		Rectangle pointerBounds = new Rectangle((int)(this.getCursorLocation().getX()*app.getWidth()), 
-												(int)(this.getCursorLocation().getY()*app.getHeight()), 
-												AppletConst.POINTER_SIZE, AppletConst.POINTER_SIZE);
+		app.fill(50, 60, 200);
+		app.rect(this.getX(),this.getY(), this.getWidth(),this.getHeight());
+	}
 	
-		if ( this.getBounds().intersects(pointerBounds) && (pointerBounds.getX()!=0)
-				&&(pointerBounds.getY()!=0)){
-			Move(pointerBounds.getLocation());
-		}
-		*/
-	}
-	/* change - reorganizando os listeners.. tava uma grande confusao.
-	 * vamos ter um unico listener a delegar para os filhos.. Em principio o listener sera o ProessingApplet ou um Manager a serr criado
-	 
 	@Override
-	public void addTuioCursor(TuioCursor cursor) {
-		this.pressed = true;
-		super.addTuioCursor(cursor);
-	}
-	*/
-	public int getWidth() {
-		return width;
-	}
-
-	public void setWidth(int width) {
-		this.width = width;
-	}
-
-	public int getHeight() {
-		return height;
-	}
-
-	public void setHeight(int height) {
-		this.height = height;
-	}
-
-	/*
-	public boolean overRect(int x, int y, int width, int height) {
-		if (this.getCursorLocation().getX() >= x && this.getCursorLocation().getX() <= x+width && 
-				this.getCursorLocation().getY() >= y && this.getCursorLocation().getY() <= y+height) {
-			return true;
-		} else {
-			return false;
-		}
-	}*/
-	
-	/*
-	@Override
-	public void pressed() {
-		if(over && pApplet.mousePressed) {
-			pressed = true;
-		} else {
-			pressed = false;
-		}   
-	}*/
-
-	@Override
-	public void Move(Point location) {
-			this.setPosX((int)location.getX());
-			this.setPosY((int)location.getY());
+	public void Move(float aAngle, float aDistance) {
+		double newPosX = this.getX() - (Math.cos(aAngle) * aDistance);
+		double newPosY = this.getY() + (Math.sin(aAngle) * aDistance);
+		
+		this.setLocation(new Point((int)newPosX, (int)newPosY));
+		
 	}
 
 	@Override
@@ -94,23 +40,7 @@ public class Rect extends AbstractShape{
 		
 	}
 
-	@Override
-	public void CursorAdd(MTAbstractPointer pointer) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public void CursorOut(MTAbstractPointer pointer) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void CursorOver(MTAbstractPointer pointer) {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 }

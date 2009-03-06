@@ -19,7 +19,7 @@ public class MTToolBar extends MTAbstractControl{
 
 	private static final long serialVersionUID = 1L;
 
-	private ArrayList<MTToolBarButton> Items = new ArrayList<MTToolBarButton>();
+	private ArrayList<MTAbstractToolBarButton> Items = new ArrayList<MTAbstractToolBarButton>();
 	
 	public MTToolBar(){
 		this.setZIndex(5000);
@@ -32,7 +32,7 @@ public class MTToolBar extends MTAbstractControl{
 	
 		int i=0;
 		int margin;
-		for(MTToolBarButton item : Items){
+		for(MTAbstractToolBarButton item : Items){
 			if(i>0) margin=2*AppletConst.TOOLBAR_BUTTON_MARGIN;
 			else margin = AppletConst.TOOLBAR_BUTTON_MARGIN;
 			
@@ -44,12 +44,12 @@ public class MTToolBar extends MTAbstractControl{
 	}
 	
 	
-	public ArrayList<MTToolBarButton> getItems(){
+	public ArrayList<MTAbstractToolBarButton> getItems(){
 		return this.Items;
 	}
 
 
-	public void addControl(MTToolBarButton toolbarButton) {
+	public void addControl(MTAbstractToolBarButton toolbarButton) {
 		if(toolbarButton.getBackground()==null)
 			toolbarButton.setBackground(this.getBackground());
 		this.Items.add(toolbarButton);
@@ -57,17 +57,19 @@ public class MTToolBar extends MTAbstractControl{
 	
 	public void setInactiveAllChildButtons(){
 		
-		for(MTToolBarButton button : this.Items)
+		for(MTAbstractToolBarButton button : this.Items)
 			button.setActive(false);
 	}
 
 	@Override
-	public void Move(Point location) {
+	@Deprecated
+	public void Move(float angle, float distance) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
+	@Deprecated
 	public void Resize(Dimension size) {
 		// TODO Auto-generated method stub
 		
@@ -75,8 +77,8 @@ public class MTToolBar extends MTAbstractControl{
 
 	@Override
 	public void CursorAdd(MTAbstractPointer pointer) {
-		this.getPointers().add(pointer.getFingerID());
-		for(MTToolBarButton button :this.Items){
+		this.getPointers().add(pointer);
+		for(MTAbstractToolBarButton button :this.Items){
 			if(button.getBounds().intersects(pointer.getBounds())){
 				button.CursorAdd(pointer);
 				pointer.setCurrentControl(button);
@@ -88,9 +90,9 @@ public class MTToolBar extends MTAbstractControl{
 
 	@Override
 	public void CursorOut(MTAbstractPointer pointer) {
-		this.getPointers().remove(pointer.getFingerID());
-		for(MTToolBarButton button :this.Items){
-			if(button.getPointers().contains(pointer.getFingerID())){
+		this.getPointers().remove(pointer);
+		for(MTAbstractToolBarButton button :this.Items){
+			if(button.getPointers().contains(pointer)){
 				button.CursorOut(pointer);
 				break;
 			}
@@ -100,10 +102,10 @@ public class MTToolBar extends MTAbstractControl{
 
 	@Override
 	public void CursorOver(MTAbstractPointer pointer) {
-		if(!this.getPointers().contains(pointer.getFingerID())){
-			this.getPointers().add(pointer.getFingerID());
+		if(!this.getPointers().contains(pointer)){
+			this.getPointers().add(pointer);
 		}
-		for(MTToolBarButton button :this.Items){
+		for(MTAbstractToolBarButton button :this.Items){
 			if(button.getBounds().intersects(pointer.getBounds())){
 				button.CursorOver(pointer);
 				pointer.setCurrentControl(button);
@@ -111,5 +113,7 @@ public class MTToolBar extends MTAbstractControl{
 			}
 		}
 	}
+
+
 
 }
