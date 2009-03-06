@@ -1,12 +1,10 @@
 package MTUI.Controls;
 
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.Rectangle;
-import java.util.ArrayList;
 
 import processing.core.*;
-import tuio.TuioCursor;
 import MTUI.Constants.*;
 
 /**
@@ -15,7 +13,7 @@ import MTUI.Constants.*;
  * @author PAulo Teixeira
  *
  */
-public class MTToolBarButton extends MTAbstractControl{
+public abstract class MTAbstractToolBarButton extends MTAbstractControl{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -25,11 +23,10 @@ public class MTToolBarButton extends MTAbstractControl{
 	private boolean mActive;
 	private MTToolBar mParent;
 	
-	
 	public void setImageBackground(String aImageLocation){
 		this.imgBackground=aImageLocation;
 	}
-	public MTToolBarButton(MTToolBar aParent){
+	public MTAbstractToolBarButton(MTToolBar aParent){
 		this.mParent = aParent;
 		this.setZIndex(6000);
 	}
@@ -38,14 +35,9 @@ public class MTToolBarButton extends MTAbstractControl{
 	public void DrawControl(PApplet app) {
 
 		app.fill(this.getBackground().getRed(),this.getBackground().getGreen(), this.getBackground().getBlue());
-		if(this.mActive){
+		if(this.mActive)
 			app.fill(100);
-		}
 		
-		// Although detect intersection
-		// when pointer is on the corner we want to avoid intersection
-		
-		System.out.println(this.cursorOver);
 		if(this.cursorPressed){
 			
 			if(this.mActive) this.mActive = false;
@@ -62,7 +54,6 @@ public class MTToolBarButton extends MTAbstractControl{
 				app.stroke(30);			
 		}
 	
-		
 		app.rect((float)this.getBounds().getX(), (float)this.getBounds().getY(), (float)this.getBounds().getWidth(), (float)this.getBounds().getHeight());
 		app.noStroke();
 		if(!this.imgBackground.equals("")){
@@ -72,51 +63,52 @@ public class MTToolBarButton extends MTAbstractControl{
 		}
 	}
 	
+	public MTToolBar getToolBar(){
+		return this.mParent;
+	}
+	
 	public void setActive(boolean value){
-		
 		this.mActive=value;
 	}
-	
 	public void changeActiveState(){
 		if(this.mActive) this.mActive = false;
-		else this.mActive = true;
+		else{
+			this.mActive = true;
+			this.CursorClicked();
+		}
 	}
 	
-
+	public abstract void CursorClicked();
 	
 	@Override
-	public void Move(Point location) {
-		// TODO Auto-generated method stub
-		
+	@Deprecated
+	public void Move(float aAngle, float aDistance) {
 	}
 	
 	@Override
+	@Deprecated
 	public void Resize(Dimension size) {
-		// TODO Auto-generated method stub
-		
 	}
+
 	@Override
 	public void CursorAdd(MTAbstractPointer pointer) {
-		this.getPointers().add(pointer.getFingerID());
+		super.CursorAdd(pointer);
 		this.changeActiveState();
 		this.cursorOver = true;
-		
 	}
+	
 	@Override
 	public void CursorOut(MTAbstractPointer pointer) {
-		this.getPointers().remove(pointer.getFingerID());
+		super.CursorOut(pointer);
 		this.cursorOver = false;
-		
+		this.setActive(false);
 	}
+	
 	@Override
 	public void CursorOver(MTAbstractPointer pointer) {
-		if(!this.getPointers().contains(pointer.getFingerID())){
-			this.getPointers().add(pointer.getFingerID());
-			this.cursorOver=true;
-		}
+		super.CursorOver(pointer);
+		this.cursorOver=true;
+		this.setActive(false);
 		
 	}
-
-	
-	
 }

@@ -2,6 +2,10 @@ package MTUI.Processing;
 
 import java.awt.GridLayout;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -20,7 +24,7 @@ import MTUI.Processing.ProcessingApplet;
  * @author Paulo Teixeira
  *
  */
-public class ProcessingFrame extends JFrame{
+public class ProcessingFrame extends JFrame implements ActionListener {
 
 private static final long serialVersionUID = 1L;
 	
@@ -29,6 +33,7 @@ private static final long serialVersionUID = 1L;
 	public ProcessingFrame(String aTitle){
 		super(aTitle);
 		
+		this.setBounds(AppletConst.APPLET_X,AppletConst.APPLET_Y,AppletConst.APPLET_WIDTH, AppletConst.APPLET_HEIGHT);
 		this.setLayout(new GridLayout(0,1));
 		
 		
@@ -39,18 +44,20 @@ private static final long serialVersionUID = 1L;
 		JMenu menuFile = new JMenu("File");
 		menuBar.add(menuFile);
 		
-		JMenuItem menuItemNew = new JMenuItem("New");
-		menuFile.add(menuItemNew);
+		JMenuItem menuItemReset = new JMenuItem("Reset");
+		menuItemReset.addActionListener(this);
+		menuFile.add(menuItemReset);
 		
 		//frame settings
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//applet
-		app = new ProcessingApplet(this);
+		app = ProcessingApplet.getInstance();
+		app.setParentSize(this.getBounds());
+		
 		app.init();
 		app.start();
 		
-		this.setBounds(AppletConst.APPLET_X,AppletConst.APPLET_Y,AppletConst.APPLET_WIDTH, AppletConst.APPLET_HEIGHT);
 		JPanel pane = new JPanel(new GridLayout(0,1));
 		pane.add(app);
 				
@@ -58,10 +65,7 @@ private static final long serialVersionUID = 1L;
 		this.setVisible(true);
 		
 	}
-	public ProcessingApplet getProcessingApplet(){
-		
-		return this.app;
-	}
+
 	@Override
 	public void setBounds(int x, int y, int width, int height){
 		
@@ -77,4 +81,14 @@ private static final long serialVersionUID = 1L;
 		app.setBounds((int)r.getX(), (int) (r.getY() - this.getJMenuBar().getBounds().getHeight()), (int)r.getWidth(), (int)r.getHeight());
 		super.setBounds(r);
 	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(((JMenuItem)e.getSource()).getText().equals("Reset")){
+			ProcessingApplet.getInstance().Reset();
+		}
+		
+	}
+
+
 }

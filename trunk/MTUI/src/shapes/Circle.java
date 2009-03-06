@@ -55,7 +55,7 @@ public class Circle extends AbstractShape{
 	}
 
 	@Override
-	public void Move(Point location) {
+	public void Move(float aAngle, float aDistance) {
 		// TODO Auto-generated method stub
 		
 	}

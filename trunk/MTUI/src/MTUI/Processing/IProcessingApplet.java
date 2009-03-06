@@ -22,4 +22,5 @@ public interface IProcessingApplet extends TuioListener {
 	 * Method responsible for the constant draw of the UI
 	 */
 	void draw();
+
 }

@@ -21,7 +21,7 @@ public interface IMTControl extends IProcessingControl, ICursorEvents {
 	
 
 	void Resize(Dimension aSize);
-	void Move(Point aLocation);
+	void Move(float aAngle, float aDistance);
 	
 
 }

@@ -29,15 +29,15 @@ public abstract class MTAbstractControl extends Component implements IMTControl 
 	public abstract void DrawControl(PApplet app);
 
 	@Override
-	public abstract void Move(Point location);
+	public abstract void Move(float aAngle, float aDistance);
 
 	@Override
 	public abstract void Resize(Dimension size);
 
-	private ArrayList<Integer> Pointers = new ArrayList<Integer>();
+	private ArrayList<MTAbstractPointer> Pointers = new ArrayList<MTAbstractPointer>();
 	
-	public ArrayList<Integer> getPointers(){
-		return this.Pointers;
+	public ArrayList<MTAbstractPointer> getPointers(){
+		return this.Pointers; 
 	}
 	@Override
 	public void setZIndex(int aZIndex) {
@@ -47,5 +47,22 @@ public abstract class MTAbstractControl extends Component implements IMTControl 
 	public int getZIndex() {
 		return this.mZIndez;
 	}
+	@Override
+	public void CursorAdd(MTAbstractPointer pointer) {
+		this.getPointers().add(pointer);
+	}
+	
+	@Override
+	public void CursorOut(MTAbstractPointer pointer) {
+		this.getPointers().remove(pointer);
+	}
+	
+	@Override
+	public void CursorOver(MTAbstractPointer pointer) {
+		if(!this.getPointers().contains(pointer)){
+			this.getPointers().add(pointer);
+		}	
+	}
+	
 
 }

@@ -21,7 +21,10 @@ import tuio.TuioPoint;
  */
 public abstract class MTAbstractPointer extends Component implements Runnable, IProcessingControl {
 
-	private TuioPoint CursorLocation;
+	private TuioPoint mCursorLocation = new TuioPoint(0,0);
+	private  boolean mCursorLocationIsSet;
+	private float mAngle;
+	private float mDistance;
 	private static final long serialVersionUID = 1L;
 	private ArrayList<MTAbstractControl> mAppControls;
 	private MTAbstractControl mCurrentControl;
@@ -29,6 +32,7 @@ public abstract class MTAbstractPointer extends Component implements Runnable, I
 	private int mFingerID;
 	
 	public MTAbstractPointer(int aFingerID, ArrayList<MTAbstractControl> aAppControls, Rectangle aBounds){
+		this.mCursorLocationIsSet=false;
 		this.mAppControls = aAppControls;
 		this.mFingerID=aFingerID;
 		this.setBounds(aBounds);
@@ -66,6 +70,18 @@ public abstract class MTAbstractPointer extends Component implements Runnable, I
 	
 	@Override
 	public void run() {
+		TuioPoint tpActual = new TuioPoint(this.getX(), this.getY());
+		if(this.mCursorLocationIsSet){		
+			this.mAngle=this.mCursorLocation.getAngleDegrees(tpActual);
+			this.mDistance=this.mCursorLocation.getDistance(tpActual);
+		}
+		if(this.mCurrentControl!=null){
+			if(this.mCurrentControl.getPointers().size()==2){
+				System.out.println(this.mDistance);
+				mCurrentControl.Move(this.mAngle, this.mDistance);
+			}
+		}
+		
 		Collections.sort(this.mAppControls, new byZIndex());
 		for(MTAbstractControl control : this.mAppControls){
 			if(control.getBounds().intersects(this.getBounds())){
@@ -86,11 +102,12 @@ public abstract class MTAbstractPointer extends Component implements Runnable, I
 				}
 			}
 		}
-		
+		this.mCursorLocation = new TuioPoint(this.getX(), this.getY());
+		this.mCursorLocationIsSet=true;
 	}
 	
 	public void clear(){
-		this.mCurrentControl.CursorOut(this);
+		if(this.mCurrentControl!=null) this.mCurrentControl.CursorOut(this);
 		this.mCurrentControl=null;
 	}
 
