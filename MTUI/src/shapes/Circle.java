@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 
 import MTUI.Controls.MTAbstractPointer;
+import MTUI.Controls.MTPointer;
 
 import processing.core.PApplet;
 
@@ -61,7 +62,7 @@ public class Circle extends AbstractShape{
 	}
 
 	@Override
-	public void Resize(Dimension size) {
+	public void Resize(float aAngle, float aDistance, float aAngleBetweenCursors) {
 		// TODO Auto-generated method stub
 		
 	}

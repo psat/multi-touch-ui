@@ -32,7 +32,7 @@ public abstract class MTAbstractControl extends Component implements IMTControl 
 	public abstract void Move(float aAngle, float aDistance);
 
 	@Override
-	public abstract void Resize(Dimension size);
+	public abstract void Resize(float aAngle, float aDistance, float aAngleBetweenCursors);
 
 	private ArrayList<MTAbstractPointer> Pointers = new ArrayList<MTAbstractPointer>();
 	

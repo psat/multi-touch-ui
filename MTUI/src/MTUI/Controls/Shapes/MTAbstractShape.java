@@ -1,31 +1,12 @@
-package shapes;
+package MTUI.Controls.Shapes;
 
-import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.Rectangle;
-import MTUI.Constants.AppletConst;
+
 import MTUI.Controls.MTAbstractControl;
-import MTUI.Controls.MTAbstractPointer;
-import MTUI.Controls.MTPointer;
-import processing.core.PApplet;
-import tuio.TuioCursor;
+
+public abstract class MTAbstractShape extends MTAbstractControl{
 
 
-public class Rect extends MTAbstractControl{
-
-	private static final long serialVersionUID = 1L;
-	
-	public Rect(Rectangle aBounds){
-		super();
-		this.setBounds(aBounds);
-	}
-	
-	@Override
-	public void DrawControl(PApplet app) {
-		app.fill(50, 60, 200);
-		app.rect(this.getX(),this.getY(), this.getWidth(),this.getHeight());
-	}
-	
 	@Override
 	public void Move(float aAngle, float aDistance) {
 		if(aDistance!=0){
@@ -37,7 +18,6 @@ public class Rect extends MTAbstractControl{
 
 	@Override
 	public void Resize(float aAngle, float aDistance, float aAngleBetweenCursors) {
-
 		int distX = (int) (0 - (Math.cos(aAngle) * aDistance));
 		int distY = (int) (Math.sin(aAngle) * aDistance);
 		
@@ -63,8 +43,5 @@ public class Rect extends MTAbstractControl{
 		}
 		
 	}
-
-
-
 
 }

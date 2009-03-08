@@ -12,6 +12,7 @@ import tuio.TuioCursor;
 import tuio.TuioObject;
 import MTUI.Constants.AppletConst;
 import MTUI.Controls.*;
+import MTUI.Controls.Toolbar.MTToolBar;
 
 import MTUI.Utils.byZIndex;
 
@@ -106,6 +107,7 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 			noStroke();
 			
 			int i= 0;
+			
 			//set deep order
 			Collections.sort(this.Controls, new byZIndex());
 	
@@ -117,6 +119,8 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 				pointer.DrawControl(this);
 		}catch(Exception ex){
 			System.out.println("Ocorreu uma excepção do tipo:" + ex.getMessage());
+			System.out.println(ex.getCause());
+			System.out.println(ex.getLocalizedMessage());
 		}
 
 		

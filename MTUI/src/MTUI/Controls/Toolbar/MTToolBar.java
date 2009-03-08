@@ -1,4 +1,4 @@
-package MTUI.Controls;
+package MTUI.Controls.Toolbar;
 
 import java.awt.Dimension;
 import java.awt.Point;
@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import processing.core.PApplet;
 import tuio.TuioCursor;
 import MTUI.Constants.AppletConst;
+import MTUI.Controls.MTAbstractControl;
+import MTUI.Controls.MTAbstractPointer;
+import MTUI.Controls.Toolbar.Buttons.MTAbstractToolBarButton;
 
 /**
  * An implementation of a Tool bar for Processing applet. 
@@ -70,7 +73,7 @@ public class MTToolBar extends MTAbstractControl{
 
 	@Override
 	@Deprecated
-	public void Resize(Dimension size) {
+	public void Resize(float aAngle, float aDistance, float aAngleBetweenCursors) {
 		// TODO Auto-generated method stub
 		
 	}
