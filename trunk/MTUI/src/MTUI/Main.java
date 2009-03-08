@@ -5,6 +5,10 @@ import java.awt.Color;
 import shapes.AbstractShape;
 import shapes.Rect;
 import MTUI.Controls.*;
+import MTUI.Controls.Toolbar.MTToolBar;
+import MTUI.Controls.Toolbar.Buttons.EllipseButton;
+import MTUI.Controls.Toolbar.Buttons.PhotoButton;
+import MTUI.Controls.Toolbar.Buttons.RectangleButton;
 import MTUI.Processing.ProcessingApplet;
 import MTUI.Processing.ProcessingFrame;
 
@@ -24,15 +28,15 @@ public class Main {
 		
 	
 		
-		RectangleButton toolbarButton = new RectangleButton(toolbar);
+		RectangleButton toolbarButton = new RectangleButton();
 		toolbar.addControl(toolbarButton);
 		
-		/*
-		MTToolBarButton ellipse = new MTToolBarButton();
-		ellipse.setImageBackground("images/ellipse.gif");
-		toolbar.addControl(ellipse);
-		*/
+		EllipseButton ellipseToolBarButton = new EllipseButton();
+		toolbar.addControl(ellipseToolBarButton);
 		
+		PhotoButton photoToolbarButton = new PhotoButton("C:\\Documents and Settings\\ns\\My Documents\\My Pictures");
+		toolbar.addControl(photoToolbarButton);
+	
 	}
 
 }

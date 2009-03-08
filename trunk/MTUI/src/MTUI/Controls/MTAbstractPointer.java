@@ -6,6 +6,7 @@ import java.util.Collections;
 
 import MTUI.Constants.DrawConstants;
 import MTUI.Processing.IProcessingControl;
+import MTUI.Utils.byInverseZIndex;
 import MTUI.Utils.byZIndex;
 
 import processing.core.PApplet;
@@ -20,6 +21,7 @@ import tuio.TuioPoint;
  *
  */
 public abstract class MTAbstractPointer extends Component implements Runnable, IProcessingControl {
+
 
 	private TuioPoint mCursorLocation = new TuioPoint(0,0);
 	private  boolean mCursorLocationIsSet;
@@ -70,20 +72,41 @@ public abstract class MTAbstractPointer extends Component implements Runnable, I
 	
 	@Override
 	public void run() {
+		
+		//set values for movement
 		TuioPoint tpActual = new TuioPoint(this.getX(), this.getY());
 		if(this.mCursorLocationIsSet){		
-			this.mAngle=this.mCursorLocation.getAngleDegrees(tpActual);
+			this.mAngle=this.mCursorLocation.getAngle(tpActual);
 			this.mDistance=this.mCursorLocation.getDistance(tpActual);
 		}
+		
+		// choose type of action (MOVE-RESIZE-ROTATE)
 		if(this.mCurrentControl!=null){
-			if(this.mCurrentControl.getPointers().size()==2){
-				System.out.println(this.mDistance);
+			MTAbstractPointer otherPointer = this;
+			
+			// MOVE :
+			if(this.mCurrentControl.getPointers().size()==1){
 				mCurrentControl.Move(this.mAngle, this.mDistance);
+			}
+			else if(this.mCurrentControl.getPointers().size()==2){
+				for(MTAbstractPointer pointer : this.mCurrentControl.getPointers()){
+					if (!pointer.equals(this)){
+						otherPointer = pointer;
+						break;
+					}
+				}
+				
+				
+				//RESIZE : Two fingers.. need to give the position to the other pointer
+				float fAngleBetweenCursors = new TuioPoint(otherPointer.getX(), otherPointer.getY()).getAngleDegrees(tpActual);
+				mCurrentControl.Resize(this.mAngle, this.mDistance, fAngleBetweenCursors);
 			}
 		}
 		
-		Collections.sort(this.mAppControls, new byZIndex());
-		for(MTAbstractControl control : this.mAppControls){
+		// Justify usage of clone because main collection is been used in processing redraw
+		ArrayList<MTAbstractControl> cloneControls = (ArrayList<MTAbstractControl>) this.mAppControls.clone();
+		Collections.sort(cloneControls, new byInverseZIndex());
+		for(MTAbstractControl control : cloneControls){
 			if(control.getBounds().intersects(this.getBounds())){
 				if(this.mCurrentControl!=null){
 					if(!control.equals(this.mCurrentControl)){

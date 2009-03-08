@@ -1,4 +1,4 @@
-package MTUI.Controls;
+package MTUI.Controls.Toolbar.Buttons;
 
 import java.awt.Container;
 import java.awt.Dimension;
@@ -6,6 +6,9 @@ import java.awt.Point;
 
 import processing.core.*;
 import MTUI.Constants.*;
+import MTUI.Controls.MTAbstractControl;
+import MTUI.Controls.MTAbstractPointer;
+import MTUI.Controls.Toolbar.MTToolBar;
 
 /**
  * This class implements buttons to be added to a Processing applet toolbar
@@ -21,13 +24,12 @@ public abstract class MTAbstractToolBarButton extends MTAbstractControl{
 	private boolean cursorPressed;
 	private boolean cursorOver;
 	private boolean mActive;
-	private MTToolBar mParent;
 	
 	public void setImageBackground(String aImageLocation){
 		this.imgBackground=aImageLocation;
 	}
-	public MTAbstractToolBarButton(MTToolBar aParent){
-		this.mParent = aParent;
+	public MTAbstractToolBarButton(){
+		
 		this.setZIndex(6000);
 	}
 	
@@ -44,7 +46,6 @@ public abstract class MTAbstractToolBarButton extends MTAbstractControl{
 			else{
 				//disable other buttons
 				//inactive all parent buttons
-				this.mParent.setInactiveAllChildButtons();
 				this.mActive =true;
 			}
 		
@@ -63,9 +64,6 @@ public abstract class MTAbstractToolBarButton extends MTAbstractControl{
 		}
 	}
 	
-	public MTToolBar getToolBar(){
-		return this.mParent;
-	}
 	
 	public void setActive(boolean value){
 		this.mActive=value;
@@ -87,7 +85,7 @@ public abstract class MTAbstractToolBarButton extends MTAbstractControl{
 	
 	@Override
 	@Deprecated
-	public void Resize(Dimension size) {
+	public void Resize(float aAngle, float aDistance, float aAngleBetweenCursors) {
 	}
 
 	@Override
