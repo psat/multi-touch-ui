@@ -3,8 +3,10 @@ package MTUI.Controls;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import MTUI.Constants.DrawConstants;
+import MTUI.Controls.Toolbar.MTToolBar;
 import MTUI.Processing.IProcessingControl;
 import MTUI.Utils.byInverseZIndex;
 import MTUI.Utils.byZIndex;
@@ -39,17 +41,36 @@ public abstract class MTAbstractPointer extends Component implements Runnable, I
 		this.mFingerID=aFingerID;
 		this.setBounds(aBounds);
 		
-		Collections.sort(this.mAppControls, new byZIndex());
+		ArrayList<MTAbstractControl> selectFirstObject = (ArrayList<MTAbstractControl>) this.mAppControls.clone();
+		Collections.sort(selectFirstObject, new byInverseZIndex());
 		
-		for(MTAbstractControl control : this.mAppControls){
+		//Event: CursorAdd
+		for(MTAbstractControl control : selectFirstObject){
 			if(control.getBounds().intersects(this.getBounds())){
 				this.mCurrentControl = control;
 				control.CursorAdd(this);
+				
+				BringObjectToFront(control);
 				break;
 			}
 		}
 	}
 	
+	private void BringObjectToFront(MTAbstractControl control) {
+		
+		int controlIndex = this.mAppControls.indexOf(control);
+		List<MTAbstractControl> listControls2Change = this.mAppControls.subList(controlIndex, this.mAppControls.size() -1 );
+		
+		for (MTAbstractControl control2change : listControls2Change){
+			if(!(control2change instanceof MTToolBar)){
+				control2change.setZIndex(control2change.getZIndex()-1);
+				control.setZIndex(control.getZIndex()+1);
+			}
+		}
+		
+		
+	}
+
 	public int getFingerID(){
 		return this.mFingerID;
 	}
@@ -107,16 +128,22 @@ public abstract class MTAbstractPointer extends Component implements Runnable, I
 		ArrayList<MTAbstractControl> cloneControls = (ArrayList<MTAbstractControl>) this.mAppControls.clone();
 		Collections.sort(cloneControls, new byInverseZIndex());
 		for(MTAbstractControl control : cloneControls){
+			
+			//Event: CursorOut
 			if(control.getBounds().intersects(this.getBounds())){
 				if(this.mCurrentControl!=null){
 					if(!control.equals(this.mCurrentControl)){
 						this.mCurrentControl.CursorOut(this);
 					} 
 				}
+				
+				//Event: CursorOver
 				this.mCurrentControl = control;
 				control.CursorOver(this);
 				break;
 			} else {
+				
+				//Event: CursorOut
 				if(this.mCurrentControl!=null){
 					if(control.equals(this.mCurrentControl)){
 						this.mCurrentControl.CursorOut(this);
