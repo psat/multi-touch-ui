@@ -30,7 +30,7 @@ public abstract class MTAbstractToolBarButton extends MTAbstractControl{
 	}
 	public MTAbstractToolBarButton(){
 		
-		this.setZIndex(6000);
+		this.setZIndex(DrawConstants.BUTTONS_ZINDEX);
 	}
 	
 	@Override
