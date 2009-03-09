@@ -34,6 +34,9 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 	private ArrayList<MTAbstractPointer> Pointers = new ArrayList<MTAbstractPointer>();
 	private TuioClient tuio;
 	private Rectangle mParentSize;
+	
+	private String mPicturesPath;
+	private String mMoviesPath;
 
 	private static ProcessingApplet instance = null;
 	
@@ -62,6 +65,21 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 		PApplet.main(new String[] { "--present", "MyProcessingSketch"});
 	}
 	
+	public void setPricturesPath(String aPath){
+		this.mPicturesPath = aPath;
+	}
+	public String getPicturesPath(){
+		if(this.mPicturesPath == null) return "";
+		return this.mPicturesPath;
+	}
+	
+	public void setMoviesPAth(String aPath){
+		this.mMoviesPath = aPath;
+	}
+	public String getMoviesPath(){
+		return this.mMoviesPath;
+	}
+	
 	/**
 	 * 
 	 * @return A list of controls that are designed on the processing applet
@@ -77,7 +95,6 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 	 * @param control
 	 */
 	public void addControl(MTAbstractControl control){
-		//this.tuio.addTuioListener(control);
 		this.Controls.add(control);
 		if(control.getZIndex()==0) control.setZIndex(this.Controls.size()+1);
 	}

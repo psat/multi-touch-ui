@@ -27,8 +27,7 @@ public abstract class MTAbstractPointer extends Component implements Runnable, I
 
 	private TuioPoint mCursorLocation = new TuioPoint(0,0);
 	private  boolean mCursorLocationIsSet;
-	private float mAngle;
-	private float mDistance;
+	
 	private static final long serialVersionUID = 1L;
 	private ArrayList<MTAbstractControl> mAppControls;
 	private MTAbstractControl mCurrentControl;
@@ -93,12 +92,12 @@ public abstract class MTAbstractPointer extends Component implements Runnable, I
 	
 	@Override
 	public void run() {
-		
+		int intDistX=0;
+		int intDistY=0;
 		//set values for movement
-		TuioPoint tpActual = new TuioPoint(this.getX(), this.getY());
 		if(this.mCursorLocationIsSet){		
-			this.mAngle=this.mCursorLocation.getAngle(tpActual);
-			this.mDistance=this.mCursorLocation.getDistance(tpActual);
+			intDistX=(int)(this.getX() - this.mCursorLocation.getX()) ;
+			intDistY=(int)(this.getY() - this.mCursorLocation.getY());
 		}
 		
 		// choose type of action (MOVE-RESIZE-ROTATE)
@@ -107,7 +106,7 @@ public abstract class MTAbstractPointer extends Component implements Runnable, I
 			
 			// MOVE :
 			if(this.mCurrentControl.getPointers().size()==1){
-				mCurrentControl.Move(this.mAngle, this.mDistance);
+				mCurrentControl.Move(intDistX, intDistY);
 			}
 			else if(this.mCurrentControl.getPointers().size()==2){
 				for(MTAbstractPointer pointer : this.mCurrentControl.getPointers()){
@@ -119,8 +118,10 @@ public abstract class MTAbstractPointer extends Component implements Runnable, I
 				
 				
 				//RESIZE : Two fingers.. need to give the position to the other pointer
-				float fAngleBetweenCursors = new TuioPoint(otherPointer.getX(), otherPointer.getY()).getAngleDegrees(tpActual);
-				mCurrentControl.Resize(this.mAngle, this.mDistance, fAngleBetweenCursors);
+				int intOtherDistX = this.getX() - otherPointer.getX();
+				int intOtherDistY = this.getY() - otherPointer.getY();
+				
+				mCurrentControl.Resize(intDistX, intDistY, intOtherDistX, intOtherDistY);
 			}
 		}
 		

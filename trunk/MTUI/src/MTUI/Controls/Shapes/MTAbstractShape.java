@@ -8,38 +8,36 @@ public abstract class MTAbstractShape extends MTAbstractControl{
 
 
 	@Override
-	public void Move(float aAngle, float aDistance) {
-		if(aDistance!=0){
-			double newPosX = this.getX() - (Math.cos(aAngle) * aDistance);
-			double newPosY = this.getY() + (Math.sin(aAngle) * aDistance);
-			this.setLocation(new Point((int)newPosX, (int)newPosY));
-		}
+	public void Move(int aDistX, int aDistY) {
+		int newPosX = this.getX() + aDistX; 
+		int newPosY = this.getY() + aDistY;
+		this.setLocation(new Point(newPosX, newPosY));
+	
 	}
 
 	@Override
-	public void Resize(float aAngle, float aDistance, float aAngleBetweenCursors) {
-		int distX = (int) (0 - (Math.cos(aAngle) * aDistance));
-		int distY = (int) (Math.sin(aAngle) * aDistance);
+	public void Resize(int aDistX, int aDistY, int aOtherDistX, int aOtherDistY) {
+				
 		
-	
-		System.out.println(aAngleBetweenCursors);
-		
-		if(aAngleBetweenCursors > 0 && aAngleBetweenCursors <= 90 ){
-			this.setLocation(new Point((int) (this.getX())+distX, this.getY()));
-			this.setSize((int) (this.getWidth()-distX),(int) (this.getHeight()+distY));
+		if(aOtherDistX<=0 && aOtherDistY >= 0 ){
+			System.out.println("3");
+			this.setLocation(new Point((int) (this.getX())+aDistX, this.getY()));
+			this.setSize((int) (this.getWidth()-aDistX),(int) (this.getHeight()+aDistY));
 		}
-		else if(aAngleBetweenCursors > 90 && aAngleBetweenCursors <= 180){
+		else if(aOtherDistX>=0 && aOtherDistY >= 0){
+			System.out.println("4");
 			//this.setLocation(new Point((int) (this.getX()+distX), this.getY()));
-			this.setSize((int) (this.getWidth()+distX),(int) (this.getHeight()+distY));
+			this.setSize((int) (this.getWidth()+aDistX),(int) (this.getHeight()+aDistY));
 		}
-		else if(aAngleBetweenCursors > 180 && aAngleBetweenCursors <= 270){
-			this.setLocation(new Point((int) (this.getX()), (int) (this.getY()+distY)));
-			this.setSize((int) (this.getWidth()+distX),(int) (this.getHeight()-distY));
+		else if(aOtherDistX>=0 && aOtherDistY <= 0){
+			System.out.println("2");
+			this.setLocation(new Point((int) (this.getX()), (int) (this.getY()+aDistY)));
+			this.setSize((int) (this.getWidth()+aDistX),(int) (this.getHeight()-aDistY));
 		}
-		else if(aAngleBetweenCursors > 270 && aAngleBetweenCursors <= 360){
-			System.out.println(distX + " | " + distY);
-			this.setLocation(new Point((int) (this.getX()+distX), (int)(this.getY()+distY)));
-			this.setSize((int) (this.getWidth()-distX),(int) (this.getHeight()-distY));
+		else if(aOtherDistX<=0 && aOtherDistY <= 0){
+			System.out.println("1");
+			this.setLocation(new Point((int) (this.getX()+aDistX), (int)(this.getY()+aDistY)));
+			this.setSize((int) (this.getWidth()-aDistX),(int) (this.getHeight()-aDistY));
 		}
 		
 	}

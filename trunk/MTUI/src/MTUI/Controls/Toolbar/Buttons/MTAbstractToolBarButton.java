@@ -80,14 +80,14 @@ public abstract class MTAbstractToolBarButton extends MTAbstractControl{
 	
 	@Override
 	@Deprecated
-	public void Move(float aAngle, float aDistance) {
+	public void Move(int distX, int distY) {
 	}
 	
 	@Override
 	@Deprecated
-	public void Resize(float aAngle, float aDistance, float aAngleBetweenCursors) {
+	public void Resize(int distX, int distY, int otherDistX, int intOtherDistY) {
 	}
-
+	
 	@Override
 	public void CursorAdd(MTAbstractPointer pointer) {
 		super.CursorAdd(pointer);

@@ -13,6 +13,7 @@ public class MTEllipse extends MTAbstractShape {
 	@Override
 	public void DrawControl(PApplet app) {
 		app.fill(50, 60, 200);
+		app.ellipseMode(app.CORNER);
 		app.ellipse(this.getX(),this.getY(), this.getWidth(),this.getHeight());
 	}
 }

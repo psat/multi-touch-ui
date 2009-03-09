@@ -2,19 +2,17 @@ package MTUI.Processing;
 
 import java.awt.GridLayout;
 import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+
 import javax.swing.JPanel;
 
 import MTUI.Constants.*;
 import MTUI.Processing.ProcessingApplet;
+import MTUI.Utils.HandlerEventsMenuItem;
 
 /**
  * An extended version of javax.swing.JFrame that contains a menu bar and a pane with the processing applet.
@@ -24,7 +22,7 @@ import MTUI.Processing.ProcessingApplet;
  * @author Paulo Teixeira
  *
  */
-public class ProcessingFrame extends JFrame implements ActionListener {
+public class ProcessingFrame extends JFrame  {
 
 private static final long serialVersionUID = 1L;
 	
@@ -33,20 +31,37 @@ private static final long serialVersionUID = 1L;
 	public ProcessingFrame(String aTitle){
 		super(aTitle);
 		
+		// Menubar
+		HandlerEventsMenuItem ItemsEvent = new HandlerEventsMenuItem();
+		JMenuBar menuBar = new JMenuBar();
+		
+		
+		JMenu menuFile = new JMenu(AppletConst.MENU_FILE);
+		menuBar.add(menuFile);
+		
+		
+		JMenuItem menuItemReset = new JMenuItem(AppletConst.SUB_MENU_FILE_RESET);
+		menuItemReset.addActionListener(ItemsEvent);
+		menuFile.add(menuItemReset);
+		
+		JMenu menuMedia = new JMenu(AppletConst.MENU_MEDIA);
+		menuBar.add(menuMedia);
+		
+		JMenuItem menuItemPictures = new JMenuItem(AppletConst.SUB_MENU_MEDIA_PICTURES);
+		menuItemPictures.addActionListener(ItemsEvent);
+		menuMedia.add(menuItemPictures);
+		
+		JMenuItem menuItemMovies = new JMenuItem(AppletConst.SUB_MENU_MEDIA_MOVIES);
+		menuItemMovies.addActionListener(ItemsEvent);
+		menuMedia.add(menuItemMovies);
+		
+		this.setJMenuBar(menuBar);
+		
+		
 		this.setBounds(AppletConst.APPLET_X,AppletConst.APPLET_Y,AppletConst.APPLET_WIDTH, AppletConst.APPLET_HEIGHT);
 		this.setLayout(new GridLayout(0,1));
 		
 		
-		// Menubar
-		JMenuBar menuBar = new JMenuBar();
-		this.setJMenuBar(menuBar);
-		
-		JMenu menuFile = new JMenu("File");
-		menuBar.add(menuFile);
-		
-		JMenuItem menuItemReset = new JMenuItem("Reset");
-		menuItemReset.addActionListener(this);
-		menuFile.add(menuItemReset);
 		
 		//frame settings
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -82,13 +97,7 @@ private static final long serialVersionUID = 1L;
 		super.setBounds(r);
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(((JMenuItem)e.getSource()).getText().equals("Reset")){
-			ProcessingApplet.getInstance().Reset();
-		}
-		
-	}
+
 
 
 }
