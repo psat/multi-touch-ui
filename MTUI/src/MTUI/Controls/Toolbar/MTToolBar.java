@@ -66,14 +66,14 @@ public class MTToolBar extends MTAbstractControl{
 
 	@Override
 	@Deprecated
-	public void Move(float angle, float distance) {
+	public void Move(int aDistX, int aDistY) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	@Deprecated
-	public void Resize(float aAngle, float aDistance, float aAngleBetweenCursors) {
+	public void Resize(int distX, int distY, int otherDistX, int intOtherDistY) {
 		// TODO Auto-generated method stub
 		
 	}

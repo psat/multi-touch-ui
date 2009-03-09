@@ -1,14 +1,13 @@
 package MTUI;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 
-import shapes.AbstractShape;
-import shapes.Rect;
-import MTUI.Controls.*;
+import MTUI.Constants.AppletConst;
 import MTUI.Controls.Toolbar.MTToolBar;
-import MTUI.Controls.Toolbar.Buttons.EllipseButton;
-import MTUI.Controls.Toolbar.Buttons.PhotoButton;
-import MTUI.Controls.Toolbar.Buttons.RectangleButton;
+import MTUI.Controls.Toolbar.Buttons.*;
 import MTUI.Processing.ProcessingApplet;
 import MTUI.Processing.ProcessingFrame;
 
@@ -19,7 +18,12 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 
-		ProcessingFrame win = new ProcessingFrame("Multi-Touch");
+		ProcessingFrame win = new ProcessingFrame(AppletConst.APPLICATION_NAME);
+		
+		
+		
+		//Processing
+		
 		
 		MTToolBar toolbar = new MTToolBar();
 		toolbar.setBackground(new Color(233,233,233));
@@ -34,9 +38,14 @@ public class Main {
 		EllipseButton ellipseToolBarButton = new EllipseButton();
 		toolbar.addControl(ellipseToolBarButton);
 		
-		PhotoButton photoToolbarButton = new PhotoButton("C:\\Documents and Settings\\ns\\My Documents\\My Pictures");
+		PhotoButton photoToolbarButton = new PhotoButton();
 		toolbar.addControl(photoToolbarButton);
+		
+		MovieButton movieToolBarButton = new MovieButton();
+		toolbar.addControl(movieToolBarButton);
 	
 	}
+	
+	
 
 }

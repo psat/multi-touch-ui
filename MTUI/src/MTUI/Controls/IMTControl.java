@@ -20,8 +20,8 @@ import processing.core.PApplet;
 public interface IMTControl extends IProcessingControl, ICursorEvents {
 	
 
-	void Resize(float aAngle, float aDistance, float aAngleBetweenCursors);
-	void Move(float aAngle, float aDistance);
+	void Resize(int aDistX, int aDistY, int aOtherDistX, int aOtherDistY);
+	void Move(int aDistX, int aDistY);
 	
 
 }

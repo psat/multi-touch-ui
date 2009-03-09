@@ -29,10 +29,10 @@ public abstract class MTAbstractControl extends Component implements IMTControl 
 	public abstract void DrawControl(PApplet app);
 
 	@Override
-	public abstract void Move(float aAngle, float aDistance);
+	public abstract void Move(int aDistX, int aDistY);
 
 	@Override
-	public abstract void Resize(float aAngle, float aDistance, float aAngleBetweenCursors);
+	public abstract void Resize(int aDistX, int aDistY, int aOtherDistX, int intOtherDistY);
 
 	private ArrayList<MTAbstractPointer> Pointers = new ArrayList<MTAbstractPointer>();
 	

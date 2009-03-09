@@ -2,7 +2,6 @@ package MTUI.Controls.Toolbar.Buttons;
 
 import java.awt.Rectangle;
 
-import shapes.Rect;
 import MTUI.Controls.Shapes.MTRectangle;
 import MTUI.Controls.Toolbar.MTToolBar;
 import MTUI.Processing.ProcessingApplet;

@@ -11,24 +11,28 @@ import MTUI.Utils.FilterImagesFile;
 
 
 public class PhotoButton extends MTAbstractToolBarButton{
-	private String mPicturesPath;
-	public PhotoButton(String aPicturesPath){
-		this.mPicturesPath = aPicturesPath;
-		this.setImageBackground("/images/photos.jpg");
-		
+	public PhotoButton(){
+		this.setImageBackground("/images/photos.jpg");		
 	}
 
 	@Override
 	public void CursorClicked() {
 		
-		//ProcessingApplet.getInstance().addControl(new MTEllipse(new Rectangle(80,80,100,100)));
-		File PicturesPath = new File(this.mPicturesPath);
+		File PicturesPath = new File(ProcessingApplet.getInstance().getPicturesPath());
 		
+		if(!PicturesPath.exists()){
+			System.out.println("Invalid path for pictures. Pleese choose in menu bar: Media>Set pictures path");
+			return;
+		}
 		
 		String[] listPictures = PicturesPath.list(new FilterImagesFile());
 		Random rand = new Random();
 		
 		for(String picFile : listPictures){
+			
+			System.out.println(picFile);
+			
+			
 			int intWidth = rand.nextInt(DrawConstants.MAX_RANDOM_SIZE - DrawConstants.MIN_RANDOM_SIZE)+DrawConstants.MIN_RANDOM_POSITION;
 			int intHeight = rand.nextInt(2*DrawConstants.MAX_RANDOM_SIZE_VARIATION) - DrawConstants.MAX_RANDOM_SIZE_VARIATION + intWidth;
 			
@@ -36,7 +40,7 @@ public class PhotoButton extends MTAbstractToolBarButton{
 			int intPosY = rand.nextInt(DrawConstants.MAX_RANDOM_POSITION - DrawConstants.MIN_RANDOM_POSITION) + DrawConstants.MIN_RANDOM_POSITION;
 			
 			Rectangle PicBounds = new Rectangle(intPosX, intPosY, intWidth, intHeight);
-			MTPicture picture = new MTPicture(this.mPicturesPath+"\\"+picFile, PicBounds);
+			MTPicture picture = new MTPicture(PicturesPath.getAbsolutePath()+File.separator+picFile, PicBounds);
 			ProcessingApplet.getInstance().addControl(picture);
 		}
 	}
