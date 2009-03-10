@@ -43,9 +43,6 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 	private ArrayList<MTAbstractPointer> Pointers = new ArrayList<MTAbstractPointer>();
 	private TuioClient tuio;
 	private Rectangle mParentSize;
-	
-	private String mPicturesPath;
-	private String mMoviesPath;
 
 	private static ProcessingApplet instance = null;
 	
@@ -65,8 +62,7 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 		} else {
 			System.out.println("Wrong or not available port: Port Nº3333");
 			System.exit(0);
-		}
-		this.handleConfigFile();		
+		}	
 	}
 	
 	public static void main(String args[]){
@@ -74,19 +70,6 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 		PApplet.main(new String[] { "--present", "MyProcessingSketch"});
 	}
 	
-	public void setPricturesPath(String aPath){
-		this.mPicturesPath = aPath;
-	}
-	public String getPicturesPath(){
-		return this.mPicturesPath;
-	}
-	
-	public void setMoviesPAth(String aPath){
-		this.mMoviesPath = aPath;
-	}
-	public String getMoviesPath(){
-		return this.mMoviesPath;
-	}
 	
 	/**
 	 * 

@@ -4,6 +4,7 @@ import java.awt.Rectangle;
 import java.io.File;
 import java.util.Random;
 
+import MTUI.Config.ConfigFile;
 import MTUI.Constants.DrawConstants;
 import MTUI.Controls.Shapes.MTPicture;
 import MTUI.Processing.ProcessingApplet;
@@ -18,7 +19,7 @@ public class PhotoButton extends MTAbstractToolBarButton{
 	@Override
 	public void CursorClicked() {
 		
-		File PicturesPath = new File(ProcessingApplet.getInstance().getPicturesPath());
+		File PicturesPath = new File(ConfigFile.getPicturesPath());
 		
 		if(!PicturesPath.exists()){
 			System.out.println("Invalid path for pictures. Pleese choose in menu bar: Media>Set pictures path");

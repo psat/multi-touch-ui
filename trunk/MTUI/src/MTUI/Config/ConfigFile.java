@@ -2,6 +2,7 @@ package MTUI.Config;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -21,57 +22,37 @@ import MTUI.Constants.ConfigXML;
 
 public class ConfigFile {
 
+	private static Document document;
 	public static String getPicturesPath(){
 	
-		String strPicPath = "";
-		File cfg = new File(ConfigXML.FILE_NAME);
-		if(!cfg.exists()){
-			try{
-				cfg.createNewFile();
-				createConfigFile(cfg);
-			}catch(Exception ex){
-				System.out.println(ex.getMessage());
-			}
-		}
-		return strPicPath;
+		Element picElement = getConfigElement(ConfigXML.PICTURES_ELEMENT);
+		
+		return picElement.getTextContent();
 	}
 	public static String getMoviesPath(){
-		String strMovPath = "";
-		File cfg = new File(ConfigXML.FILE_NAME);
-		if(!cfg.exists()){
-			try{
-				cfg.createNewFile();
-				createConfigFile(cfg);
-			}catch(Exception ex){
-				System.out.println(ex.getMessage());
-			}
-		} else {
-			try{
-				Element root = readConfigFile(cfg);
-				for(Node node : root.getChildNodes()){
-					
-				}
-			}catch(Exception ex){
-				System.out.println(ex.getMessage());
-			}
-			
-		}
-		return strMovPath;
-	}
-	public static void setPicturesPath(){
 		
-	}
-	public static void setMoviesPath(){
+		Element movElement = getConfigElement(ConfigXML.MOVIES_ELEMENT);
 		
+		return movElement.getTextContent();
+	}
+	public static void setPicturesPath(String strPicPath){
+		Element picElement = getConfigElement(ConfigXML.PICTURES_ELEMENT);
+		picElement.setTextContent(strPicPath);
+		
+		updateXMLFile(ConfigXML.PICTURES_ELEMENT, strPicPath);
+	}
+	public static void setMoviesPath(String strMovPath){
+		
+		updateXMLFile(ConfigXML.MOVIES_ELEMENT, strMovPath);
 	}
 	
 	
 	
-	private static void createConfigFile(File cfg) throws ParserConfigurationException, TransformerException{
+	private static Element createConfigFile() throws ParserConfigurationException, TransformerException{
 		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
 		
-		Document document = documentBuilder.newDocument();
+		document = documentBuilder.newDocument();
 		
 		Element rootElement = document.createElement(ConfigXML.ROOT_ELEMENT);
 		document.appendChild(rootElement);
@@ -82,21 +63,64 @@ public class ConfigFile {
 		Element eMoviesPath = document.createElement(ConfigXML.MOVIES_ELEMENT);
 		rootElement.appendChild(eMoviesPath);
 		
-		TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        Transformer transformer = transformerFactory.newTransformer();
-        DOMSource source = new DOMSource(document);
-        StreamResult result =  new StreamResult(cfg);
-        transformer.transform(source, result);
+		writeXMLFile();
+        return rootElement;
 	}
 	
-	private static Element readConfigFile(File cfg) throws ParserConfigurationException, SAXException, IOException{
+	private static void writeXMLFile(){
+
+		try{
+			
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+	        Transformer transformer = transformerFactory.newTransformer();
+	        DOMSource source = new DOMSource(document);
+	        StreamResult result =  new StreamResult(new File(ConfigXML.FILE_NAME));
+	        transformer.transform(source, result);
+		} catch(Exception ex){
+			System.out.println("Cannot write on config file: " + ex.getMessage());
+		}
+	}
+	
+	private static Element readConfigFile() throws ParserConfigurationException, SAXException, IOException{
 		
 		DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
-        Document doc = docBuilder.parse (cfg);
+        document = docBuilder.parse (new File(ConfigXML.FILE_NAME));
 
         // normalize text representation
         //doc.getDocumentElement ().normalize ();
-        return doc.getDocumentElement();
+        return document.getDocumentElement();
+	}
+	
+	private static Element getConfigElement(String strElementName){
+		Element root = getRootElement();
+	
+		return (Element) root.getElementsByTagName(strElementName).item(0);
+	}
+	private static Element getRootElement(){
+		Element root = null;
+		try{
+			File cfg = new File(ConfigXML.FILE_NAME);
+			if(!cfg.exists()){
+				
+				cfg.createNewFile();
+				root = createConfigFile();
+				
+			} else {
+			
+				root = readConfigFile();
+			}
+			
+		}catch(Exception ex){
+			System.out.println(ex.getMessage());
+		}
+		return root;
+	}
+	
+	private static void updateXMLFile(String strElementName, String strTextContent){
+		Element elm = getConfigElement(strElementName);
+		elm.setTextContent(strTextContent);
+		
+		writeXMLFile();
 	}
 }

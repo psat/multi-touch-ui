@@ -34,12 +34,12 @@ public class MTToolBar extends MTAbstractControl{
 		app.rect((float)this.getBounds().getX(), (float)this.getBounds().getY(), (float)this.getBounds().getWidth(), (float)this.getBounds().getHeight());
 	
 		int i=0;
-		int margin;
+		int margin = 2* AppletConst.TOOLBAR_BUTTON_MARGIN;
 		for(MTAbstractToolBarButton item : Items){
-			if(i>0) margin=2*AppletConst.TOOLBAR_BUTTON_MARGIN;
-			else margin = AppletConst.TOOLBAR_BUTTON_MARGIN;
+			//if(i>0) margin=2*AppletConst.TOOLBAR_BUTTON_MARGIN;
+			//else margin = AppletConst.TOOLBAR_BUTTON_MARGIN;
 			
-			item.setBounds(margin+this.getHeight()*i, 5, this.getHeight(), this.getHeight()-10);
+			item.setBounds(margin+this.getHeight()*i, AppletConst.TOOLBAR_BUTTON_MARGIN, this.getHeight()-margin, this.getHeight()-margin);
 			item.DrawControl(app);
 			i++;
 		
