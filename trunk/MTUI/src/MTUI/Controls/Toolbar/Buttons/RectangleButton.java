@@ -14,7 +14,7 @@ public class RectangleButton extends MTAbstractToolBarButton {
 
 	@Override
 	public void CursorClicked() {
-		ProcessingApplet.getInstance().addControl(new MTRectangle(new Rectangle(80,80,100,100)));	
+		ProcessingApplet.getInstance().addControl(new MTRectangle());	
 	}
 
 	

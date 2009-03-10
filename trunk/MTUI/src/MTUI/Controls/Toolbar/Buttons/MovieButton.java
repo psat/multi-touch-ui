@@ -5,6 +5,7 @@ import java.io.File;
 import java.util.Random;
 
 import MTUI.Constants.DrawConstants;
+import MTUI.Controls.Shapes.MTMovie;
 import MTUI.Controls.Shapes.MTPicture;
 import MTUI.Processing.ProcessingApplet;
 import MTUI.Utils.FilterImagesFile;
@@ -12,7 +13,7 @@ import MTUI.Utils.FilterImagesFile;
 public class MovieButton extends MTAbstractToolBarButton{
 
 	public MovieButton(){
-		this.setImageBackground("/images/movie.jpg");		
+		this.setImageBackground("/images/movies.gif");		
 	
 	}
 	@Override
@@ -25,19 +26,9 @@ public class MovieButton extends MTAbstractToolBarButton{
 		}
 		
 		String[] listMovies = MoviesPath.list(new FilterImagesFile());
-		Random rand = new Random();
 		
-		for(String picFile : listMovies){
-			
-			
-			int intWidth = rand.nextInt(DrawConstants.MAX_RANDOM_SIZE - DrawConstants.MIN_RANDOM_SIZE)+DrawConstants.MIN_RANDOM_POSITION;
-			int intHeight = rand.nextInt(2*DrawConstants.MAX_RANDOM_SIZE_VARIATION) - DrawConstants.MAX_RANDOM_SIZE_VARIATION + intWidth;
-			
-			int intPosX = rand.nextInt(DrawConstants.MAX_RANDOM_POSITION - DrawConstants.MIN_RANDOM_POSITION) + DrawConstants.MIN_RANDOM_POSITION;
-			int intPosY = rand.nextInt(DrawConstants.MAX_RANDOM_POSITION - DrawConstants.MIN_RANDOM_POSITION) + DrawConstants.MIN_RANDOM_POSITION;
-			
-			Rectangle PicBounds = new Rectangle(intPosX, intPosY, intWidth, intHeight);
-			MTMovie movie = new MTMovie(MoviesPath.getAbsolutePath()+File.separator+movFile, PicBounds);
+		for(String movFile : listMovies){
+			MTMovie movie = new MTMovie(MoviesPath.getAbsolutePath()+File.separator+movFile);
 			ProcessingApplet.getInstance().addControl(movie);
 		}
 		

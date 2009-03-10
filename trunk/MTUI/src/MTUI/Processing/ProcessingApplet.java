@@ -3,14 +3,23 @@ package MTUI.Processing;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
+
+import javax.xml.parsers.*;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+import org.w3c.dom.*;
 
 import processing.core.PApplet;
 import tuio.TuioClient;
 import tuio.TuioCursor;
 import tuio.TuioObject;
 import MTUI.Constants.AppletConst;
+import MTUI.Constants.ConfigXML;
 import MTUI.Controls.*;
 import MTUI.Controls.Toolbar.MTToolBar;
 
@@ -57,7 +66,7 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 			System.out.println("Wrong or not available port: Port Nº3333");
 			System.exit(0);
 		}
-		
+		this.handleConfigFile();		
 	}
 	
 	public static void main(String args[]){
@@ -69,7 +78,6 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 		this.mPicturesPath = aPath;
 	}
 	public String getPicturesPath(){
-		if(this.mPicturesPath == null) return "";
 		return this.mPicturesPath;
 	}
 	
@@ -221,5 +229,4 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 		System.out.println(this.mParentSize);
 		
 	}
-
 }

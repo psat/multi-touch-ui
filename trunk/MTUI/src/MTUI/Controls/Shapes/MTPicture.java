@@ -10,11 +10,11 @@ import processing.core.PImage;
 public class MTPicture extends MTAbstractShape{
 
 	private PImage mPicture;
-	public MTPicture(String aPicturePath, Rectangle aBounds){
-		this.mPicture = ProcessingApplet.getInstance().loadImage(aPicturePath);
-		this.setBounds(aBounds);
-		
+	public MTPicture(String aPicturePath){
+		super();
+		this.mPicture = ProcessingApplet.getInstance().loadImage(aPicturePath);	
 	}
+	
 	@Override
 	public void DrawControl(PApplet app) {
 		app.image(this.mPicture, this.getX(), this.getY(), this.getWidth(), this.getHeight());
