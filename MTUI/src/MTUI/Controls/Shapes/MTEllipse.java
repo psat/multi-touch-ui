@@ -6,9 +6,8 @@ import processing.core.PApplet;
 
 public class MTEllipse extends MTAbstractShape {
 
-	public MTEllipse(Rectangle aBounds){
-		this.setBounds(aBounds);
-		
+	public MTEllipse(){
+		super();
 	}
 	@Override
 	public void DrawControl(PApplet app) {

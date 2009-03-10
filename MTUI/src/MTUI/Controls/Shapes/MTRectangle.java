@@ -6,9 +6,8 @@ import processing.core.PApplet;
 
 public class MTRectangle extends MTAbstractShape{
 
-	public MTRectangle(Rectangle aBounds){
-		this.setBounds(aBounds);
-		
+	public MTRectangle(){
+		super();
 	}
 	@Override
 	public void DrawControl(PApplet app) {

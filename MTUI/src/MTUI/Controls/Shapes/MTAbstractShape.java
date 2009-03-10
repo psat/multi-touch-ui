@@ -1,11 +1,17 @@
 package MTUI.Controls.Shapes;
 
 import java.awt.Point;
+import java.awt.Rectangle;
+import java.util.Random;
 
+import MTUI.Constants.DrawConstants;
 import MTUI.Controls.MTAbstractControl;
 
 public abstract class MTAbstractShape extends MTAbstractControl{
 
+	public MTAbstractShape(){
+		this.setBounds(this.getRandomBounds());
+	}
 
 	@Override
 	public void Move(int aDistX, int aDistY) {
@@ -40,6 +46,18 @@ public abstract class MTAbstractShape extends MTAbstractControl{
 			this.setSize((int) (this.getWidth()-aDistX),(int) (this.getHeight()-aDistY));
 		}
 		
+	}
+	
+	public Rectangle getRandomBounds(){
+		Random rand = new Random();
+		
+		int intWidth = rand.nextInt(DrawConstants.MAX_RANDOM_SIZE - DrawConstants.MIN_RANDOM_SIZE)+DrawConstants.MIN_RANDOM_POSITION;
+		int intHeight = rand.nextInt(2*DrawConstants.MAX_RANDOM_SIZE_VARIATION) - DrawConstants.MAX_RANDOM_SIZE_VARIATION + intWidth;
+		
+		int intPosX = rand.nextInt(DrawConstants.MAX_RANDOM_POSITION - DrawConstants.MIN_RANDOM_POSITION) + DrawConstants.MIN_RANDOM_POSITION;
+		int intPosY = rand.nextInt(DrawConstants.MAX_RANDOM_POSITION - DrawConstants.MIN_RANDOM_POSITION) + DrawConstants.MIN_RANDOM_POSITION;
+		
+		return new Rectangle(intPosX, intPosY, intWidth, intHeight);
 	}
 
 }

@@ -11,12 +11,11 @@ public class EllipseButton extends MTAbstractToolBarButton {
 
 	public EllipseButton(){
 		this.setImageBackground("/images/ellipse.gif");
-
 	}
 
 	@Override
 	public void CursorClicked() {
-		ProcessingApplet.getInstance().addControl(new MTEllipse(new Rectangle(80,80,100,100)));
+		ProcessingApplet.getInstance().addControl(new MTEllipse());
 		
 	}
 }
