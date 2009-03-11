@@ -107,30 +107,26 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 		background(0);		
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void draw(){
 		
-		try{
-			background(0);
-			noStroke();
-			
-			int i= 0;
-			
-			//set deep order
-			Collections.sort(this.Controls, new byZIndex());
 	
-			for(IMTControl control : this.Controls){
-				control.DrawControl(this);
-			}
-			
-			for(MTAbstractPointer pointer : this.Pointers)
-				pointer.DrawControl(this);
-		}catch(Exception ex){
-			System.out.println("Ocorreu uma excepção do tipo:" + ex.getMessage());
-			System.out.println(ex.getCause());
-			System.out.println(ex.getLocalizedMessage());
-		}
+		background(0);
+		noStroke();
+		
+		//set deep order
+		//use clone
+		ArrayList<MTAbstractControl> cloneControls = (ArrayList<MTAbstractControl>) this.Controls.clone();
+		Collections.sort(cloneControls, new byZIndex());
 
+		for(IMTControl control : cloneControls){
+			control.DrawControl(this);
+		}
+		
+		//use clone avoiding concurrent updates
+		for(MTAbstractPointer pointer : (ArrayList<MTAbstractPointer>) this.Pointers.clone())
+			pointer.DrawControl(this);
 		
 	}
 

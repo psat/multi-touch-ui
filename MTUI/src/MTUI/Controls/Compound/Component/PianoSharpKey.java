@@ -7,12 +7,11 @@ import MTUI.Controls.Compound.MTAbstractCompound;
 
 import processing.core.PApplet;
 
-public class PianoSharpKey extends AbstractCompoundComponent{
+public class PianoSharpKey extends MTAbstractCompoundComponent{
 
 		public PianoSharpKey(MTAbstractCompound parent) {
-			super(parent);
 			this.setBackground(new Color(0,0,0));
-			this.setSize(new Dimension(6,60));
+			this.setReferenceSize(new Dimension(6,60));
 		}
 
 		private static final long serialVersionUID = 1L;
@@ -20,6 +19,7 @@ public class PianoSharpKey extends AbstractCompoundComponent{
 		@Override
 		public void DrawControl(PApplet app) {
 			app.fill(this.getBackground().getRed(), this.getBackground().getGreen(), this.getBackground().getBlue());
+			if (cursorOver) app.fill(160,160,160);
 			app.rect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
 			
 		}

@@ -2,9 +2,11 @@ package MTUI.Controls.Shapes;
 
 import java.awt.Rectangle;
 
+import MTUI.Controls.MTAbstractControl;
+
 import processing.core.PApplet;
 
-public class MTEllipse extends MTAbstractShape {
+public class MTEllipse extends MTAbstractControl {
 
 	public MTEllipse(){
 		super();

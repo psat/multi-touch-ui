@@ -4,6 +4,8 @@ public class DrawConstants {
 	public static final int MAX_ZINDEX = 10000;
 	
 	public static final int BUTTONS_ZINDEX = 9000;
+	
+	public static final int TOOLBAR_ZINDEX = 8000;
 
 	public static final int MIN_RANDOM_SIZE = 100;
 	public static final int MAX_RANDOM_SIZE = 500;
