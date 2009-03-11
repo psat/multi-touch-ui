@@ -2,9 +2,11 @@ package MTUI.Controls.Shapes;
 
 import java.awt.Rectangle;
 
+import MTUI.Controls.MTAbstractControl;
+
 import processing.core.PApplet;
 
-public class MTRectangle extends MTAbstractShape{
+public class MTRectangle extends MTAbstractControl{
 
 	public MTRectangle(){
 		super();

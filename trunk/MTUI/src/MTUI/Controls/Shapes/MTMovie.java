@@ -3,9 +3,10 @@ package MTUI.Controls.Shapes;
 import java.awt.Rectangle;
 import processing.core.*;
 import processing.video.Movie;
+import MTUI.Controls.MTAbstractControl;
 import MTUI.Processing.ProcessingApplet;
 
-public class MTMovie extends MTAbstractShape {
+public class MTMovie extends MTAbstractControl {
 
 	Movie movie;
 	

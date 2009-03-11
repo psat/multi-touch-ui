@@ -5,6 +5,7 @@ import java.io.File;
 import java.util.Random;
 
 import MTUI.Config.ConfigFile;
+import MTUI.Constants.AppletConst;
 import MTUI.Constants.DrawConstants;
 import MTUI.Controls.Shapes.MTMovie;
 import MTUI.Controls.Shapes.MTPicture;
@@ -12,10 +13,10 @@ import MTUI.Processing.ProcessingApplet;
 import MTUI.Utils.FilterImagesFile;
 import MTUI.Utils.FilterMoviesFile;
 
-public class MovieButton extends MTAbstractToolBarButton{
+public class MovieButton extends MTAbstractToolbarButton{
 
 	public MovieButton(){
-		this.setImageBackground("/images/movies.gif");		
+		this.setImageBackground(AppletConst.IMAGES_PATH + File.separator + "movies.gif");		
 	
 	}
 	@Override

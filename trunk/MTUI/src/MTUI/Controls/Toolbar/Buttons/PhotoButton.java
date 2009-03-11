@@ -5,15 +5,16 @@ import java.io.File;
 import java.util.Random;
 
 import MTUI.Config.ConfigFile;
+import MTUI.Constants.AppletConst;
 import MTUI.Constants.DrawConstants;
 import MTUI.Controls.Shapes.MTPicture;
 import MTUI.Processing.ProcessingApplet;
 import MTUI.Utils.FilterImagesFile;
 
 
-public class PhotoButton extends MTAbstractToolBarButton{
+public class PhotoButton extends MTAbstractToolbarButton{
 	public PhotoButton(){
-		this.setImageBackground("/images/pictures.gif");		
+		this.setImageBackground(AppletConst.IMAGES_PATH + File.separator + "pictures.gif");		
 	}
 
 	@Override

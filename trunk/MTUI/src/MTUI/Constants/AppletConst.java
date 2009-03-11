@@ -26,4 +26,7 @@ public class AppletConst {
 	public static final String SUB_MENU_MEDIA_MOVIES = "Set movies path";
 	
 	
+	public static final String IMAGES_PATH = "/images";
+	
+	
 }

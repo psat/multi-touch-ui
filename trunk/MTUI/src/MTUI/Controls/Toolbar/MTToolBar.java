@@ -6,9 +6,12 @@ import java.util.ArrayList;
 import processing.core.PApplet;
 import tuio.TuioCursor;
 import MTUI.Constants.AppletConst;
+import MTUI.Constants.DrawConstants;
 import MTUI.Controls.MTAbstractControl;
 import MTUI.Controls.MTAbstractPointer;
-import MTUI.Controls.Toolbar.Buttons.MTAbstractToolBarButton;
+import MTUI.Controls.Compound.MTAbstractCompound;
+import MTUI.Controls.Compound.Component.MTAbstractCompoundComponent;
+import MTUI.Controls.Toolbar.Buttons.MTAbstractToolbarButton;
 
 /**
  * An implementation of a Tool bar for Processing applet. 
@@ -18,51 +21,26 @@ import MTUI.Controls.Toolbar.Buttons.MTAbstractToolBarButton;
  * @author Paulo Teixeira
  * 
  */
-public class MTToolBar extends MTAbstractControl{
+public class MTToolBar extends MTAbstractCompound{
 
 	private static final long serialVersionUID = 1L;
 
-	private ArrayList<MTAbstractToolBarButton> Items = new ArrayList<MTAbstractToolBarButton>();
 	
-	public MTToolBar(){
-		this.setZIndex(5000);
-	}
-	
+	@SuppressWarnings("unchecked")
 	@Override
 	public void DrawControl(PApplet app){
+		app.noStroke();
 		app.fill(this.getBackground().getRed(),this.getBackground().getGreen(), this.getBackground().getBlue());
-		app.rect((float)this.getBounds().getX(), (float)this.getBounds().getY(), (float)this.getBounds().getWidth(), (float)this.getBounds().getHeight());
+		app.rect((float)this.getX(), (float)this.getY(), (float)this.getWidth(), (float)this.getHeight());
 	
-		int i=0;
-		int margin = 2* AppletConst.TOOLBAR_BUTTON_MARGIN;
-		for(MTAbstractToolBarButton item : Items){
-			//if(i>0) margin=2*AppletConst.TOOLBAR_BUTTON_MARGIN;
-			//else margin = AppletConst.TOOLBAR_BUTTON_MARGIN;
-			
-			item.setBounds(margin+this.getHeight()*i, AppletConst.TOOLBAR_BUTTON_MARGIN, this.getHeight()-margin, this.getHeight()-margin);
-			item.DrawControl(app);
-			i++;
-		
-		}
+		super.DrawControl(app);
 	}
 	
 	
-	public ArrayList<MTAbstractToolBarButton> getItems(){
-		return this.Items;
-	}
-
-
-	public void addControl(MTAbstractToolBarButton toolbarButton) {
-		if(toolbarButton.getBackground()==null)
-			toolbarButton.setBackground(this.getBackground());
-		this.Items.add(toolbarButton);
+	public MTToolBar(){
+		this.setZIndex(DrawConstants.TOOLBAR_ZINDEX);
 	}
 	
-	public void setInactiveAllChildButtons(){
-		
-		for(MTAbstractToolBarButton button : this.Items)
-			button.setActive(false);
-	}
 
 	@Override
 	@Deprecated
@@ -81,7 +59,7 @@ public class MTToolBar extends MTAbstractControl{
 	@Override
 	public void CursorAdd(MTAbstractPointer pointer) {
 		this.getPointers().add(pointer);
-		for(MTAbstractToolBarButton button :this.Items){
+		for(MTAbstractCompoundComponent button :this.Controls){
 			if(button.getBounds().intersects(pointer.getBounds())){
 				button.CursorAdd(pointer);
 				pointer.setCurrentControl(button);
@@ -94,7 +72,7 @@ public class MTToolBar extends MTAbstractControl{
 	@Override
 	public void CursorOut(MTAbstractPointer pointer) {
 		this.getPointers().remove(pointer);
-		for(MTAbstractToolBarButton button :this.Items){
+		for(MTAbstractCompoundComponent button :this.Controls){
 			if(button.getPointers().contains(pointer)){
 				button.CursorOut(pointer);
 				break;
@@ -108,7 +86,7 @@ public class MTToolBar extends MTAbstractControl{
 		if(!this.getPointers().contains(pointer)){
 			this.getPointers().add(pointer);
 		}
-		for(MTAbstractToolBarButton button :this.Items){
+		for(MTAbstractCompoundComponent button :this.Controls){
 			if(button.getBounds().intersects(pointer.getBounds())){
 				button.CursorOver(pointer);
 				pointer.setCurrentControl(button);
@@ -116,6 +94,9 @@ public class MTToolBar extends MTAbstractControl{
 			}
 		}
 	}
+
+
+
 
 
 

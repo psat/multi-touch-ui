@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 import MTUI.Constants.AppletConst;
+import MTUI.Constants.DrawConstants;
 import MTUI.Controls.Toolbar.MTToolBar;
 import MTUI.Controls.Toolbar.Buttons.*;
 import MTUI.Processing.ProcessingApplet;
@@ -20,8 +21,6 @@ public class Main {
 
 		ProcessingFrame win = new ProcessingFrame(AppletConst.APPLICATION_NAME);
 		
-		
-		
 		//Processing
 		
 		
@@ -33,17 +32,25 @@ public class Main {
 	
 		
 		RectangleButton toolbarButton = new RectangleButton();
+		toolbarButton.setReferenceBounds(5, 5, 10, 90);
 		toolbar.addControl(toolbarButton);
 		
 		EllipseButton ellipseToolBarButton = new EllipseButton();
+		ellipseToolBarButton.setReferenceBounds(20, 5, 10, 90);
 		toolbar.addControl(ellipseToolBarButton);
 		
 		PhotoButton photoToolbarButton = new PhotoButton();
+		photoToolbarButton.setReferenceBounds(35, 5, 10, 90);
 		toolbar.addControl(photoToolbarButton);
 		
 		MovieButton movieToolBarButton = new MovieButton();
+		movieToolBarButton.setReferenceBounds(50, 5, 10, 90);
 		toolbar.addControl(movieToolBarButton);
-	
+		
+		PianoButton pianoToolBarButton = new PianoButton();
+		pianoToolBarButton.setReferenceBounds(65, 5, 10, 90);
+		toolbar.addControl(pianoToolBarButton);
+		
 	}
 	
 	
