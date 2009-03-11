@@ -11,7 +11,7 @@ public class PianoSharpKey extends MTAbstractCompoundComponent{
 
 		public PianoSharpKey(MTAbstractCompound parent) {
 			this.setBackground(new Color(0,0,0));
-			this.setReferenceSize(new Dimension(6,60));
+			this.setReferenceSize(new Dimension(6,45));
 		}
 
 		private static final long serialVersionUID = 1L;

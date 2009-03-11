@@ -11,7 +11,6 @@ import MTUI.Controls.MTAbstractControl;
 import MTUI.Controls.MTAbstractPointer;
 import MTUI.Controls.Compound.MTAbstractCompound;
 import MTUI.Controls.Compound.Component.MTAbstractCompoundComponent;
-import MTUI.Controls.Toolbar.Buttons.MTAbstractToolbarButton;
 
 /**
  * An implementation of a Tool bar for Processing applet. 

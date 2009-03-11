@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 import MTUI.Constants.DrawConstants;
+import MTUI.Controls.Compound.Component.MTAbstractCompoundComponent;
 import MTUI.Controls.Toolbar.MTToolBar;
 import MTUI.Processing.IProcessingControl;
 import MTUI.Utils.byInverseZIndex;
@@ -31,6 +32,7 @@ public abstract class MTAbstractPointer extends Component implements Runnable, I
 	private static final long serialVersionUID = 1L;
 	private ArrayList<MTAbstractControl> mAppControls;
 	private MTAbstractControl mCurrentControl;
+	private MTAbstractCompoundComponent mCurrentCompoundControl;
 	
 	private int mFingerID;
 	
@@ -77,6 +79,14 @@ public abstract class MTAbstractPointer extends Component implements Runnable, I
 		this.mCurrentControl = control;
 	}
 	
+	public void setCurrentCompoundControl(MTAbstractCompoundComponent component){
+		if(this.mCurrentCompoundControl!=null) this.mCurrentCompoundControl.CursorOut(this);
+		this.mCurrentCompoundControl = component;
+	}
+	public MTAbstractCompoundComponent getCurrentCompoundControl(){
+		return this.mCurrentCompoundControl;
+	}
+	
 	@Override
 	public void DrawControl(PApplet app) {
 		app.fill(this.getBackground().getRed(),this.getBackground().getGreen(), this.getBackground().getBlue());
@@ -99,7 +109,8 @@ public abstract class MTAbstractPointer extends Component implements Runnable, I
 			intDistX=(int)(this.getX() - this.mCursorLocation.getX()) ;
 			intDistY=(int)(this.getY() - this.mCursorLocation.getY());
 		}
-		
+	
+
 		// choose type of action (MOVE-RESIZE-ROTATE)
 		if(this.mCurrentControl!=null){
 			MTAbstractPointer otherPointer = this;
@@ -153,6 +164,7 @@ public abstract class MTAbstractPointer extends Component implements Runnable, I
 				}
 			}
 		}
+	
 		this.mCursorLocation = new TuioPoint(this.getX(), this.getY());
 		this.mCursorLocationIsSet=true;
 	}
