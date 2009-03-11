@@ -17,7 +17,7 @@ public class PianoKey extends MTAbstractCompoundComponent{
 
 	public PianoKey(MTAbstractCompound parent){
 		this.setBackground(new Color(255,255,255));
-		this.setReferenceSize(new Dimension(10,100));
+		this.setReferenceSize(new Dimension(10,80));
 	}
 
 	@Override

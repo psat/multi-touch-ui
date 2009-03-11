@@ -111,7 +111,7 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 	@Override
 	public void draw(){
 		
-	
+	try{
 		background(0);
 		noStroke();
 		
@@ -127,6 +127,9 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 		//use clone avoiding concurrent updates
 		for(MTAbstractPointer pointer : (ArrayList<MTAbstractPointer>) this.Pointers.clone())
 			pointer.DrawControl(this);
+	}catch(Exception ex){
+		System.out.println(ex);
+	}
 		
 	}
 

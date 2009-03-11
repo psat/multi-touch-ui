@@ -66,6 +66,7 @@ public abstract class MTAbstractCompoundComponent extends MTAbstractControl{
 	}
 	@Override
 	public void CursorOut(MTAbstractPointer pointer) {
+		System.out.println("cursorout");
 		this.cursorOver=false;
 		this.cursorPress=false;
 		super.CursorOut(pointer);

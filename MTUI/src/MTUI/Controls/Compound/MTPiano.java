@@ -16,80 +16,81 @@ public class MTPiano extends MTAbstractCompound {
 	
 
 	private static final long serialVersionUID = 1L;
+	private boolean boolLock;
 	
 	public MTPiano(){
 		
 		//CompoundToolbar toolbar = new CompoundToolbar();
 		
 		PianoKey keyDo = new PianoKey(this);
-		keyDo.setReferenceLocation(new Point(0,0));
+		keyDo.setReferenceLocation(new Point(0,20));
 		this.addControl(keyDo);
 		
 		PianoKey keyRe = new PianoKey(this);
-		keyRe.setReferenceLocation(new Point(10,0));
+		keyRe.setReferenceLocation(new Point(10,20));
 		this.addControl(keyRe);
 		
 		PianoKey keyMi = new PianoKey(this);
-		keyMi.setReferenceLocation(new Point(20,0));
+		keyMi.setReferenceLocation(new Point(20,20));
 		this.addControl(keyMi);
 		
 		PianoKey keyFa = new PianoKey(this);
-		keyFa.setReferenceLocation(new Point(30,0));
+		keyFa.setReferenceLocation(new Point(30,20));
 		this.addControl(keyFa);
 		
 		PianoKey keySol = new PianoKey(this);
-		keySol.setReferenceLocation(new Point(40,0));
+		keySol.setReferenceLocation(new Point(40,20));
 		this.addControl(keySol);
 		
 		PianoKey keyLa = new PianoKey(this);
-		keyLa.setReferenceLocation(new Point(50,0));
+		keyLa.setReferenceLocation(new Point(50,20));
 		this.addControl(keyLa);
 		
 		PianoKey keySi = new PianoKey(this);
-		keySi.setReferenceLocation(new Point(60,0));
+		keySi.setReferenceLocation(new Point(60,20));
 		this.addControl(keySi);
 		
 		PianoKey keyDo2 = new PianoKey(this);
-		keyDo2.setReferenceLocation(new Point(70,0));
+		keyDo2.setReferenceLocation(new Point(70,20));
 		this.addControl(keyDo2);
 		
 		PianoKey keyRe2 = new PianoKey(this);
-		keyRe2.setReferenceLocation(new Point(80,0));
+		keyRe2.setReferenceLocation(new Point(80,20));
 		this.addControl(keyRe2);
 		
 		PianoKey keyMi2 = new PianoKey(this);
-		keyMi2.setReferenceLocation(new Point(90,0));
+		keyMi2.setReferenceLocation(new Point(90,20));
 		this.addControl(keyMi2);
 		
 		PianoSharpKey sharpDo = new PianoSharpKey(this);
-		sharpDo.setReferenceLocation(new Point(7,0));
+		sharpDo.setReferenceLocation(new Point(7,20));
 		this.addControl(sharpDo);
 		
 		PianoSharpKey sharpRe = new PianoSharpKey(this);
-		sharpRe.setReferenceLocation(new Point(17,0));
+		sharpRe.setReferenceLocation(new Point(17,20));
 		this.addControl(sharpRe);
 		
 		PianoSharpKey sharpFa = new PianoSharpKey(this);
-		sharpFa.setReferenceLocation(new Point(37,0));
+		sharpFa.setReferenceLocation(new Point(37,20));
 		this.addControl(sharpFa);
 		
 		PianoSharpKey sharpSol = new PianoSharpKey(this);
-		sharpSol.setReferenceLocation(new Point(47,0));
+		sharpSol.setReferenceLocation(new Point(47,20));
 		this.addControl(sharpSol);
 		
 		PianoSharpKey sharpLa = new PianoSharpKey(this);
-		sharpLa.setReferenceLocation(new Point(57,0));
+		sharpLa.setReferenceLocation(new Point(57,20));
 		this.addControl(sharpLa);
 		
 		PianoSharpKey sharpDo2 = new PianoSharpKey(this);
-		sharpDo2.setReferenceLocation(new Point(77,0));
+		sharpDo2.setReferenceLocation(new Point(77,20));
 		this.addControl(sharpDo2);
 		
 		PianoSharpKey sharpRe2 = new PianoSharpKey(this);
-		sharpRe2.setReferenceLocation(new Point(87,0));
+		sharpRe2.setReferenceLocation(new Point(87,20));
 		this.addControl(sharpRe2);
 		
-		ButtonLock lock = new ButtonLock();
+		ButtonLock lock = new ButtonLock(this);
 		lock.setReferenceLocation(new Point(0,0));
 		this.addControl(lock);
 		
@@ -97,6 +98,24 @@ public class MTPiano extends MTAbstractCompound {
 		volume.setReferenceLocation(new Point(20,0));
 		this.addControl(volume);
 		
+	}
+	public void Lock(){
+		this.boolLock = true;
+	}
+	public void unLock(){
+		this.boolLock = false;
+	}
+	
+	@Override
+	public void Move(int distX, int distY) {
+		if(!this.boolLock)
+			super.Move(distX, distY);
+	}
+	
+	@Override
+	public void Resize(int distX, int distY, int otherDistX, int otherDistY) {
+		if(!this.boolLock)
+			super.Resize(distX, distY, otherDistX, otherDistY);
 	}
 
 	@Override

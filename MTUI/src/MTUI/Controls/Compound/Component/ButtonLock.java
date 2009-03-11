@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.io.File;
 
 import MTUI.Constants.AppletConst;
+import MTUI.Controls.Compound.MTPiano;
 import MTUI.Processing.ProcessingApplet;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -15,21 +16,34 @@ public class ButtonLock extends MTAbstractCompoundComponent{
 	private PImage img;
 	private boolean boolLocked;
 	
-	public ButtonLock() {
+	private MTPiano Piano;
+	
+	public ButtonLock(MTPiano aPiano) {
+		this.Piano = aPiano;
 		this.setReferenceSize(new Dimension(20,20));
 		imgLockOpen = ProcessingApplet.getInstance().loadImage(AppletConst.IMAGES_PATH + File.separator + "Lock_o.jpg");
 		imgLockClosed = ProcessingApplet.getInstance().loadImage(AppletConst.IMAGES_PATH + File.separator + "Lock_c.jpg");
-		img = imgLockOpen;
+		this.unLock();
+	}
+	
+	private void Lock(){
+		this.boolLocked = true;
+		this.img = this.imgLockClosed;
+		this.Piano.Lock();
+	}
+	private void unLock(){
+		this.boolLocked = false;
+		this.img = this.imgLockOpen;
+		this.Piano.unLock();
+
 	}
 	
 	private void changeLockState(){
 		if(boolLocked){
-			boolLocked = false;
-			img = imgLockOpen;
+			this.unLock();
 		}
 		else{
-			boolLocked = true;
-			img = imgLockClosed;
+			this.Lock();
 		}
 		
 	}
@@ -39,6 +53,7 @@ public class ButtonLock extends MTAbstractCompoundComponent{
 			this.cursorPress = false;
 			this.changeLockState();
 		}
+		app.stroke(0);
 		app.image(img, this.getX(), this.getY(), this.getWidth(), this.getHeight());
 		
 	}

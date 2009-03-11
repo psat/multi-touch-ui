@@ -41,8 +41,10 @@ public class MTAbstractCompound extends MTAbstractControl implements IMTCompound
 		super.CursorAdd(pointer);
 		for(MTAbstractCompoundComponent component : 
 						(ArrayList<MTAbstractCompoundComponent>)this.Controls.clone())
-			if(component.getBounds().intersects(pointer.getBounds()))
+			if(component.getBounds().intersects(pointer.getBounds())){
 				component.CursorAdd(pointer);
+				pointer.setCurrentCompoundControl(component);
+			}
 	}
 	@SuppressWarnings("unchecked")
 	@Override
@@ -50,8 +52,10 @@ public class MTAbstractCompound extends MTAbstractControl implements IMTCompound
 		super.CursorOver(pointer);
 		for(MTAbstractCompoundComponent component : 
 						(ArrayList<MTAbstractCompoundComponent>) this.Controls.clone())
-			if(component.getBounds().intersects(pointer.getBounds()))
+			if(component.getBounds().intersects(pointer.getBounds())){
 				component.CursorOver(pointer);
+				pointer.setCurrentCompoundControl(component);
+			}
 	}
 	@SuppressWarnings("unchecked")
 	@Override
