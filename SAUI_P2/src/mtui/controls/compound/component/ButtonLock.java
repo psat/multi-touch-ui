@@ -5,7 +5,6 @@ import java.io.File;
 
 import mtui.constants.AppletConst;
 import mtui.controls.compound.MTAbstractCompound;
-import mtui.controls.compound.MTPiano;
 import mtui.processing.ProcessingApplet;
 
 import processing.core.PApplet;
@@ -18,6 +17,7 @@ import processing.core.PImage;
  * @author Nuno Santos
  *
  */
+@SuppressWarnings("serial")
 public class ButtonLock extends MTAbstractCompoundComponent{
 
 	private PImage imgLockOpen;

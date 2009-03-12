@@ -5,8 +5,6 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 import mtui.constants.AppletConst;
-import mtui.constants.DrawConstants;
-import mtui.constants.PianoConst;
 import mtui.controls.MTAbstractPointer;
 import mtui.controls.compound.MTPiano;
 
@@ -23,6 +21,7 @@ import processing.core.PApplet;
  * @author Nuno Santos
  *
  */
+@SuppressWarnings("serial")
 public class VolumeControl extends MTAbstractCompoundComponent {
 
 	VolumeSlider slider;

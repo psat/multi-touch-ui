@@ -10,7 +10,6 @@ import mtui.controls.compound.MTToolbar;
 import mtui.controls.compound.component.MTAbstractCompoundComponent;
 import mtui.processing.IProcessingControl;
 import mtui.utils.byInverseZIndex;
-import mtui.utils.byZIndex;
 
 
 import processing.core.PApplet;
@@ -40,6 +39,7 @@ public abstract class MTAbstractPointer extends Component implements Runnable, I
 	
 	private int mFingerID;
 	
+	@SuppressWarnings("unchecked")
 	public MTAbstractPointer(int aFingerID, ArrayList<MTAbstractControl> aAppControls, Rectangle aBounds){
 		this.mCursorLocationIsSet=false;
 		this.mAppControls = aAppControls;
@@ -109,6 +109,7 @@ public abstract class MTAbstractPointer extends Component implements Runnable, I
 		else return super.equals(obj);
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public void run() {
 		int intDistX=0;

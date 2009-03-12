@@ -16,6 +16,7 @@ import mtui.processing.ProcessingApplet;
  * @author Nuno Santos
  *
  */
+@SuppressWarnings("serial")
 public class PianoButton extends MTAbstractToolbarButton {
 
 	public PianoButton(){

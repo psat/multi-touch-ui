@@ -1,14 +1,7 @@
 package mtui.controls.toolbar.buttons;
 
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Point;
-
 import mtui.constants.*;
-import mtui.controls.MTAbstractControl;
 import mtui.controls.MTAbstractPointer;
-import mtui.controls.compound.MTAbstractCompound;
-import mtui.controls.compound.MTToolbar;
 import mtui.controls.compound.component.MTAbstractCompoundComponent;
 
 import processing.core.*;

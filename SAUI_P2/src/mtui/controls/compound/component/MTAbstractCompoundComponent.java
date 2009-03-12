@@ -7,7 +7,6 @@ import java.awt.Rectangle;
 
 import mtui.controls.MTAbstractControl;
 import mtui.controls.MTAbstractPointer;
-import mtui.controls.compound.MTAbstractCompound;
 
 /**
  * Abstract class extended from mtui.controls.MTAbstractControl representing controls that are referenced as being part of an compound control. 
@@ -20,9 +19,9 @@ import mtui.controls.compound.MTAbstractCompound;
  * 
  * @author Nuno Santos
  */
+@SuppressWarnings("serial")
 public abstract class MTAbstractCompoundComponent extends MTAbstractControl implements IMTCompoundComponent{
 
-	private static final long serialVersionUID = 1L;
 	private Dimension refSize;
 	private Point refLocation;
 	protected boolean cursorOver;

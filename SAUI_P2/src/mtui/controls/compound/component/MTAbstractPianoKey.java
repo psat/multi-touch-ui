@@ -1,8 +1,5 @@
 package mtui.controls.compound.component;
 
-import javax.sound.midi.MidiChannel;
-
-import mtui.constants.AppletConst;
 import mtui.constants.PianoConst;
 import mtui.controls.MTAbstractPointer;
 import mtui.controls.compound.MTPiano;

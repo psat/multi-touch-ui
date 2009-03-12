@@ -1,8 +1,6 @@
 package mtui.controls.compound;
 
-import java.awt.Button;
 import java.awt.Point;
-import java.awt.event.MouseEvent;
 
 import javax.sound.midi.Instrument;
 import javax.sound.midi.MidiChannel;
@@ -12,7 +10,6 @@ import javax.sound.midi.Soundbank;
 import javax.sound.midi.Synthesizer;
 
 import mtui.constants.PianoConst;
-import mtui.controls.MTAbstractPointer;
 import mtui.controls.compound.component.ButtonLock;
 import mtui.controls.compound.component.PianoKey;
 import mtui.controls.compound.component.PianoSharpKey;

@@ -1,7 +1,5 @@
 package mtui.controls.shapes;
 
-import java.awt.Rectangle;
-
 import mtui.controls.MTAbstractControl;
 import mtui.processing.ProcessingApplet;
 
@@ -20,6 +18,7 @@ import processing.core.PImage;
  * @author Nuno Santos
  *
  */
+@SuppressWarnings("serial")
 public class MTPicture extends MTAbstractControl{
 
 	private PImage mPicture;

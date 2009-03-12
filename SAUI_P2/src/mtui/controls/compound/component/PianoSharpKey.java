@@ -3,11 +3,7 @@ package mtui.controls.compound.component;
 import java.awt.Color;
 import java.awt.Dimension;
 
-import javax.sound.midi.MidiChannel;
-
-import mtui.controls.compound.MTAbstractCompound;
 import mtui.controls.compound.MTPiano;
-
 
 import processing.core.PApplet;
 

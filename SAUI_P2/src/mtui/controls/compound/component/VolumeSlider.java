@@ -3,7 +3,6 @@ package mtui.controls.compound.component;
 import java.awt.Dimension;
 import java.awt.Point;
 
-import mtui.constants.AppletConst;
 import mtui.constants.PianoConst;
 import mtui.controls.compound.MTPiano;
 
@@ -20,6 +19,7 @@ import processing.core.PApplet;
  * @author Nuno Santos
  *
  */
+@SuppressWarnings("serial")
 public class VolumeSlider extends MTAbstractCompoundComponent {
 
 	private MTPiano mPiano;

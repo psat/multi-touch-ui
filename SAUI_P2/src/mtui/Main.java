@@ -1,12 +1,8 @@
 package mtui;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
 
 import mtui.constants.AppletConst;
-import mtui.constants.DrawConstants;
 import mtui.controls.compound.MTToolbar;
 import mtui.controls.toolbar.buttons.*;
 import mtui.processing.ProcessingApplet;
@@ -19,7 +15,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 
-		ProcessingFrame win = new ProcessingFrame(AppletConst.APPLICATION_NAME);
+		new ProcessingFrame(AppletConst.APPLICATION_NAME);
 		
 		//Processing
 		
