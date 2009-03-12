@@ -1,7 +1,5 @@
 package mtui.controls.shapes;
 
-import java.awt.Rectangle;
-
 import mtui.controls.MTAbstractControl;
 
 

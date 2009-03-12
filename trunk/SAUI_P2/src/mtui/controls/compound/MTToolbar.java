@@ -1,16 +1,10 @@
 package mtui.controls.compound;
 
-import java.awt.Dimension;
-import java.awt.Point;
-import java.util.ArrayList;
 
-import mtui.constants.AppletConst;
 import mtui.constants.DrawConstants;
-import mtui.controls.MTAbstractControl;
 import mtui.controls.MTAbstractPointer;
 import mtui.controls.compound.component.MTAbstractCompoundComponent;
 import processing.core.PApplet;
-import tuio.TuioCursor;
 
 /**
  * An implementation of a Tool bar for Processing applet. 
@@ -24,7 +18,6 @@ public class MTToolbar extends MTAbstractCompound{
 	private static final long serialVersionUID = 1L;
 
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	public void DrawControl(PApplet app){
 		app.noStroke();

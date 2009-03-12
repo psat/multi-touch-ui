@@ -1,12 +1,9 @@
 package mtui.controls.toolbar.buttons;
 
-import java.awt.Rectangle;
 import java.io.File;
-import java.util.Random;
 
 import mtui.config.ConfigFile;
 import mtui.constants.AppletConst;
-import mtui.constants.DrawConstants;
 import mtui.controls.shapes.MTPicture;
 import mtui.processing.ProcessingApplet;
 import mtui.utils.FilterImagesFile;
@@ -21,6 +18,7 @@ import mtui.utils.FilterImagesFile;
  * @author Nuno Santos
  *
  */
+@SuppressWarnings("serial")
 public class PhotoButton extends MTAbstractToolbarButton{
 	public PhotoButton(){
 		this.setImageBackground(AppletConst.IMAGES_PATH + File.separator + "pictures.gif");		

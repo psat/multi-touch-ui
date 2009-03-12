@@ -1,16 +1,6 @@
 package mtui.controls;
 
-import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.util.ArrayList;
-
-import mtui.processing.IProcessingApplet;
 import mtui.processing.IProcessingControl;
-
-
-import processing.core.PApplet;
-
 
 /**
  * Interface that defines the different handlers of controls 

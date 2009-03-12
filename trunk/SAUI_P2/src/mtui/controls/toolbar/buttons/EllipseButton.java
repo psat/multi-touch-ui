@@ -1,12 +1,9 @@
 package mtui.controls.toolbar.buttons;
 
-import java.awt.Rectangle;
 import java.io.File;
 
 import mtui.constants.AppletConst;
-import mtui.controls.compound.MTToolbar;
 import mtui.controls.shapes.MTEllipse;
-import mtui.controls.shapes.MTRectangle;
 import mtui.processing.ProcessingApplet;
 
 /**
@@ -18,6 +15,7 @@ import mtui.processing.ProcessingApplet;
  * @author Nuno Santos
  *
  */
+@SuppressWarnings("serial")
 public class EllipseButton extends MTAbstractToolbarButton {
 
 	public EllipseButton(){

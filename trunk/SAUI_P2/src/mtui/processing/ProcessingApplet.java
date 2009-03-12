@@ -1,24 +1,14 @@
 package mtui.processing;
 
-import java.awt.Color;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import javax.xml.parsers.*;
-import javax.xml.transform.*;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
 import mtui.constants.AppletConst;
-import mtui.constants.ConfigXML;
 import mtui.controls.*;
 import mtui.controls.compound.MTToolbar;
 import mtui.utils.byZIndex;
-
-import org.w3c.dom.*;
 
 import processing.core.PApplet;
 import tuio.TuioClient;

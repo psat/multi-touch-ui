@@ -23,6 +23,7 @@ import processing.core.PApplet;
  * @author Nuno Santos
  *
  */
+@SuppressWarnings("serial")
 public class MTAbstractCompound extends MTAbstractControl implements IMTCompound {
 
 	/**
