@@ -2,7 +2,7 @@ package mtui.constants;
 
 /**
  * this class holds the constants for the processing applet
- * @author ns
+ * @author Nuno Santos
  *
  */
 public class AppletConst {

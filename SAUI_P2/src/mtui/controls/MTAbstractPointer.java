@@ -6,8 +6,8 @@ import java.util.Collections;
 import java.util.List;
 
 import mtui.constants.DrawConstants;
+import mtui.controls.compound.MTToolbar;
 import mtui.controls.compound.component.MTAbstractCompoundComponent;
-import mtui.controls.toolbar.MTToolbar;
 import mtui.processing.IProcessingControl;
 import mtui.utils.byInverseZIndex;
 import mtui.utils.byZIndex;
@@ -17,11 +17,14 @@ import processing.core.PApplet;
 import tuio.TuioPoint;
 
 /**
- * Interface that extends MTUI.Controls.MTAbstractControl and represents the finger position on the table.
+ * An extended class from mtui.controls.MTAbstractControl
+ *  and represents the finger position on the table.
+ * <p>
+ * Once that this pointer are responsible for the all actions at the table, 
+ * require different handler 
  * 
- * @see mtui.Controls.MTAbstractControl
+ * @see mtui.controls.MTAbstractControl
  * @author Nuno Santos
- * @author Paulo Teixeira
  *
  */
 public abstract class MTAbstractPointer extends Component implements Runnable, IProcessingControl {

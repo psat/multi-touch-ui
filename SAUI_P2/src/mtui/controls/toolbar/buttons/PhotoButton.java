@@ -12,7 +12,15 @@ import mtui.processing.ProcessingApplet;
 import mtui.utils.FilterImagesFile;
 
 
-
+/**
+ * Extended class of mtui.controls.toolbar.buttons.MTAbstractToolbarButton.
+ * 
+ * Have the button characteristics for the photo as the cursor click event.
+ * 
+ * @see mtui.controls.toolbar.buttons.MTAbstractToolbarButton
+ * @author Nuno Santos
+ *
+ */
 public class PhotoButton extends MTAbstractToolbarButton{
 	public PhotoButton(){
 		this.setImageBackground(AppletConst.IMAGES_PATH + File.separator + "pictures.gif");		

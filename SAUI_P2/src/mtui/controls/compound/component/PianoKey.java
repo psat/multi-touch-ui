@@ -9,13 +9,17 @@ import mtui.controls.compound.MTPiano;
 
 import processing.core.PApplet;
 
+/**
+ * Extended class from mtui.controls.compound.component.MTAbstractKey.
+ * <p>
+ * Represents piano white keys.
+ * 
+ * @see mtui.controls.compound.component.MTAbstractKey
+ * @author Nuno Santos
+ *
+ */
+@SuppressWarnings("serial")
 public class PianoKey extends MTAbstractPianoKey{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
 	
 	public PianoKey(MTPiano aPiano, int intKeyNum){
 		super(aPiano, intKeyNum);

@@ -4,7 +4,14 @@ import java.util.Comparator;
 
 import mtui.controls.IMTControl;
 
-
+/**
+ * 
+ * Define condition when sorting collections in order.
+ * Deepest objects come first
+ * 
+ * @author Nuno Santos
+ *
+ */
 public class byZIndex implements Comparator<IMTControl>{
 
 	@Override

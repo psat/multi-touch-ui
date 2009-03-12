@@ -11,15 +11,13 @@ import processing.core.PApplet;
 
 
 /**
- * Defines any object that is inserted on the processing applet.
+ * Defines <b>any</b> object that is <b>inserted</b> on the <b>processing applet.</b>
  * <p>
  * Implements IMTControl interface
  * 
- * @see mtui.Controls.IMTControl
+ * @see mtui.controls.IMTControl
  * 
  * @author Nuno Santos
- * @author Paulo Teixeira
- *
  */
 public abstract class MTAbstractControl extends Component implements IMTControl {
 

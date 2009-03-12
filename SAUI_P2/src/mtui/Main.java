@@ -7,7 +7,7 @@ import java.io.File;
 
 import mtui.constants.AppletConst;
 import mtui.constants.DrawConstants;
-import mtui.controls.toolbar.MTToolbar;
+import mtui.controls.compound.MTToolbar;
 import mtui.controls.toolbar.buttons.*;
 import mtui.processing.ProcessingApplet;
 import mtui.processing.ProcessingFrame;
@@ -42,13 +42,9 @@ public class Main {
 		PhotoButton photoToolbarButton = new PhotoButton();
 		photoToolbarButton.setReferenceBounds(35, 5, 10, 90);
 		toolbar.addControl(photoToolbarButton);
-		
-		MovieButton movieToolBarButton = new MovieButton();
-		movieToolBarButton.setReferenceBounds(50, 5, 10, 90);
-		toolbar.addControl(movieToolBarButton);
-		
+			
 		PianoButton pianoToolBarButton = new PianoButton();
-		pianoToolBarButton.setReferenceBounds(65, 5, 10, 90);
+		pianoToolBarButton.setReferenceBounds(50, 5, 10, 90);
 		toolbar.addControl(pianoToolBarButton);
 		
 	}

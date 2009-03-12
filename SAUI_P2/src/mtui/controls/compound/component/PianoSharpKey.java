@@ -11,6 +11,15 @@ import mtui.controls.compound.MTPiano;
 
 import processing.core.PApplet;
 
+/**
+ * Extended class from mtui.controls.compound.component.MTAbstractKey.
+ * <p>
+ * Represents piano black keys.
+ * 
+ * @see mtui.controls.compound.component.MTAbstractKey
+ * @author Nuno Santos
+ *
+ */
 public class PianoSharpKey extends MTAbstractPianoKey{
 
 		public PianoSharpKey(MTPiano aPiano, int intKeyNum) {

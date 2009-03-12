@@ -4,12 +4,20 @@ import java.awt.Dimension;
 import java.io.File;
 
 import mtui.constants.AppletConst;
+import mtui.controls.compound.MTAbstractCompound;
 import mtui.controls.compound.MTPiano;
 import mtui.processing.ProcessingApplet;
 
 import processing.core.PApplet;
 import processing.core.PImage;
 
+/**
+ * Component that permits user set or not if a compound component is locked or not
+ * <p> is represented by a simple lock image, open or closed, representing if compound component is lock or not.
+ * 
+ * @author Nuno Santos
+ *
+ */
 public class ButtonLock extends MTAbstractCompoundComponent{
 
 	private PImage imgLockOpen;
@@ -17,28 +25,45 @@ public class ButtonLock extends MTAbstractCompoundComponent{
 	private PImage img;
 	private boolean boolLocked;
 	
-	private MTPiano Piano;
+	private MTAbstractCompound mParent;
 	
-	public ButtonLock(MTPiano aPiano) {
-		this.Piano = aPiano;
+	/**
+	 * Constructor of a lock button.
+	 * <p>Lock button is a component from an compound control
+	 * 
+	 * @param aParent (MTAbstractCompound) Compound control who's component is inserted 
+	 */
+	public ButtonLock(MTAbstractCompound aParent) {
+		this.mParent = aParent;
 		this.setReferenceSize(new Dimension(20,20));
 		imgLockOpen = ProcessingApplet.getInstance().loadImage(AppletConst.IMAGES_PATH + File.separator + "Lock_o.jpg");
 		imgLockClosed = ProcessingApplet.getInstance().loadImage(AppletConst.IMAGES_PATH + File.separator + "Lock_c.jpg");
 		this.unLock();
 	}
-	
+	/**
+	 * Set properties for lock state
+	 * <p>Set image as the closed lock
+	 * <p>set parent state to lock
+	 */
 	private void Lock(){
 		this.boolLocked = true;
 		this.img = this.imgLockClosed;
-		this.Piano.Lock();
+		this.mParent.Lock();
 	}
+	/**
+	 * Set properties for unlock state
+	 * <p>Set image as the open lock
+	 * <p>set parent state to unlock
+	 */
 	private void unLock(){
 		this.boolLocked = false;
 		this.img = this.imgLockOpen;
-		this.Piano.unLock();
+		this.mParent.unLock();
 
 	}
-	
+	/**
+	 * Set lock state depending of previous state
+	 */
 	private void changeLockState(){
 		if(boolLocked){
 			this.unLock();

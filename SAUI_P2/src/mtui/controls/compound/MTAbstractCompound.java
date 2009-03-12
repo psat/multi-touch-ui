@@ -11,8 +11,28 @@ import mtui.utils.byInverseZIndex;
 
 import processing.core.PApplet;
 
+/**
+ * Extended class from <b> MTAbstractControl</b> and implements <b>IMTCompound</b>
+ * 
+ * All compound controls should extend this abstract class.
+ * <p>
+ * This class implements the manage of child controls and the respective cursors events.
+ * <p>
+ * Bounds are overridden in order to set bounds to child controls
+ * 
+ * @author Nuno Santos
+ *
+ */
 public class MTAbstractCompound extends MTAbstractControl implements IMTCompound {
 
+	/**
+	 * protected property saving lock state of the compound component.  
+	 */
+	protected boolean boolLock;
+	
+	/**
+	 * Collection of the controls that compound components is composed
+	 */
 	protected ArrayList<MTAbstractCompoundComponent> Controls = new ArrayList<MTAbstractCompoundComponent>();
 	
 	@SuppressWarnings("unchecked")
@@ -75,6 +95,19 @@ public class MTAbstractCompound extends MTAbstractControl implements IMTCompound
 						(ArrayList<MTAbstractCompoundComponent>) this.Controls.clone())
 			if(component.getBounds().intersects(pointer.getBounds()))
 				component.CursorOut(pointer);
+	}
+	@Override
+	public void Lock(){
+		this.boolLock = true;
+	}
+
+	@Override
+	public void unLock(){
+		this.boolLock = false;
+	}
+	@Override
+	public boolean IsLocked(){
+		return this.boolLock;
 	}
 	
 

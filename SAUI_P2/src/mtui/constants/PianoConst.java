@@ -1,5 +1,11 @@
 package mtui.constants;
 
+/**
+ * Holds the constants related with piano and midi synthesizer
+ * 
+ * @author Nuno Santos
+ *
+ */
 public class PianoConst {
 
 	public static final int NOTE_VELOCITY = 40;
@@ -32,6 +38,10 @@ public class PianoConst {
 	public static final int KEY_SHARP_WIDTH = 6;
 	public static final int KEY_SHARP_HEIGHT = 45;
 
+	//ZINDEX
+	public static final int Z_INDEX_KEY = 1000;
+	public static final int Z_INDEX_KEY_SHARP = 1001;
+	
 	//channel
 	public static final int REGISTER_CHANGE_VOLUME = 7;
 	public static final int VOLUME_MAX_VALUE = 127;

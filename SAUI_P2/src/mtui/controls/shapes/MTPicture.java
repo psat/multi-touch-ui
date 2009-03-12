@@ -9,6 +9,17 @@ import mtui.processing.ProcessingApplet;
 import processing.core.PApplet;
 import processing.core.PImage;
 
+/**
+ * Extended class from mtui.controls.MTAbstractControl.
+ * 
+ * Defines an image control. 
+ * <p>Set definitions when drawing.
+ * 
+ * @see mtui.controls.MTAbstractControl
+ * 
+ * @author Nuno Santos
+ *
+ */
 public class MTPicture extends MTAbstractControl{
 
 	private PImage mPicture;
