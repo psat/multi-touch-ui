@@ -29,4 +29,7 @@ public class AppletConst {
 	public static final String IMAGES_PATH = "/images";
 	
 	
+	
+	
+	
 }

@@ -1,20 +1,23 @@
 package MTUI.Controls.Compound;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import processing.core.PApplet;
 import MTUI.Controls.Compound.IMTCompound;
 import MTUI.Controls.Compound.Component.MTAbstractCompoundComponent;
 import MTUI.Controls.MTAbstractControl;
 import MTUI.Controls.MTAbstractPointer;
+import MTUI.Utils.byInverseZIndex;
 
 public class MTAbstractCompound extends MTAbstractControl implements IMTCompound {
 
 	protected ArrayList<MTAbstractCompoundComponent> Controls = new ArrayList<MTAbstractCompoundComponent>();
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public void DrawControl(PApplet app) {
-		for(MTAbstractCompoundComponent component : this.Controls){
+		for(MTAbstractCompoundComponent component : (ArrayList<MTAbstractCompoundComponent>)this.Controls.clone()){
 			component.DrawControl(app);	
 		}
 	}
@@ -39,22 +42,28 @@ public class MTAbstractCompound extends MTAbstractControl implements IMTCompound
 	@Override
 	public void CursorAdd(MTAbstractPointer pointer) {
 		super.CursorAdd(pointer);
-		for(MTAbstractCompoundComponent component : 
-						(ArrayList<MTAbstractCompoundComponent>)this.Controls.clone())
+		ArrayList<MTAbstractCompoundComponent> clone =(ArrayList<MTAbstractCompoundComponent>) this.Controls.clone();
+		Collections.sort(clone, new byInverseZIndex());
+		for(MTAbstractCompoundComponent component : clone)
 			if(component.getBounds().intersects(pointer.getBounds())){
 				component.CursorAdd(pointer);
 				pointer.setCurrentCompoundControl(component);
+				break;
 			}
 	}
 	@SuppressWarnings("unchecked")
 	@Override
 	public void CursorOver(MTAbstractPointer pointer) {
 		super.CursorOver(pointer);
-		for(MTAbstractCompoundComponent component : 
-						(ArrayList<MTAbstractCompoundComponent>) this.Controls.clone())
+		
+		
+		ArrayList<MTAbstractCompoundComponent> clone =(ArrayList<MTAbstractCompoundComponent>) this.Controls.clone();
+		Collections.sort(clone, new byInverseZIndex());
+		for(MTAbstractCompoundComponent component : clone)
 			if(component.getBounds().intersects(pointer.getBounds())){
 				component.CursorOver(pointer);
 				pointer.setCurrentCompoundControl(component);
+				break;
 			}
 	}
 	@SuppressWarnings("unchecked")
