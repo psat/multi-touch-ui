@@ -18,7 +18,9 @@ import tuio.TuioObject;
 
 /**
  * An extended version of processing.core.PApplet.
- * 
+ * <p>
+ * Represents the processing environment
+ * <p>
  * Implements Singleton design pattern and mtui.processing.IProcessingApplet
  * 
  * @see processing.core.PApplet

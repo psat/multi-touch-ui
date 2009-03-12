@@ -7,8 +7,8 @@ import mtui.controls.compound.component.MTAbstractCompoundComponent;
 import processing.core.PApplet;
 
 /**
- * An implementation of a Tool bar for Processing applet. 
- * You add MTToolBarButton objects to the tool bar to construct a tool bar. 
+ * An implementation of a Toolbar for Processing applet. 
+ * You add MTToolBarButton objects to the tool bar to construct a toolbar. 
  * 
  * @author Nuno Santos
  * 
