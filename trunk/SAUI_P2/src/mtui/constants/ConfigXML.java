@@ -1,5 +1,11 @@
 package mtui.constants;
 
+/**
+ * Holds the constants related with the configuration file
+ * 
+ * @author Nuno Santos
+ *
+ */
 public class ConfigXML {
 
 	public static final String ROOT_ELEMENT = "MTUI_Config";

@@ -20,7 +20,6 @@ import mtui.utils.HandlerEventsMenuItem;
  *<p>
  * @see javax.swing.JFrame
  * @author Nuno Santos
- * @author Paulo Teixeira
  *
  */
 public class ProcessingFrame extends JFrame  {

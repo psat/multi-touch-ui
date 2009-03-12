@@ -2,7 +2,12 @@ package mtui.utils;
 
 import java.io.File;
 import java.io.FilenameFilter;
-
+/**
+ * Used to filter files in order to obtain only images
+ * 
+ * @author Nuno Santos
+ *
+ */
 public class FilterImagesFile implements FilenameFilter{
 
 	@Override

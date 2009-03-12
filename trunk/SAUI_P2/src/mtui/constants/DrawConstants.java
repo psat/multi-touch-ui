@@ -1,5 +1,11 @@
 package mtui.constants;
 
+/**
+ * Holds the constants with information related width object draw
+ * 
+ * @author Nuno Santos
+ *
+ */
 public class DrawConstants {
 	public static final int MAX_ZINDEX = 10000;
 	

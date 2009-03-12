@@ -13,11 +13,22 @@ import mtui.controls.compound.MTPiano;
 
 import processing.core.PApplet;
 
+/**
+ * Extended class from <b>mtui.control.compound.component.MTAbstractCompoundComponent</b>
+ * <p>
+ * Defines a volume control for a Piano.
+ * 
+ * @see mtui.control.compound.componet.MTAbstractCompoundComponent
+ * 
+ * @author Nuno Santos
+ *
+ */
 public class VolumeControl extends MTAbstractCompoundComponent {
 
 	VolumeSlider slider;
 	private MTPiano mPiano;
 	private Rectangle rBounds4Slider;
+	
 	public VolumeControl (MTPiano aPiano){
 		this.mPiano = aPiano;
 		this.setReferenceSize(new Dimension(80,20));

@@ -1,4 +1,4 @@
-package mtui.controls.toolbar;
+package mtui.controls.compound;
 
 import java.awt.Dimension;
 import java.awt.Point;
@@ -8,7 +8,6 @@ import mtui.constants.AppletConst;
 import mtui.constants.DrawConstants;
 import mtui.controls.MTAbstractControl;
 import mtui.controls.MTAbstractPointer;
-import mtui.controls.compound.MTAbstractCompound;
 import mtui.controls.compound.component.MTAbstractCompoundComponent;
 import processing.core.PApplet;
 import tuio.TuioCursor;
@@ -18,7 +17,6 @@ import tuio.TuioCursor;
  * You add MTToolBarButton objects to the tool bar to construct a tool bar. 
  * 
  * @author Nuno Santos
- * @author Paulo Teixeira
  * 
  */
 public class MTToolbar extends MTAbstractCompound{

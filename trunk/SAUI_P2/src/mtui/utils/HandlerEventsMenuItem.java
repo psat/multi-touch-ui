@@ -11,6 +11,13 @@ import mtui.config.ConfigFile;
 import mtui.constants.AppletConst;
 import mtui.processing.ProcessingApplet;
 
+/**
+ * Class that implements ActionListener.
+ * <p> Created to handle the events from the JMenuBar of The mtui.processing.ProcessingFrame
+ * 
+ * @author Nuno Santos
+ *
+ */
 
 public class HandlerEventsMenuItem implements ActionListener{
 

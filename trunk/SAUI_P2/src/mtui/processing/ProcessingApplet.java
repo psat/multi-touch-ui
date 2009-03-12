@@ -15,7 +15,7 @@ import javax.xml.transform.stream.StreamResult;
 import mtui.constants.AppletConst;
 import mtui.constants.ConfigXML;
 import mtui.controls.*;
-import mtui.controls.toolbar.MTToolbar;
+import mtui.controls.compound.MTToolbar;
 import mtui.utils.byZIndex;
 
 import org.w3c.dom.*;
@@ -29,12 +29,11 @@ import tuio.TuioObject;
 /**
  * An extended version of processing.core.PApplet.
  * 
- * Singleton pattern
+ * Implements Singleton design pattern and mtui.processing.IProcessingApplet
  * 
  * @see processing.core.PApplet
  * @see java.applet.Applet
  * @author Nuno Santos
- * @author Paulo Teixeira
  *
  */
 public class ProcessingApplet extends PApplet implements IProcessingApplet{
@@ -91,6 +90,9 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 		if(control.getZIndex()==0) control.setZIndex(this.Controls.size()+1);
 	}
 	
+	/**
+	 * clear the canvas. Return to beginning state
+	 */
 	public void Reset(){
 		ArrayList<MTAbstractControl> removableControls = new ArrayList<MTAbstractControl>();
 		for(MTAbstractControl control : this.Controls)

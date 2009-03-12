@@ -21,12 +21,18 @@ import mtui.controls.compound.component.VolumeControl;
 
 import processing.core.PApplet;
 
-
+/**
+ * Extended class from <b>mtui.controls.compound.MTAbstractCompound</b>
+ * <p>
+ * MTPiano is an compound component once it is composed by piano keys, volume control and lock system
+ * 
+ * @author Nuno Santos
+ *
+ */
 public class MTPiano extends MTAbstractCompound {
 	
 
 	private static final long serialVersionUID = 1L;
-	private boolean boolLock;
 	private MidiChannel midichannel;
 	
 	public MTPiano(){
@@ -115,9 +121,17 @@ public class MTPiano extends MTAbstractCompound {
 		this.addControl(volume);
 		
 	}
+	/**
+	 * 
+	 * @return (MidiChannel) The midi channel associated to the piano
+	 */
 	public MidiChannel getMidi(){
 		return this.midichannel;
 	}
+	/**
+	 * Configuration of the midi channel to act as a piano
+	 * @throws MidiUnavailableException
+	 */
 	public void ConfigureMidiSynthesizerInstrument() throws MidiUnavailableException{
 		Synthesizer synthesizer = MidiSystem.getSynthesizer();
 		synthesizer.open();
@@ -129,16 +143,6 @@ public class MTPiano extends MTAbstractCompound {
 		
 		MidiChannel midiChannels[] = synthesizer.getChannels();
 		midichannel = midiChannels[0];
-	}
-	
-	public void Lock(){
-		this.boolLock = true;
-	}
-	public void unLock(){
-		this.boolLock = false;
-	}
-	public boolean IsLocked(){
-		return this.boolLock;
 	}
 	
 	@Override

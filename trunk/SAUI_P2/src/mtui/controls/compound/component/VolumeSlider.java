@@ -10,6 +10,16 @@ import mtui.controls.compound.MTPiano;
 
 import processing.core.PApplet;
 
+/**
+ * Extended class from <b>mtui.control.compound.component.MTAbstractCompoundComponent</b>
+ * <p>
+ * Defines a slider for a volume control from piano.
+ * 
+ * @see mtui.control.compound.componet.MTAbstractCompoundComponent
+ * 
+ * @author Nuno Santos
+ *
+ */
 public class VolumeSlider extends MTAbstractCompoundComponent {
 
 	private MTPiano mPiano;

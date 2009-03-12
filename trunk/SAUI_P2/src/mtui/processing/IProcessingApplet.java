@@ -8,7 +8,6 @@ import tuio.TuioListener;
  * <p>
  * TuioListener belongs to Tuio.jar and provides the listener for the cursors and objects detected on tBeta application
  * @author Nuno Santos
- * @author Paulo Teixeira
  *
  */
 public interface IProcessingApplet extends TuioListener {

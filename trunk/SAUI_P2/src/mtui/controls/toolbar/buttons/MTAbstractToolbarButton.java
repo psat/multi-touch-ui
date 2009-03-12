@@ -8,15 +8,17 @@ import mtui.constants.*;
 import mtui.controls.MTAbstractControl;
 import mtui.controls.MTAbstractPointer;
 import mtui.controls.compound.MTAbstractCompound;
+import mtui.controls.compound.MTToolbar;
 import mtui.controls.compound.component.MTAbstractCompoundComponent;
-import mtui.controls.toolbar.MTToolbar;
 
 import processing.core.*;
 
 /**
- * This class implements buttons to be added to a Processing applet toolbar
+ * An extended class from mtui.controls.compound.component.MTAbstractCompoundComponent
+ * <p>This class change the common definition of components to buttons in order to be added to a Processing applet toolbar.
+ * <p>Toolbar buttons have specific characteristics such as static in space, i.e. doesn't move or resize.
+ * Also has a background image and specific handling for cursors events.
  * @author Nuno Santos
- * @author PAulo Teixeira
  *
  */
 public abstract class MTAbstractToolbarButton extends MTAbstractCompoundComponent{
@@ -28,9 +30,14 @@ public abstract class MTAbstractToolbarButton extends MTAbstractCompoundComponen
 	private boolean cursorOver;
 	private boolean mActive;
 	
+	/**
+	 * set the image path
+	 * @param aImageLocation (String) Image path
+	 */
 	public void setImageBackground(String aImageLocation){
 		this.imgBackground=aImageLocation;
 	}
+	
 	public MTAbstractToolbarButton(){
 		this.setZIndex(DrawConstants.BUTTONS_ZINDEX);
 	}
@@ -66,10 +73,16 @@ public abstract class MTAbstractToolbarButton extends MTAbstractCompoundComponen
 		}
 	}
 	
-	
+	/**
+	 * Set active state to true. This influencies the design of the button.
+	 * @param value
+	 */
 	public void setActive(boolean value){
 		this.mActive=value;
 	}
+	/**
+	 * Change the active state without depending on previous state
+	 */
 	public void changeActiveState(){
 		if(this.mActive) this.mActive = false;
 		else{
@@ -78,6 +91,9 @@ public abstract class MTAbstractToolbarButton extends MTAbstractCompoundComponen
 		}
 	}
 	
+	/**
+	 * When cursor is added above one toolbar button this method is called
+	 */
 	public abstract void CursorClicked();
 	
 	@Override
