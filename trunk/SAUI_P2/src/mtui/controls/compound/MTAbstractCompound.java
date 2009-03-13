@@ -67,7 +67,7 @@ public class MTAbstractCompound extends MTAbstractControl implements IMTCompound
 		ArrayList<MTAbstractCompoundComponent> clone =(ArrayList<MTAbstractCompoundComponent>) this.Controls.clone();
 		Collections.sort(clone, new byInverseZIndex());
 		for(MTAbstractCompoundComponent component : clone)
-			if(component.getBounds().intersects(pointer.getBounds())){
+			if(pointer.IsOverControl(component)){
 				component.CursorAdd(pointer);
 				pointer.setCurrentCompoundControl(component);
 				break;
@@ -82,7 +82,7 @@ public class MTAbstractCompound extends MTAbstractControl implements IMTCompound
 		ArrayList<MTAbstractCompoundComponent> clone =(ArrayList<MTAbstractCompoundComponent>) this.Controls.clone();
 		Collections.sort(clone, new byInverseZIndex());
 		for(MTAbstractCompoundComponent component : clone)
-			if(component.getBounds().intersects(pointer.getBounds())){
+			if(pointer.IsOverControl(component)){
 				component.CursorOver(pointer);
 				pointer.setCurrentCompoundControl(component);
 				break;
@@ -94,7 +94,7 @@ public class MTAbstractCompound extends MTAbstractControl implements IMTCompound
 		super.CursorOut(pointer);
 		for(MTAbstractCompoundComponent component : 
 						(ArrayList<MTAbstractCompoundComponent>) this.Controls.clone())
-			if(component.getBounds().intersects(pointer.getBounds()))
+			if(pointer.IsOverControl(component))
 				component.CursorOut(pointer);
 	}
 	@Override

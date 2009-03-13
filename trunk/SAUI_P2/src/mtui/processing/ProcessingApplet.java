@@ -1,5 +1,6 @@
 package mtui.processing;
 
+import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 	private ArrayList<MTAbstractControl> Controls = new ArrayList<MTAbstractControl>();
 	private ArrayList<MTAbstractPointer> Pointers = new ArrayList<MTAbstractPointer>();
 	private TuioClient tuio;
-	private Rectangle mParentSize;
+	private Dimension mParentSize;
 
 	private static ProcessingApplet instance = null;
 	
@@ -200,10 +201,8 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 		
 	}
 
-	public void setParentSize(Rectangle aParentSize) {
+	public void setParentSize(Dimension aParentSize) {
 		this.mParentSize = aParentSize;
-		
-		System.out.println(this.mParentSize);
 		
 	}
 }
