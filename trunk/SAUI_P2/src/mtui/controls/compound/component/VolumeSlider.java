@@ -56,7 +56,6 @@ public class VolumeSlider extends MTAbstractCompoundComponent {
 	 */
 	public void setMidiVolumeFromPosition(int posX){
 		int volume = (int)((posX *PianoConst.VOLUME_MAX_VALUE)/100);
-		System.out.println(volume);
 		this.mPiano.getMidi().controlChange(PianoConst.REGISTER_CHANGE_VOLUME, volume);
 	}
 	@Override

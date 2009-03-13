@@ -42,9 +42,6 @@ public class MTAbstractPianoKey extends MTAbstractCompoundComponent{
 	
 	@Override
 	public void CursorOut(MTAbstractPointer pointer) {
-		
-		System.out.println("piano");
-		
 		this.boolKeyPlayed=false;
 		super.CursorOut(pointer);
 		

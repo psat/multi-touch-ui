@@ -47,6 +47,19 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 	}
 	
 	private ProcessingApplet(){
+		
+		Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+		      public void uncaughtException(Thread t, Throwable ex) {
+		    	  if(ex.toString().indexOf("OutOfMemory")!=-1){
+		    		  System.out.println(AppletConst.ERROR_MEMORY);
+		    	  }else{
+		    		  System.out.println("Thread crashed: " + t.getName());
+		    		  System.out.println("Exception was: " + ex.toString());
+		      
+		    	  }
+		      }
+		    });
+		System.out.println("Welcome to the Multi-Touch User Interface..");
 		this.tuio = new TuioClient(3333);
 
 		if (this.tuio!=null) {
@@ -54,8 +67,8 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 			this.tuio.addTuioListener(this);
 		} else {
 			System.out.println("Wrong or not available port: Port Nº3333");
-			System.exit(0);
 		}	
+		System.out.println("Listening for TUIO messages at 127.0.0.1:3333");
 	}
 	
 	public static void main(String args[]){
@@ -106,26 +119,27 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 	@SuppressWarnings("unchecked")
 	@Override
 	public void draw(){
-		
-	
-		background(0);
-		noStroke();
-		
-		//set deep order
-		//use clone
-		ArrayList<MTAbstractControl> cloneControls = (ArrayList<MTAbstractControl>) this.Controls.clone();
-		Collections.sort(cloneControls, new byZIndex());
 
-		for(IMTControl control : cloneControls){
-			control.DrawControl(this);
+		//mac work around
+		try{
+			background(0);
+			noStroke();
+			
+			//set deep order
+			//use clone
+			ArrayList<MTAbstractControl> cloneControls = (ArrayList<MTAbstractControl>) this.Controls.clone();
+			Collections.sort(cloneControls, new byZIndex());
+	
+			for(IMTControl control : cloneControls){
+				control.DrawControl(this);
+			}
+			
+			//use clone avoiding concurrent updates
+			for(MTAbstractPointer pointer : (ArrayList<MTAbstractPointer>) this.Pointers.clone())
+				pointer.DrawControl(this);
+		}catch(Exception ex){
+			
 		}
-		
-		//use clone avoiding concurrent updates
-		for(MTAbstractPointer pointer : (ArrayList<MTAbstractPointer>) this.Pointers.clone())
-			pointer.DrawControl(this);
-	/*}catch(Exception ex){
-		System.out.println(ex);
-	}*/
 		
 	}
 

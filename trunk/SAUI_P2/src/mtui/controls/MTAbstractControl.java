@@ -53,22 +53,17 @@ public abstract class MTAbstractControl extends Component implements IMTControl 
 	@Override
 	public void Resize(int aDistX, int aDistY, int aOtherDistX, int aOtherDistY){
 		if(aOtherDistX<=0 && aOtherDistY >= 0 ){
-			System.out.println("3");
 			this.setLocation(new Point((int) (this.getX())+aDistX, this.getY()));
 			this.setSize((int) (this.getWidth()-aDistX),(int) (this.getHeight()+aDistY));
 		}
 		else if(aOtherDistX>=0 && aOtherDistY >= 0){
-			System.out.println("4");
-			//this.setLocation(new Point((int) (this.getX()+distX), this.getY()));
 			this.setSize((int) (this.getWidth()+aDistX),(int) (this.getHeight()+aDistY));
 		}
 		else if(aOtherDistX>=0 && aOtherDistY <= 0){
-			System.out.println("2");
 			this.setLocation(new Point((int) (this.getX()), (int) (this.getY()+aDistY)));
 			this.setSize((int) (this.getWidth()+aDistX),(int) (this.getHeight()-aDistY));
 		}
 		else if(aOtherDistX<=0 && aOtherDistY <= 0){
-			System.out.println("1");
 			this.setLocation(new Point((int) (this.getX()+aDistX), (int)(this.getY()+aDistY)));
 			this.setSize((int) (this.getWidth()-aDistX),(int) (this.getHeight()-aDistY));
 		}
