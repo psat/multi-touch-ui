@@ -30,6 +30,8 @@ public class AppletConst {
 	
 	public static final int JFRAME_BORDER_TOP = 30;
 	
+	public static final String ERROR_MEMORY = "System is out of memory. Please restart the application";
+	
 	
 	
 	

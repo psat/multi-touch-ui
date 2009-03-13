@@ -45,4 +45,7 @@ public class PianoConst {
 	//channel
 	public static final int REGISTER_CHANGE_VOLUME = 7;
 	public static final int VOLUME_MAX_VALUE = 127;
+	
+	//errors
+	public static final String ERROR_SYNTHESIZER = "Cannot find synthesizer for piano! Piano is cancelled";
 }

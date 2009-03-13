@@ -24,7 +24,8 @@ public class MTPicture extends MTAbstractControl{
 	private PImage mPicture;
 	public MTPicture(String aPicturePath){
 		super();
-		this.mPicture = ProcessingApplet.getInstance().loadImage(aPicturePath);	
+		this.mPicture = ProcessingApplet.getInstance().loadImage(aPicturePath);
+		
 	}
 	
 	@Override

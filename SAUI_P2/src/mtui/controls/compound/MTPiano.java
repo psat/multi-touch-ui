@@ -37,7 +37,7 @@ public class MTPiano extends MTAbstractCompound {
 		try {
 			ConfigureMidiSynthesizerInstrument();
 		} catch (MidiUnavailableException e) {
-			System.out.println("Cannot find synthesizer for piano! Piano is cancelled");
+			System.out.println(PianoConst.ERROR_SYNTHESIZER);
 			return;
 		}
 		

@@ -36,6 +36,7 @@ public class ButtonLock extends MTAbstractCompoundComponent{
 	public ButtonLock(MTAbstractCompound aParent) {
 		this.mParent = aParent;
 		this.setReferenceSize(new Dimension(20,20));
+
 		imgLockOpen = ProcessingApplet.getInstance().loadImage(AppletConst.IMAGES_PATH + File.separator + "Lock_o.jpg");
 		imgLockClosed = ProcessingApplet.getInstance().loadImage(AppletConst.IMAGES_PATH + File.separator + "Lock_c.jpg");
 		this.unLock();

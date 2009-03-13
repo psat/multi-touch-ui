@@ -3,6 +3,7 @@ package mtui.controls.toolbar.buttons;
 import mtui.constants.*;
 import mtui.controls.MTAbstractPointer;
 import mtui.controls.compound.component.MTAbstractCompoundComponent;
+import mtui.processing.ProcessingApplet;
 
 import processing.core.*;
 
@@ -18,7 +19,7 @@ public abstract class MTAbstractToolbarButton extends MTAbstractCompoundComponen
 
 	private static final long serialVersionUID = 1L;
 	
-	private String imgBackground;
+	private PImage imgBackground;
 	private boolean cursorPressed;
 	private boolean cursorOver;
 	private boolean mActive;
@@ -28,7 +29,7 @@ public abstract class MTAbstractToolbarButton extends MTAbstractCompoundComponen
 	 * @param aImageLocation (String) Image path
 	 */
 	public void setImageBackground(String aImageLocation){
-		this.imgBackground=aImageLocation;
+		this.imgBackground=ProcessingApplet.getInstance().loadImage(aImageLocation);
 	}
 	
 	public MTAbstractToolbarButton(){
@@ -60,8 +61,7 @@ public abstract class MTAbstractToolbarButton extends MTAbstractCompoundComponen
 		app.rect((float)this.getBounds().getX(), (float)this.getBounds().getY(), (float)this.getBounds().getWidth(), (float)this.getBounds().getHeight());
 		app.noStroke();
 		if(!this.imgBackground.equals("")){
-			PImage img = app.loadImage(this.imgBackground);
-			app.image(img, this.getX()+AppletConst.TOOLBAR_BUTTON_MARGIN, this.getY()+AppletConst.TOOLBAR_BUTTON_MARGIN, this.getWidth()-2*AppletConst.TOOLBAR_BUTTON_MARGIN, this.getHeight()-2*AppletConst.TOOLBAR_BUTTON_MARGIN);
+			app.image(this.imgBackground, this.getX()+AppletConst.TOOLBAR_BUTTON_MARGIN, this.getY()+AppletConst.TOOLBAR_BUTTON_MARGIN, this.getWidth()-2*AppletConst.TOOLBAR_BUTTON_MARGIN, this.getHeight()-2*AppletConst.TOOLBAR_BUTTON_MARGIN);
 		
 		}
 	}

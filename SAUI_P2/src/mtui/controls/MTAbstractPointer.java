@@ -91,7 +91,6 @@ public abstract class MTAbstractPointer extends Component implements Runnable, I
 		if(this.mCurrentCompoundControl!=null) 
 			if(this.mCurrentCompoundControl!=component){
 				this.mCurrentCompoundControl.CursorOut(this);
-				System.out.println(mCurrentCompoundControl.getLocation() + "|" + component.getLocation());
 			}
 		
 		this.mCurrentCompoundControl = component;
