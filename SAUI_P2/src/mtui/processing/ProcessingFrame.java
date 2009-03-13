@@ -60,6 +60,11 @@ private static final long serialVersionUID = 1L;
 		
 		
 		this.setBounds(AppletConst.APPLET_X,AppletConst.APPLET_Y,AppletConst.APPLET_WIDTH, AppletConst.APPLET_HEIGHT);
+		/*this.setMinimumSize(this.getSize());
+		this.setPreferredSize(this.getSize());
+		this.setMaximizedBounds(this.getBounds());
+		this.setMaximumSize(this.getBounds().getSize());
+		*/this.setResizable(false);
 		this.setLayout(new GridLayout(0,1));
 		
 		
