@@ -34,16 +34,35 @@ public class VolumeSlider extends MTAbstractCompoundComponent {
 		app.stroke(0);
 		app.fill(100,100,100);
 		app.rect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
-		System.out.println(this.getX());
 		
 	}
-	
+	/**
+	 * 
+	 * Reads the midi channel volume and obtain slider position related to that volume
+	 * 
+	 * @return (int) the reference position associated to the midi volume
+	 */
 	public int getPositionFromVolume(){
 		int valX = (this.mPiano.getMidi().getController(PianoConst.REGISTER_CHANGE_VOLUME)
 			*(100 - 6))
 			/PianoConst.VOLUME_MAX_VALUE;
 		
 		return valX;
+	}
+	/**
+	 * Set volume value from the slider position
+	 * 
+	 * @param posX (int) Value of the reference position at the xx axis
+	 */
+	public void setMidiVolumeFromPosition(int posX){
+		int volume = (int)((posX *PianoConst.VOLUME_MAX_VALUE)/100);
+		System.out.println(volume);
+		this.mPiano.getMidi().controlChange(PianoConst.REGISTER_CHANGE_VOLUME, volume);
+	}
+	@Override
+	public void setReferenceLocation(Point location) {
+		this.setMidiVolumeFromPosition((int)location.getX());
+		super.setReferenceLocation(location);
 	}
 
 }

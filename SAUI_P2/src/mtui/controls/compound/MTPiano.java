@@ -53,11 +53,11 @@ public class MTPiano extends MTAbstractCompound {
 		keyMi.setReferenceLocation(new Point(20,20));
 		this.addControl(keyMi);
 		
-		PianoKey keyFa = new PianoKey(this,PianoConst.NOTE_SOL);
+		PianoKey keyFa = new PianoKey(this,PianoConst.NOTE_FA);
 		keyFa.setReferenceLocation(new Point(30,20));
 		this.addControl(keyFa);
 		
-		PianoKey keySol = new PianoKey(this,PianoConst.NOTE_FA);
+		PianoKey keySol = new PianoKey(this,PianoConst.NOTE_SOL);
 		keySol.setReferenceLocation(new Point(40,20));
 		this.addControl(keySol);
 		

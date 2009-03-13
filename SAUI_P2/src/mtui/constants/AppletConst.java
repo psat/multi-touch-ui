@@ -28,6 +28,8 @@ public class AppletConst {
 	
 	public static final String IMAGES_PATH = "/images";
 	
+	public static final int JFRAME_BORDER_TOP = 30;
+	
 	
 	
 	

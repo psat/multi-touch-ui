@@ -10,6 +10,7 @@ import mtui.controls.compound.MTToolbar;
 import mtui.controls.compound.component.MTAbstractCompoundComponent;
 import mtui.processing.IProcessingControl;
 import mtui.utils.byInverseZIndex;
+import mtui.utils.byZIndex;
 
 
 import processing.core.PApplet;
@@ -51,7 +52,7 @@ public abstract class MTAbstractPointer extends Component implements Runnable, I
 		
 		//Event: CursorAdd
 		for(MTAbstractControl control : selectFirstObject){
-			if(control.getBounds().intersects(this.getBounds())){
+			if(this.IsOverControl(control)){
 				this.mCurrentControl = control;
 				control.CursorAdd(this);
 				
@@ -61,10 +62,13 @@ public abstract class MTAbstractPointer extends Component implements Runnable, I
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	private void BringObjectToFront(MTAbstractControl control) {
 		
-		int controlIndex = this.mAppControls.indexOf(control);
-		List<MTAbstractControl> listControls2Change = this.mAppControls.subList(controlIndex, this.mAppControls.size() -1 );
+		ArrayList<MTAbstractControl> appControlsClone = (ArrayList<MTAbstractControl>) this.mAppControls.clone();
+		Collections.sort(appControlsClone, new byZIndex());
+		int controlIndex = appControlsClone.indexOf(control);
+		List<MTAbstractControl> listControls2Change = appControlsClone.subList(controlIndex, appControlsClone.size() -1 );
 		
 		for (MTAbstractControl control2change : listControls2Change){
 			if(!(control2change instanceof MTToolbar)){
@@ -99,6 +103,7 @@ public abstract class MTAbstractPointer extends Component implements Runnable, I
 	@Override
 	public void DrawControl(PApplet app) {
 		app.fill(this.getBackground().getRed(),this.getBackground().getGreen(), this.getBackground().getBlue());
+		app.ellipseMode(PApplet.CORNER);
 		app.ellipse(this.getX(), this.getY(), this.getWidth(), this.getHeight());
 
 	}
@@ -152,7 +157,7 @@ public abstract class MTAbstractPointer extends Component implements Runnable, I
 		for(MTAbstractControl control : cloneControls){
 			
 			//Event: CursorOut
-			if(control.getBounds().intersects(this.getBounds())){
+			if(this.IsOverControl(control)){
 				if(this.mCurrentControl!=null){
 					if(!control.equals(this.mCurrentControl)){
 						this.mCurrentControl.CursorOut(this);
@@ -178,7 +183,11 @@ public abstract class MTAbstractPointer extends Component implements Runnable, I
 		this.mCursorLocation = new TuioPoint(this.getX(), this.getY());
 		this.mCursorLocationIsSet=true;
 	}
-	
+	public boolean IsOverControl(MTAbstractControl control){
+		Rectangle pointerBounds = new Rectangle((int)this.getBounds().getCenterX(), (int)this.getBounds().getCenterY(), 1, 1);
+		return control.getBounds().intersects(pointerBounds);
+		
+	}
 	public void clear(){
 		if(this.mCurrentControl!=null) this.mCurrentControl.CursorOut(this);
 		this.mCurrentControl=null;

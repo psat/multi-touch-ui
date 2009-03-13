@@ -1,5 +1,6 @@
 package mtui.processing;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Rectangle;
 
@@ -68,7 +69,7 @@ private static final long serialVersionUID = 1L;
 		
 		//applet
 		app = ProcessingApplet.getInstance();
-		app.setParentSize(this.getBounds());
+		app.setParentSize(new Dimension(this.getWidth(), this.getHeight() - 60));
 		
 		app.init();
 		app.start();
