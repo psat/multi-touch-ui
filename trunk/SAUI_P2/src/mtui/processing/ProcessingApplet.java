@@ -53,7 +53,7 @@ public class ProcessingApplet extends PApplet implements IProcessingApplet{
 		    	  if(ex.toString().indexOf("OutOfMemory")!=-1){
 		    		  System.out.println(AppletConst.ERROR_MEMORY);
 		    	  }else{
-		    		  System.out.println("Thread crashed: " + t.getName());
+		    		  System.out.println("Error has ocurred. Restart the application");
 		    		  System.out.println("Exception was: " + ex.toString());
 		      
 		    	  }
