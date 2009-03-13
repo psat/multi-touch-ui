@@ -52,9 +52,9 @@ private static final long serialVersionUID = 1L;
 		menuItemPictures.addActionListener(ItemsEvent);
 		menuMedia.add(menuItemPictures);
 		
-		JMenuItem menuItemMovies = new JMenuItem(AppletConst.SUB_MENU_MEDIA_MOVIES);
+		/*JMenuItem menuItemMovies = new JMenuItem(AppletConst.SUB_MENU_MEDIA_MOVIES);
 		menuItemMovies.addActionListener(ItemsEvent);
-		menuMedia.add(menuItemMovies);
+		menuMedia.add(menuItemMovies);*/
 		
 		this.setJMenuBar(menuBar);
 		
